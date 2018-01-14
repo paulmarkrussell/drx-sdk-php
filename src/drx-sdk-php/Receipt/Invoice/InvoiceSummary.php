@@ -8,7 +8,7 @@
 
 namespace Dreceiptx\Receipt\Common;
 
-class Contact implements \JsonSerializable
+class InvoiceSummary implements \JsonSerializable
 {
     public function jsonSerialize()
     {

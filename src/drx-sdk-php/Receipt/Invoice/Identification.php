@@ -6,9 +6,9 @@
  * Time: 19:21
  */
 
-namespace Dreceiptx\Receipt\Common;
+namespace Dreceiptx\Receipt\Invoice;
 
-class Contact implements \JsonSerializable
+class Identification implements \JsonSerializable
 {
     public function jsonSerialize()
     {

@@ -16,9 +16,9 @@ class DigitalReceiptContainer implements \JsonSerializable
     private $dRxDigitalReceipt;
 
     /**
-    * @param mixed $dRxDigitalReceipt
+    * @param DRxDigitalReceipt $dRxDigitalReceipt
     */
-    public function setDRxDigitalReceipt(DRxDigitalReceipt $dRxDigitalReceipt)
+    public function setDRxDigitalReceipt($dRxDigitalReceipt)
     {
         $this->dRxDigitalReceipt = $dRxDigitalReceipt;
     }

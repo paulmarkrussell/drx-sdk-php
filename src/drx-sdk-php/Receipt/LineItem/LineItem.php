@@ -6,9 +6,9 @@
  * Time: 19:21
  */
 
-namespace Dreceiptx\Receipt\Common;
+namespace Dreceiptx\Receipt\LineItem;
 
-class Contact implements \JsonSerializable
+class LineItem implements \JsonSerializable
 {
     public function jsonSerialize()
     {
