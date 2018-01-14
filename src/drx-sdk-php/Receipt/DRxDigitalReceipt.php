@@ -10,8 +10,16 @@ namespace Dreceiptx\Receipt;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+require_once __DIR__ . '/Document/StandardBusinessDocumentHeader.php';
+
 class DRxDigitalReceipt implements \JsonSerializable
 {
+    private $standardBusinessDocumentHeader;
+
+    public function setStandardBusinessDocumentHeader(Document\StandardBusinessDocumentHeader $standardBusinessDocumentHeader)
+    {
+        $this->standardBusinessDocumentHeader = $standardBusinessDocumentHeader;
+    }
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -21,6 +29,8 @@ class DRxDigitalReceipt implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        return new \stdClass();
+        $ret = new \stdClass();
+        $ret -> standardBusinessDocumentHeader = $this->standardBusinessDocumentHeader;
+        return $ret;
     }
 }
