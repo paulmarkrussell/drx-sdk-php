@@ -5,7 +5,7 @@
  * Date: 2018-01-14
  * Time: 09:29
  */
-require_once ("../drx-sdk-php/Receipt/DigitalReceipt.php");
+require_once (__DIR__."/../drx-sdk-php/Receipt/DigitalReceipt.php");
 if (count($argv) == 1) {
     print "File path of json to parse required.";
     return;

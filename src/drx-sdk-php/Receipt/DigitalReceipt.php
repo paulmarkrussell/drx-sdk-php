@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Receipt;
 
+require_once __DIR__.'/../vendor/autoload.php';
 
 class DigitalReceipt
 {
