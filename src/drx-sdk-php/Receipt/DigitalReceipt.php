@@ -14,7 +14,9 @@ class DigitalReceipt
 {
     public static function fromJson($json)
     {
-        return new DigitalReceipt();
+        $mapper = new \JsonMapper();
+        $receipt = $mapper->map($json, new DigitalReceipt());
+        return $receipt;
     }
 
     public function toJson()
