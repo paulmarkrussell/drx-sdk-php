@@ -13,5 +13,11 @@ class DigitalReceipt
 {
     public static function fromJson($json)
     {
+        return new DigitalReceipt();
+    }
+
+    public function toJson()
+    {
+        return "{}";
     }
 }
