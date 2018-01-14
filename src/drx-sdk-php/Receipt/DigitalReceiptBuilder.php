@@ -19,6 +19,6 @@ class DigitalReceiptBuilder
 
     public function build()
     {
-        return this.receipt;
+        return $this->receipt;
     }
 }

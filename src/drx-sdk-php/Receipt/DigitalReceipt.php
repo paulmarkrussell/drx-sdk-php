@@ -21,6 +21,6 @@ class DigitalReceipt
 
     public function toJson()
     {
-        return "{}";
+        return json_encode($this);
     }
 }
