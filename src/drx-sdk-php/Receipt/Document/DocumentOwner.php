@@ -13,7 +13,7 @@ class DocumentOwner implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        $ret = new stdClass();
+        $ret = new \stdClass();
         return $ret;
     }
 }

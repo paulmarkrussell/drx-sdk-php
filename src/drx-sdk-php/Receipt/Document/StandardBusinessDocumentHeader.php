@@ -7,13 +7,17 @@
  */
 
 namespace Dreceiptx\Receipt\Document;
+require_once __DIR__."/DocumentOwner.php";
 
 class StandardBusinessDocumentHeader implements \JsonSerializable
 {
     private $sender;
     private $receiver;
 
-    public function setSender($sender)
+    /**
+     * @param DocumentOwner[] $sender
+     */
+    public function setSender(array $sender)
     {
         print "Setting sender";
         $this->sender = $sender;
