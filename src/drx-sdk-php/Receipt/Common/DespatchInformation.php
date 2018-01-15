@@ -10,9 +10,40 @@ namespace Dreceiptx\Receipt\Common;
 
 class DespatchInformation implements \JsonSerializable
 {
+    private $estimatedDeliveryDateTime;
+    private $despatchDateTime;
+    private $deliveryInstructions;
+
+    /**
+     * @param \DateTime $estimatedDeliveryDateTime
+     */
+    public function setEstimatedDeliveryDateTime($estimatedDeliveryDateTime)
+    {
+        $this->estimatedDeliveryDateTime = $estimatedDeliveryDateTime;
+    }
+
+    /**
+     * @param \DateTime $despatchDateTime
+     */
+    public function setDespatchDateTime($despatchDateTime)
+    {
+        $this->despatchDateTime = $despatchDateTime;
+    }
+
+    /**
+     * @param string $deliveryInstructions
+     */
+    public function setDeliveryInstructions($deliveryInstructions)
+    {
+        $this->deliveryInstructions = $deliveryInstructions;
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();
+        $ret->estimatedDeliveryDateTime = $this->estimatedDeliveryDateTime;
+        $ret->despatchDateTime = $this->despatchDateTime;
+        $ret->deliveryInstructions = $this->deliveryInstructions;
         return $ret;
     }
 }

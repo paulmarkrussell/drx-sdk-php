@@ -14,7 +14,7 @@ class Amount implements \JsonSerializable
     private $value;
 
     /**
-     * @param mixed $currencyCode
+     * @param string $currencyCode
      */
     public function setCurrencyCode($currencyCode)
     {
@@ -22,7 +22,7 @@ class Amount implements \JsonSerializable
     }
 
     /**
-     * @param mixed $value
+     * @param double $value
      */
     public function setValue($value)
     {
@@ -32,6 +32,8 @@ class Amount implements \JsonSerializable
     public function jsonSerialize()
     {
         $ret = new \stdClass();
+        $ret->currencyCode = $this->currencyCode;
+        $ret->value = $this->value;
         return $ret;
     }
 }
