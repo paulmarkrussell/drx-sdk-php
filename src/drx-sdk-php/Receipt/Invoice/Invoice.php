@@ -125,7 +125,7 @@ class Invoice implements \JsonSerializable
     }
 
     /**
-     * @param ReceiptAllowanceCharge[] $invoiceAllowanceCharge
+     * @param \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge[] $invoiceAllowanceCharge
      */
     public function setInvoiceAllowanceCharge(array $invoiceAllowanceCharge)
     {
