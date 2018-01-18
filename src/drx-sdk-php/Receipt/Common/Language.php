@@ -9,7 +9,7 @@
 namespace Dreceiptx\Receipt\Common;
 
 
-class Currency
+class Language
 {
    const Chinese = "zh";
    const English = "en";

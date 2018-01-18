@@ -8,7 +8,7 @@
 
 namespace Dreceiptx\Receipt\Tax;
 
-class TaxCode
+class TaxCategory
 {
     const APPLICABLE = "APPLICABLE";
 }

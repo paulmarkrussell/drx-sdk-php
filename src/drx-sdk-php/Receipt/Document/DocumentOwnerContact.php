@@ -34,7 +34,7 @@ class DocumentOwnerContact implements \JsonSerializable
     }
 
     /**
-     * @param \Contact $communicationChannelCode
+     * @param \Dreceiptx\Receipt\Common\Contact[] $communicationChannelCode
      */
     public function setCommunicationChannelCode(array $communicationChannelCode)
     {

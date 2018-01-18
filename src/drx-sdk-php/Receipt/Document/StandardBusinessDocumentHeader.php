@@ -25,7 +25,7 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     /**
-     * @param DocumentOwner[] $sender
+     * @param DocumentOwner[] $receiver
      */
     public function setReceiver(array $receiver)
     {

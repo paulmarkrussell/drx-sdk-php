@@ -15,6 +15,7 @@ require_once __DIR__."/../Common/LocationInformation.php";
 require_once __DIR__."/../Common/TransactionalParty.php";
 
 require_once __DIR__."/Identification.php";
+require_once __DIR__."/InvoiceSummary.php";
 
 class Invoice implements \JsonSerializable
 {
@@ -53,7 +54,7 @@ class Invoice implements \JsonSerializable
     }
 
     /**
-     * @param TransactionalParty $seller
+     * @param \Dreceiptx\Receipt\Common\TransactionalParty $seller
      */
     public function setSeller($seller)
     {
@@ -61,7 +62,7 @@ class Invoice implements \JsonSerializable
     }
 
     /**
-     * @param TransactionalParty $billTo
+     * @param \Dreceiptx\Receipt\Common\TransactionalParty $billTo
      */
     public function setBillTo($billTo)
     {
