@@ -17,8 +17,8 @@
       <file leaf-file-name="LineItem.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/LineItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="312" column="1" lean-forward="true" selection-start-line="312" selection-start-column="1" selection-end-line="312" selection-end-column="1" />
+            <state relative-caret-position="217">
+              <caret line="145" column="72" lean-forward="false" selection-start-line="145" selection-start-column="65" selection-end-line="145" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -45,6 +45,8 @@
       <find>avp</find>
       <find>Dreceiptx</find>
       <find>-&gt;$</find>
+      <find>typedes</find>
+      <find>identif</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -111,7 +113,7 @@
       <path value="$PROJECT_DIR$/drx-sdk-php/vendor/composer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="1237" />
     <option name="height" value="1207" />
@@ -241,25 +243,24 @@
       <updated>1515917558399</updated>
       <workItem from="1515917560693" duration="16738000" />
       <workItem from="1515996984496" duration="6891000" />
-      <workItem from="1516295775342" duration="8006000" />
+      <workItem from="1516295775342" duration="10300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31635000" />
+    <option name="totallyTimeSpent" value="33929000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1237" height="1207" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2915643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33242258" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -677,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/LineItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="312" column="1" lean-forward="true" selection-start-line="312" selection-start-column="1" selection-end-line="312" selection-end-column="1" />
+        <state relative-caret-position="217">
+          <caret line="145" column="72" lean-forward="false" selection-start-line="145" selection-start-column="65" selection-end-line="145" selection-end-column="72" />
           <folding />
         </state>
       </provider>
