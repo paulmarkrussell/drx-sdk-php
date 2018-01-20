@@ -9,7 +9,7 @@
 namespace Dreceiptx\Receipt\Common\Measurements;
 require_once __DIR__."/Measurement.php";
 
-class TradeItemMeasurement implements \JsonSerializable
+class TradeItemMeasurements implements \JsonSerializable
 {
     private $height;
     private $width;

@@ -13,6 +13,7 @@ require_once __DIR__."/../Ecom/AVP.php";
 require_once __DIR__."/../Common/Measurements/Measurement.php";
 require_once __DIR__."/../Invoice/Identification.php";
 require_once __DIR__."/../Common/LocationInformation.php";
+require_once __DIR__ . "/TransactionalTradeItem.php";
 
 class LineItem implements \JsonSerializable
 {
@@ -31,6 +32,7 @@ class LineItem implements \JsonSerializable
     private $measurementDepth;
     private $measurementDiameter;
 
+    private $transactionalTradeItem;
     private $transactionalTradeItemType;
     private $transactionalTradeItemCode;
     private $tradeItemGroupIdentificationCode;
@@ -136,6 +138,14 @@ class LineItem implements \JsonSerializable
     public function setMeasurementDiameter($measurementDiameter)
     {
         $this->measurementDiameter = $measurementDiameter;
+    }
+
+    /**
+     * @param TransactionalTradeItem $transactionalTradeItem
+     */
+    public function setTransactionalTradeItem($transactionalTradeItem)
+    {
+        $this->transactionalTradeItem = $transactionalTradeItem;
     }
 
     /**
@@ -274,8 +284,6 @@ class LineItem implements \JsonSerializable
         $this->itemPriceExclusiveAllowancesCharges = $itemPriceExclusiveAllowancesCharges;
     }
 
-
-
     public function jsonSerialize()
     {
         $ret = new \stdClass();
@@ -289,6 +297,7 @@ class LineItem implements \JsonSerializable
         $ret->measurementDepth = $this->measurementDepth;
         $ret->measurementDiameter = $this->measurementDiameter;
 
+        $ret->transactionalTradeItem = $this->transactionalTradeItem;
         $ret->transactionalTradeItemType = $this->transactionalTradeItemType;
         $ret->transactionalTradeItemCode = $this->transactionalTradeItemCode;
         $ret->tradeItemGroupIdentificationCode = $this->tradeItemGroupIdentificationCode;

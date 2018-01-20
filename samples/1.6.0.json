@@ -1,0 +1,1676 @@
+{
+    "type": "object",
+    "$schema": "http://dreceiptx.net/digitalReceiptv1.3.0/schema",
+    "id": "http://dreceiptx.net",
+    "required": false,
+    "properties": {
+        "dRxDigitalReceipt": {
+            "type": "object",
+            "id": "http://dreceiptx.net/dRxDigitalReceipt",
+            "required": true,
+            "properties": {
+                "standardBusinessDocumentHeader": {
+                    "type": "object",
+                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader",
+                    "required": true,
+                    "properties": {
+                        "documentIdentification": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification",
+                            "required": true,
+                            "properties": {
+                                "creationDateAndTime": {
+                                    "type": "string",
+                                    "format": "iso-8601",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/creationDateAndTime",
+                                    "required": true
+                                },
+                                "instanceIdentifier": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/instanceIdentifier",
+                                    "required": true
+                                },
+                                "multipleType": {
+                                    "type": "boolen",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/multipleType",
+                                    "required": true
+                                },
+                                "standard": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/standard",
+                                    "required": true,
+                                    "enum": [
+                                        "GS1"
+                                    ]
+                                },
+                                "typeVersion": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/typeVersion",
+                                    "required": true
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/documentIdentification/type",
+                                    "required": true,
+                                    "enum": [
+                                        "DIGITALRECEIPT"
+                                    ]
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "receiver": {
+                            "type": "array",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver",
+                            "required": true,
+                            "items": {
+                                "type": "object",
+                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/item",
+                                "required": true,
+                                "properties": {
+                                    "identifier": {
+                                        "type": "object",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/item/identifier",
+                                        "required": true,
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "authority": {
+                                                "type": "string",
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/item/identifier/authority",
+                                                "required": true,
+                                                "enum": [
+                                                    "GS1",
+                                                    "dRx"
+                                                ]
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/item/identifier/value",
+                                                "required": true
+                                            }
+                                        }
+                                    },
+                                    "contactInformation": {
+                                        "type": "array",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation",
+                                        "required": false,
+                                        "items": {
+                                            "type": "object",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts",
+                                            "required": true,
+                                            "properties": {
+                                                "contactTypeCode": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/contactTypeCode",
+                                                    "required": true,
+                                                    "enum": [
+                                                        "PA",
+                                                        "GR"
+                                                    ]
+                                                },
+                                                "personName": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/personName",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "departmentName": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/departmentName",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "jobTitle": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/jobTitle",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "communicationChannel": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/communicationChannels",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/communicationChannels/communicationChannel",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "communicationChannelCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "communicationValue": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/receiver/contactInformation/contacts/contact/communicationChannels/communicationChannel/communicationValue",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "sender": {
+                            "type": "array",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender",
+                            "required": true,
+                            "items": {
+                                "type": "object",
+                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation",
+                                "required": true,
+                                "properties": {
+                                    "identifier": {
+                                        "type": "object",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/identifier",
+                                        "required": true,
+                                        "properties": {
+                                            "authority": {
+                                                "type": "string",
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/identifier/authority",
+                                                "required": true,
+                                                "enum": [
+                                                    "GS1",
+                                                    "dRx"
+                                                ]
+                                            },
+                                            "value": {
+                                                "type": "string",
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/identifier/value",
+                                                "required": true
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "contactInformation": {
+                                        "type": "array",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation",
+                                        "required": false,
+                                        "items": {
+                                            "type": "object",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts",
+                                            "required": false,
+                                            "properties": {
+                                                "contactTypeCode": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/contactTypeCode",
+                                                    "required": true,
+                                                    "enum": [
+                                                        "PA",
+                                                        "GR"
+                                                    ]
+                                                },
+                                                "personName": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/personName",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "departmentName": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/departmentName",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "jobTitle": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/jobTitle",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "communicationChannel": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/communicationChannels",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/communicationChannels/communicationChannel",
+                                                            "type": "object",
+                                                            "required": true,
+                                                            "properties": {
+                                                                "communicationChannelCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "communicationValue": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/standardBusinessDocumentHeader/sender/contactInformation/contacts/contact/communicationChannels/communicationChannel/communicationValue",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "invoice": {
+                    "type": "object",
+                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice",
+                    "required": true,
+                    "additionalProperties": false,
+                    "properties": {
+                        "creationDateTime": {
+                            "type": "string",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/creationDateTime",
+                            "format": "iso-8601",
+                            "required": true
+                        },
+                        "documentStatusCode": {
+                            "type": "string",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/documentStatusCode",
+                            "required": true,
+                            "enum": [
+                                "ORIGINAL"
+                            ]
+                        },
+                        "invoiceIdentification": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceIdentification",
+                            "required": true,
+                            "properties": {
+                                "entityIdentification": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceIdentification/entityIdentification",
+                                    "required": true
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "salesOrder": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/salesOrder",
+                            "required": false,
+                            "properties": {
+                                "entityIdentification": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/salesOrder/entityIdentification",
+                                    "required": true
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "purchaseOrder": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/purchaseOrder",
+                            "required": false,
+                            "properties": {
+                                "entityIdentification": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/purchaseOrder/entityIdentification",
+                                    "required": true
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "customerReference": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/customerReference",
+                            "required": false,
+                            "properties": {
+                                "entityIdentification": {
+                                    "type": "string",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/customerReference/entityIdentification",
+                                    "required": true
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "billTo": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo",
+                            "required": false,
+                            "properties": {
+                                "organisationDetails": {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo/organisationDetails",
+                                    "required": true,
+                                    "properties": {
+                                        "organisationName": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo/organisationDetails/organisationName",
+                                            "required": true
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "dutyFeeTaxRegistration": {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo/dutyFeeTaxRegistration",
+                                    "required": false,
+                                    "properties": {
+                                        "dutyFeeTaxTypeCode": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo/dutyFeeTaxRegistration/dutyFeeTaxTypeCode",
+                                            "required": true
+                                        },
+                                        "dutyFeeTaxRegistrationID": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/billTo/dutyFeeTaxRegistration/dutyFeeTaxRegistrationID",
+                                            "required": true
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            }
+                        },
+                        "invoiceType": {
+                            "type": "string",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceType",
+                            "required": true,
+                            "enum": [
+                                "TAX_INVOICE"
+                            ]
+                        },
+                        "countryOfSupplyOfGoods": {
+                            "type": "string",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/countryOfSupplyOfGoods",
+                            "required": true,
+                            "format": "country-code"
+                        },
+                        "invoiceCurrencyCode": {
+                            "type": "string",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceCurrencyCode",
+                            "required": true,
+                            "format": "curreny-code"
+                        },
+                        "invoiceTotals": {
+                            "type": "object",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals",
+                            "required": true,
+                            "properties": {
+                                "totalInvoiceAmount": {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalInvoiceAmount",
+                                    "required": true,
+                                    "properties": {
+                                        "currencyCode": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalInvoiceAmount/currencyCode",
+                                            "required": true,
+                                            "format": "curreny-code"
+                                        },
+                                        "value": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalInvoiceAmount/value",
+                                            "required": true
+                                        }
+                                    }
+                                },
+                                "totalLineAmountInclusiveAllowancesCharges": {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalLineAmountInclusiveAllowancesCharges",
+                                    "required": false,
+                                    "properties": {
+                                        "currencyCode": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalLineAmountInclusiveAllowancesCharges/currencyCode",
+                                            "required": true,
+                                            "format": "curreny-code"
+                                        },
+                                        "value": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalLineAmountInclusiveAllowancesCharges/value",
+                                            "required": true
+                                        }
+                                    }
+                                },
+                                "totalTaxAmount": {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalTaxAmount",
+                                    "required": true,
+                                    "properties": {
+                                        "currencyCode": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalTaxAmount/currencyCode",
+                                            "required": true,
+                                            "format": "curreny-code"
+                                        },
+                                        "value": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceTotals/totalTaxAmount/value",
+                                            "required": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "invoiceLineItem": {
+                            "type": "array",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem",
+                            "required": false,
+                            "minimum": 0,
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem",
+                                    "required": true,
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "lineItemNumber": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/lineItemNumber",
+                                            "required": true
+                                        },
+                                        "creditLineIndicator": {
+                                            "type": "boolean",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/creditLineIndicator",
+                                            "required": true
+                                        },
+                                        "creditReason": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/creditReason",
+                                            "required": false
+                                        },
+                                        "amountExclusiveAllowancesCharges": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/amountExclusiveAllowancesCharges",
+                                            "required": true
+                                        },
+                                        "amountInclusiveAllowancesCharges": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/amountInclusiveAllowancesCharges",
+                                            "required": true
+                                        },
+                                        "invoicedQuantity": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoicedQuantity",
+                                            "required": true
+                                        },
+                                        "itemPriceExclusiveAllowancesCharges": {
+                                            "type": "number",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/itemPriceExclusiveAllowancesCharges",
+                                            "required": true
+                                        },
+                                        "note": {
+                                            "type": "string",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/note",
+                                            "required": false
+                                        },
+                                        "billingCostCentre": {
+                                            "type": "object",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/salesOrder",
+                                            "required": false,
+                                            "properties": {
+                                                "entityIdentification": {
+                                                    "type": "string",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/salesOrder/entityIdentification",
+                                                    "required": true
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "transactionalTradeItem": {
+                                            "type": "object",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem",
+                                            "required": true,
+                                            "properties": {
+                                                "gtin": {
+                                                    "type": "string",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/gtin",
+                                                    "required": false
+                                                },
+                                                "transactionalItemData": {
+                                                    "type": "object",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/transactionalItemData",
+                                                    "required": false,
+                                                    "properties": {
+                                                        "serialNumber": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/transactionalItemData/serialNumber",
+                                                            "required": false,
+                                                            "additionalProperties": false
+                                                        },
+                                                        "batchNumber": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/transactionalItemData/batchNumber",
+                                                            "required": false,
+                                                            "additionalProperties": false
+                                                        },
+                                                    "additionalProperties": false
+                                                    }
+                                                },
+                                                "additionalTradeItemIdentification": {
+                                                    "type": "array",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/additionalTradeItemIdentification",
+                                                    "required": false,
+                                                    "properties": {
+                                                        "additionalTradeItemIdentificationType": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/additionalTradeItemIdentification/additionalTradeItemIdentificationType",
+                                                            "required": true,
+                                                            "enum": [
+                                                                "ISBN_NUMBER",
+                                                                "DRX_LINEITEM_TYPE"
+                                                            ]
+                                                        },
+                                                        "additionalTradeItemIdentificationValue": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/additionalTradeItemIdentification/additionalTradeItemIdentificationValue",
+                                                            "required": true
+                                                        }
+                                                    }
+                                                },
+                                                "tradeItemDescriptionInformation": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation",
+                                                    "required": false,
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "descriptionShort": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/descriptionShort",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "tradeItemDescription": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/tradeItemDescription",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "tradeItemGroupIdentificationCode": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/tradeItemGroupIdentificationCode",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "isTradeItemAService": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/isTradeItemAService",
+                                                            "required": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "isTradeItemReconditioned": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/isTradeItemReconditioned",
+                                                            "required": true,
+                                                            "type": "boolean"
+                                                        },
+                                                        "brandName": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemDescriptionInformation/brandName",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "tradeItemMeasurements": {
+                                                    "type": "object",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements",
+                                                    "required": false,
+                                                    "properties": {
+                                                        "depth": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/depth",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "measurementUnitCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/depth/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/depth/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "height": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/height",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "measurementUnitCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/height/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/height/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "width": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/width",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "measurementUnitCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/width/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/width/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "netContent": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/netContent",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "measurementUnitCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/netContent/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/transactionalTradeItem/tradeItemMeasurements/netContent/measurementUnitCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "invoiceAllowanceCharge": {
+                                            "type": "array",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge",
+                                            "required": false,
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item",
+                                                "required": false,
+                                                "properties": {
+                                                    "allowanceChargeDescription": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/allowanceChargeDescription",
+                                                        "required": true
+                                                    },
+                                                    "allowanceChargeType": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/allowanceChargeType",
+                                                        "enum": [
+                                                            "CHARGE_TO_BE_PAID_BY_CUSTOMER",
+                                                            "CREDIT_CUSTOMER_ACCOUNT"
+                                                        ],
+                                                        "required": true
+                                                    },
+                                                    "allowanceOrChargeType": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/allowanceOrChargeType",
+                                                        "enum": [
+                                                            "ALLOWANCE",
+                                                            "CHARGE"
+                                                        ],
+                                                        "required": true
+                                                    },
+                                                    "baseAmount": {
+                                                        "type": "number",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/baseAmount",
+                                                        "required": true
+                                                    },
+                                                    "settlementType": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/settlementType",
+                                                        "enum": [
+                                                            "ADZ",
+                                                            "FC",
+                                                            "TIP",
+                                                            "PC",
+                                                            "DI",
+                                                            "MB",
+                                                            "FI",
+                                                            "BOK",
+                                                            "SER",
+                                                            "AEM",
+                                                            "AJ",
+                                                            "HD",
+                                                            "AAB"
+                                                        ],
+                                                        "required": true
+                                                    },
+                                                    "leviedDutyFeeTax": {
+                                                        "type": "array",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax",
+                                                        "required": false,
+                                                        "additionalProperties": false,
+                                                        "items": {
+                                                            "type": "object",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "dutyFeeTaxAmount": {
+                                                                    "type": "number",
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item/dutyFeeTaxAmount",
+                                                                    "required": true
+                                                                },
+                                                                "dutyFeeTaxBasisAmount": {
+                                                                    "type": "number",
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item/dutyFeeTaxBasisAmount",
+                                                                    "required": true
+                                                                },
+                                                                "dutyFeeTaxCategoryCode": {
+                                                                    "type": "string",
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item/dutyFeeTaxCategoryCode",
+                                                                    "required": true
+                                                                },
+                                                                "dutyFeeTaxPercentage": {
+                                                                    "type": "number",
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item/dutyFeeTaxPercentage",
+                                                                    "required": true
+                                                                },
+                                                                "dutyFeeTaxTypeCode": {
+                                                                    "type": "string",
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceAllowanceCharge/item/leviedDutyFeeTax/item/dutyFeeTaxTypeCode",
+                                                                    "required": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "additionalItems": false
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "invoiceLineTaxInformation": {
+                                            "type": "array",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation",
+                                            "required": false,
+                                            "additionalProperties": false,
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item",
+                                                "required": false,
+                                                "properties": {
+                                                    "dutyFeeTaxAmount": {
+                                                        "type": "number",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item/dutyFeeTaxAmount",
+                                                        "required": true
+                                                    },
+                                                    "dutyFeeTaxBasisAmount": {
+                                                        "type": "number",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item/dutyFeeTaxBasisAmount",
+                                                        "required": true
+                                                    },
+                                                    "dutyFeeTaxCategoryCode": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item/dutyFeeTaxCategoryCode",
+                                                        "required": true
+                                                    },
+                                                    "dutyFeeTaxPercentage": {
+                                                        "type": "number",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item/dutyFeeTaxPercentage",
+                                                        "required": true
+                                                    },
+                                                    "dutyFeeTaxTypeCode": {
+                                                        "type": "string",
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/invoiceLineTaxInformation/item/dutyFeeTaxTypeCode",
+                                                        "required": true
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "additionalItems": false
+                                        },
+                                        "avpList": {
+                                            "type": "array",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList",
+                                            "required": false,
+                                            "minimum": 0,
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp",
+                                                    "required": true,
+                                                    "properties": {
+                                                        "attributeName": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp/attributeName",
+                                                            "required": true
+                                                        },
+                                                        "value": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp/value",
+                                                            "required": true
+                                                        },
+                                                        "qualifierCodeList": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp/qualifierCodeList",
+                                                            "required": false
+                                                        },
+                                                        "qualifierCodeListVersion": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp/qualifierCodeListVersion",
+                                                            "required": false
+                                                        },
+                                                        "qualifierCodeName": {
+                                                            "type": "string",
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/avpList/avp/qualifierCodeName",
+                                                            "required": false
+                                                        }
+                                                    }
+                                                }
+                                            ],
+                                            "additionalItems": false
+                                        },
+                                        "shipTo": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo",
+                                            "type": "object",
+                                            "required": false,
+                                            "properties": {
+                                                "address": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address",
+                                                    "type": "object",
+                                                    "required": true,
+                                                    "properties": {
+                                                        "name": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/name",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressOne": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/streetAddressOne",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressTwo": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/streetAddressTwo",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressThree": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/streetAddressOne",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "city": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/city",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "postalCode": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/postalCode",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "state": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/state",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "countryCode": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/countryCode",
+                                                            "type": "string",
+                                                            "required": false,
+                                                            "format": "country-code"
+                                                        },
+                                                        "geographicalCoordinates": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/geographicalCoordinates",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "latitude": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/geographicalCoordinates/latitude",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "longitude": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/address/geographicalCoordinates/longitude",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "contact": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact/item",
+                                                            "type": "object",
+                                                            "required": true,
+                                                            "properties": {
+                                                                "communicationChannel": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact/item/communicationChannel",
+                                                                    "type": "array",
+                                                                    "required": false,
+                                                                    "items": [
+                                                                        {
+                                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact/item/communicationChannels/communicationChannel",
+                                                                            "type": "object",
+                                                                            "required": true,
+                                                                            "properties": {
+                                                                                "communicationChannelCode": {
+                                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact/item/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                                    "required": true,
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "communicationValue": {
+                                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipTo/contact/item/communicationChannels/communicationChannel/communicationValue",
+                                                                                    "required": true,
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false
+                                                                        }
+                                                                    ],
+                                                                    "additionalItems": false
+                                                                },
+                                                                "additionalItems": false
+                                                            }
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "shipFrom": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom",
+                                            "type": "object",
+                                            "required": false,
+                                            "properties": {
+                                                "address": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address",
+                                                    "type": "object",
+                                                    "required": true,
+                                                    "properties": {
+                                                        "name": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/name",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressOne": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/streetAddressOne",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressTwo": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/streetAddressTwo",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "streetAddressThree": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/streetAddressOne",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "city": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/city",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "postalCode": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/postalCode",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "state": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/state",
+                                                            "required": false,
+                                                            "type": "string"
+                                                        },
+                                                        "countryCode": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/countryCode",
+                                                            "required": false,
+                                                            "type": "string",
+                                                            "format": "country-code"
+                                                        },
+                                                        "geographicalCoordinates": {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/geographicalCoordinates",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "latitude": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/geographicalCoordinates/latitude",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "longitude": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/address/geographicalCoordinates/longitude",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "contact": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact/item",
+                                                            "type": "object",
+                                                            "required": true,
+                                                            "properties": {
+                                                                "communicationChannel": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact/item/communicationChannel",
+                                                                    "type": "array",
+                                                                    "required": false,
+                                                                    "items": [
+                                                                        {
+                                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact/item/communicationChannels/communicationChannel",
+                                                                            "type": "object",
+                                                                            "required": false,
+                                                                            "properties": {
+                                                                                "communicationChannelCode": {
+                                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact/item/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                                    "required": true,
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "communicationValue": {
+                                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/shipFrom/contact/item/communicationChannels/communicationChannel/communicationValue",
+                                                                                    "required": true,
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false
+                                                                        }
+                                                                    ],
+                                                                    "additionalItems": false
+                                                                },
+                                                                "additionalItems": false
+                                                            }
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "despatchInformation": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/despatchInformation",
+                                            "type": "object",
+                                            "required": false,
+                                            "properties": {
+                                                "estimatedDeliveryDateTime": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/despatchInformation/estimatedDeliveryDateTime",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "deliveryInstructions": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/despatchInformation/deliveryInstructions",
+                                                    "required": false,
+                                                    "type": "string"
+                                                },
+                                                "despatchDateTime": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceLineItem/lineItem/despatchInformation/despatchDateTime",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    }
+                                }
+                            ],
+                            "additionalItems": false
+                        },
+                        "invoiceAllowanceCharge": {
+                            "type": "array",
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge",
+                            "required": false,
+                            "items": {
+                                "type": "object",
+                                "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge",
+                                "required": false,
+                                "properties": {
+                                    "allowanceChargeDescription": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/allowanceChargeDescription",
+                                        "required": false
+                                    },
+                                    "allowanceChargeType": {
+                                        "type": "string",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/allowanceChargeType",
+                                        "enum": [
+                                            "CHARGE_TO_BE_PAID_BY_CUSTOMER",
+                                            "CREDIT_CUSTOMER_ACCOUNT"
+                                        ],
+                                        "required": true
+                                    },
+                                    "allowanceOrChargeType": {
+                                        "type": "string",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/allowanceOrChargeType",
+                                        "enum": [
+                                            "ALLOWANCE",
+                                            "CHARGE"
+                                        ],
+                                        "required": true
+                                    },
+                                    "baseAmount": {
+                                        "type": "number",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/baseAmount",
+                                        "required": true
+                                    },
+                                    "settlementType": {
+                                        "type": "string",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/settlementType",
+                                        "enum": [
+                                            "ADZ",
+                                            "FC",
+                                            "TIP",
+                                            "PC",
+                                            "DI",
+                                            "MB",
+                                            "FI",
+                                            "BOK",
+                                            "SER",
+                                            "AEM",
+                                            "AJ",
+                                            "HD",
+                                            "AAB"
+                                        ],
+                                        "required": true
+                                    },
+                                    "leviedDutyFeeTax": {
+                                        "type": "array",
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax",
+                                        "required": false,
+                                        "items": {
+                                            "type": "object",
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item",
+                                            "required": true,
+                                            "properties": {
+                                                "dutyFeeTaxAmount": {
+                                                    "type": "number",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item/dutyFeeTaxAmount",
+                                                    "required": true
+                                                },
+                                                "dutyFeeTaxBasisAmount": {
+                                                    "type": "number",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item/dutyFeeTaxBasisAmount",
+                                                    "required": true
+                                                },
+                                                "dutyFeeTaxCategoryCode": {
+                                                    "type": "string",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item/dutyFeeTaxCategoryCode",
+                                                    "required": true
+                                                },
+                                                "dutyFeeTaxPercentage": {
+                                                    "type": "number",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item/dutyFeeTaxPercentage",
+                                                    "required": true
+                                                },
+                                                "dutyFeeTaxTypeCode": {
+                                                    "type": "string",
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/invoiceAllowanceCharge/AllowanceCharge/leviedDutyFeeTax/item/dutyFeeTaxTypeCode",
+                                                    "required": true
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "shipTo": {
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo",
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "address": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address",
+                                    "type": "object",
+                                    "required": true,
+                                    "properties": {
+                                        "name": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/name",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressOne": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/streetAddressOne",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressTwo": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/streetAddressTwo",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressThree": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/streetAddressOne",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/city",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "postalCode": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/postalCode",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/state",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "countryCode": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/countryCode",
+                                            "type": "string",
+                                            "required": false,
+                                            "format": "country-code"
+                                        },
+                                        "geographicalCoordinates": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/geographicalCoordinates",
+                                            "type": "object",
+                                            "required": false,
+                                            "properties": {
+                                                "latitude": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/geographicalCoordinates/latitude",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "longitude": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/address/geographicalCoordinates/longitude",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "contact": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact",
+                                    "type": "array",
+                                    "required": false,
+                                    "items": [
+                                        {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact/item",
+                                            "type": "object",
+                                            "required": true,
+                                            "properties": {
+                                                "communicationChannel": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact/item/communicationChannel",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact/item/communicationChannels/communicationChannel",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "communicationChannelCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact/item/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "communicationValue": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipTo/contact/item/communicationChannels/communicationChannel/communicationValue",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                },
+                                                "additionalItems": false
+                                            }
+                                        }
+                                    ],
+                                    "additionalItems": false
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "shipFrom": {
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom",
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "address": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address",
+                                    "type": "object",
+                                    "required": true,
+                                    "properties": {
+                                        "name": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/name",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressOne": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/streetAddressOne",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressTwo": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/streetAddressTwo",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "streetAddressThree": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/streetAddressOne",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/city",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "postalCode": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/postalCode",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/state",
+                                            "required": false,
+                                            "type": "string"
+                                        },
+                                        "countryCode": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/countryCode",
+                                            "required": false,
+                                            "type": "string",
+                                            "format": "country-code"
+                                        },
+                                        "geographicalCoordinates": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/geographicalCoordinates",
+                                            "type": "object",
+                                            "required": false,
+                                            "properties": {
+                                                "latitude": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/geographicalCoordinates/latitude",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "longitude": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/address/geographicalCoordinates/longitude",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "contact": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact",
+                                    "type": "array",
+                                    "required": false,
+                                    "items": [
+                                        {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact/item",
+                                            "type": "object",
+                                            "required": true,
+                                            "properties": {
+                                                "communicationChannel": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact/item/communicationChannel",
+                                                    "type": "array",
+                                                    "required": false,
+                                                    "items": [
+                                                        {
+                                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact/item/communicationChannels/communicationChannel",
+                                                            "type": "object",
+                                                            "required": false,
+                                                            "properties": {
+                                                                "communicationChannelCode": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact/item/communicationChannels/communicationChannel/communicationChannelCode",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "communicationValue": {
+                                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/shipFrom/contact/item/communicationChannels/communicationChannel/communicationValue",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    ],
+                                                    "additionalItems": false
+                                                },
+                                                "additionalItems": false
+                                            }
+                                        }
+                                    ],
+                                    "additionalItems": false
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "despatchInformation": {
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/despatchInformation",
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "estimatedDeliveryDateTime": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/despatchInformation/estimatedDeliveryDateTime",
+                                    "required": false,
+                                    "type": "string"
+                                },
+                                "deliveryInstructions": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/despatchInformation/deliveryInstructions",
+                                    "required": false,
+                                    "type": "string"
+                                },
+                                "despatchDateTime": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/despatchInformation/despatchDateTime",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "note": {
+                        "id": "http://dreceiptx.net/dRxDigitalReceipt/invoice/note",
+                        "required": false,
+                        "type": "string"
+                    }
+                },
+                "paymentReceipts": {
+                    "type": "array",
+                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts",
+                    "required": false,
+                    "items": [
+                        {
+                            "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement",
+                            "type": "object",
+                            "required": true,
+                            "properties": {
+                                "settlementCurrency": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementCurrency",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "settlementIdentification": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementIdentification",
+                                    "required": true,
+                                    "enum": "CREDIT_CARD,CASH"
+                                },
+                                "settlementHandlingTypeCode": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementHandlingTypeCode",
+                                    "required": true,
+                                    "enum": "REMITTANCE_ONLY"
+                                },
+                                "totalAmount": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/totalAmount",
+                                    "required": true,
+                                    "type": "number"
+                                },
+                                "paymentMethod": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/paymentMethod",
+                                    "type": "object",
+                                    "required": true,
+                                    "properties": {
+                                        "paymentMethodCode": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/paymentMethod/paymentMethodCode",
+                                            "enum": "CREDIT_CARD,CASH"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "payee": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payee",
+                                    "type": "object",
+                                    "required": true,
+                                    "properties": {
+                                        "gln": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payee/gln",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "payer": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payer",
+                                    "type": "object",
+                                    "required": true,
+                                    "properties": {
+                                        "gln": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payer/gln",
+                                            "type": "string"
+                                        },
+                                        "additionalPartyIdentification": {
+                                            "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payer/additionalPartyIdentification",
+                                            "type": "object",
+                                            "properties": {
+                                                "Authority": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payer/additionalPartyIdentification/Authority",
+                                                    "required": true,
+                                                    "enum": "dRx"
+                                                },
+                                                "value": {
+                                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/payer/additionalPartyIdentification/value",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "settlementLineItem": {
+                                    "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem",
+                                    "required": true,
+                                    "type": "array",
+                                    "items": {
+                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item",
+                                        "type": "object",
+                                        "properties": {
+                                            "lineItemNumber": {
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/lineItemNumber",
+                                                "required": true,
+                                                "type": "integer"
+                                            },
+                                            "amountPaid": {
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/amountPaid",
+                                                "required": true,
+                                                "type": "object",
+                                                "properties": {
+                                                    "currencyCode": {
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/amountPaid/currencyCode",
+                                                        "required": true,
+                                                        "type": "string",
+                                                        "format": "curreny-code"
+                                                    },
+                                                    "value": {
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/amountPaid/value",
+                                                        "required": true,
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "settlementParty": {
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/settlementParty",
+                                                "type": "object",
+                                                "required": false,
+                                                "properties": {
+                                                    "partyRoleCode": {
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/settlementParty/partyRoleCode",
+                                                        "required": true,
+                                                        "enum": "CENTRAL_PAYMENT_SERVICE"
+                                                    },
+                                                    "value": {
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/settlementParty/value",
+                                                        "required": true,
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "transactionalReference": {
+                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/transactionalReference",
+                                                "type": "array",
+                                                "required": false,
+                                                "items": [
+                                                    {
+                                                        "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/transactionalReference/item",
+                                                        "type": "object",
+                                                        "required": true,
+                                                        "properties": {
+                                                            "transactionalReferenceTypeCode": {
+                                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/transactionalReference/item/transactionalReferenceTypeCode",
+                                                                "required": true,
+                                                                "enum": "ANJ,AKO"
+                                                            },
+                                                            "entityIdentification": {
+                                                                "id": "http://dreceiptx.net/dRxDigitalReceipt/paymentReceipts/settlement/settlementLineItem/item/transactionalReference/item/entityIdentification",
+                                                                "required": true,
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    }
+                                                ],
+                                                "additionalItems": false
+                                            }
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "additionalItems": false
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "warranties": {
+                    "type": "array",
+                    "id": "http://dreceiptx.net/dRxDigitalReceipt/warranties",
+                    "required": false
+                },
+                "additionalProperties": false
+            },
+            "additionalProperties": false
+        }
+    }
+}
