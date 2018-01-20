@@ -14,6 +14,7 @@ require_once __DIR__."/../Common/Measurements/Measurement.php";
 require_once __DIR__."/../Invoice/Identification.php";
 require_once __DIR__."/../Common/LocationInformation.php";
 require_once __DIR__ . "/TransactionalTradeItem.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class LineItem implements \JsonSerializable
 {
@@ -317,6 +318,6 @@ class LineItem implements \JsonSerializable
         $ret->invoicedQuantity = $this->invoicedQuantity;
         $ret->itemPriceExclusiveAllowancesCharges = $this->itemPriceExclusiveAllowancesCharges;
 
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

@@ -7,7 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Document;
-
+require_once __DIR__."/../../Utils/Utils.php";
 
 class DocumentIdentification implements \JsonSerializable
 {
@@ -75,6 +75,6 @@ class DocumentIdentification implements \JsonSerializable
         $ret->instanceIdentifier = $this->instanceIdentifier;
         $ret->multipleType = $this->multipleType;
         $ret->creationDateAndTime = $this->creationDateAndTime->format("Y-m-d\TH:i:sP");
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

@@ -7,12 +7,13 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class InvoiceTotals implements \JsonSerializable
 {
     public function jsonSerialize()
     {
         $ret = new \stdClass();
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

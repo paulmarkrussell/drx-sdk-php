@@ -10,6 +10,7 @@ namespace Dreceiptx\Receipt\Document;
 
 require_once __DIR__."/ReceiptContactType.php";
 require_once __DIR__."/../Common/Contact.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class DocumentOwnerContact implements \JsonSerializable
 {
@@ -47,6 +48,6 @@ class DocumentOwnerContact implements \JsonSerializable
         $ret->receiptContactType = $this->receiptContactType;
         $ret->personName = $this->personName;
         $ret->communicationChannelCode = $this->communicationChannelCode;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

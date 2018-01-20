@@ -12,6 +12,7 @@ require_once __DIR__."/TradeItemDescriptionInformation.php";
 require_once __DIR__."/TradeItemIdentification.php";
 require_once __DIR__."/TransactionaltemData.php";
 require_once __DIR__."/../Common/Measurements/TradeItemMeasurements.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class TransactionalTradeItem implements \JsonSerializable
 {
@@ -61,6 +62,6 @@ class TransactionalTradeItem implements \JsonSerializable
         $ret->additionalTradeItemIdentification = $this->additionalTradeItemIdentification;
         $ret-> tradeItemMeasurements= $this->tradeItemMeasurements;
 
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

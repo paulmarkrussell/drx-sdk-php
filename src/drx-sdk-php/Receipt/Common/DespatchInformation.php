@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class DespatchInformation implements \JsonSerializable
 {
@@ -44,6 +45,6 @@ class DespatchInformation implements \JsonSerializable
         $ret->estimatedDeliveryDateTime = $this->estimatedDeliveryDateTime;
         $ret->despatchDateTime = $this->despatchDateTime;
         $ret->deliveryInstructions = $this->deliveryInstructions;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

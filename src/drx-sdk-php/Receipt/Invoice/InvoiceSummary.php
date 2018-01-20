@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Invoice;
 
 require_once __DIR__."/../Common/Amount.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class InvoiceSummary implements \JsonSerializable
 {
@@ -46,6 +47,6 @@ class InvoiceSummary implements \JsonSerializable
         $ret->totalInvoiceAmount = $this->totalInvoiceAmount;
         $ret->totalLineAmountInclusiveAllowanceesCharges = $this->totalLineAmountInclusiveAllowanceesCharges;
         $ret->totalTaxAmount = $this->totalTaxAmount;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

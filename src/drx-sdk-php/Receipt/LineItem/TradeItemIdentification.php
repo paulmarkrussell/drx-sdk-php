@@ -7,7 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\LineItem;
-
+require_once __DIR__."/../../Utils/Utils.php";
 
 class TradeItemIdentification implements \JsonSerializable
 {
@@ -36,6 +36,6 @@ class TradeItemIdentification implements \JsonSerializable
         $ret = new \stdClass();
         $ret->additionalTradeItemIdentificationType = $this->additionalTradeItemIdentificationType;
         $ret->additionalTradeItemIdentificationValue = $this->additionalTradeItemIdentificationValue;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

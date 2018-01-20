@@ -8,7 +8,6 @@
 
 namespace Dreceiptx\Receipt\Common\Measurements;
 
-
 class MeasurementType
 {
     const MILLIMETRE = "MMT";

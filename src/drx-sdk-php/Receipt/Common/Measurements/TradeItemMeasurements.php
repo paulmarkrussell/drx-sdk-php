@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Receipt\Common\Measurements;
 require_once __DIR__."/Measurement.php";
+require_once __DIR__."/../../../Utils/Utils.php";
 
 class TradeItemMeasurements implements \JsonSerializable
 {
@@ -64,6 +65,6 @@ class TradeItemMeasurements implements \JsonSerializable
         $ret->width = $this->width;
         $ret->depth = $this->depth;
         $ret->diameter = $this->diameter;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

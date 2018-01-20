@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\Common\Measurements;
 
+require_once __DIR__."/../../../Utils/Utils.php";
+
 class Measurement implements \JsonSerializable
 {
 
@@ -35,6 +37,6 @@ class Measurement implements \JsonSerializable
         $ret = new \stdClass();
         $ret->measurementUnitCode = $this->measurementUnitCode;
         $ret->vale = $this->vale;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

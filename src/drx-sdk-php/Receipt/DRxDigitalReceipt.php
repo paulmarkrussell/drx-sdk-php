@@ -12,6 +12,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__ . '/Document/StandardBusinessDocumentHeader.php';
 require_once __DIR__ . '/Invoice/Invoice.php';
 require_once __DIR__ . '/Settlement/PaymentReceipt.php';
+require_once __DIR__."/../Utils/Utils.php";
 
 class DRxDigitalReceipt implements \JsonSerializable
 {
@@ -49,6 +50,6 @@ class DRxDigitalReceipt implements \JsonSerializable
         $ret -> standardBusinessDocumentHeader = $this->standardBusinessDocumentHeader;
         $ret->invoice = $this->invoice;
         $ret->paymentReceipts = $this->paymentReceipts;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

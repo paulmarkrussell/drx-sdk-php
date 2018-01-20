@@ -7,7 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\LineItem;
-
+require_once __DIR__."/../../Utils/Utils.php";
 
 class TransactionaltemData implements \JsonSerializable
 {
@@ -36,6 +36,6 @@ class TransactionaltemData implements \JsonSerializable
         $ret = new \stdClass();
         $ret->serialNumber = $this->serialNumber;
         $ret->batchNumber = $this->batchNumber;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

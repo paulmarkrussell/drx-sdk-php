@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class SellerInformation implements \JsonSerializable
 {
@@ -24,6 +25,6 @@ class SellerInformation implements \JsonSerializable
     {
         $ret = new \stdClass();
         $ret->organisationName = $this->organisationName;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

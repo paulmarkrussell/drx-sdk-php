@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class Amount implements \JsonSerializable
 {
@@ -34,6 +35,6 @@ class Amount implements \JsonSerializable
         $ret = new \stdClass();
         $ret->currencyCode = $this->currencyCode;
         $ret->value = $this->value;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

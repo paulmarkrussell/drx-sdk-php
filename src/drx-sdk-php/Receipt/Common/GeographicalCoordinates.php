@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class GeographicalCoordinates implements \JsonSerializable
 {
@@ -34,6 +35,6 @@ class GeographicalCoordinates implements \JsonSerializable
         $ret = new \stdClass();
         $ret->latitude = $this->latitude;
         $ret->longitude = $this->longitude;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

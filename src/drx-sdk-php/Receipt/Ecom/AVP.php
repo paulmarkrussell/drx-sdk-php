@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Ecom;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class AVP implements \JsonSerializable
 {
@@ -54,6 +55,6 @@ class AVP implements \JsonSerializable
         $ret->qualifierCodeList = $this->qualifierCodeList;
         $ret->qualifierCodeListVersion = $this->qualifierCodeListVersion;
         $ret->value = $this->value;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

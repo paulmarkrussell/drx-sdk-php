@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Invoice;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class Identification implements \JsonSerializable
 {
@@ -26,6 +27,6 @@ class Identification implements \JsonSerializable
     {
         $ret = new \stdClass();
         $ret->entityIdentification = $this->entityIdentification;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

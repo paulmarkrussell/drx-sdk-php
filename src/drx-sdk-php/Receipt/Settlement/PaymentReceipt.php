@@ -7,12 +7,13 @@
  */
 
 namespace Dreceiptx\Receipt\Settlement;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class PaymentReceipt implements \JsonSerializable
 {
     public function jsonSerialize()
     {
         $ret = new \stdClass();
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

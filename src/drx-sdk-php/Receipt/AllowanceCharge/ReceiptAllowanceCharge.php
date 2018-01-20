@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\AllowanceCharge;
 
 require_once __DIR__."/../Tax/Tax.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class ReceiptAllowanceCharge implements \JsonSerializable
 {
@@ -76,6 +77,6 @@ class ReceiptAllowanceCharge implements \JsonSerializable
         $ret->leviedDutyFeeTax = $this->leviedDutyFeeTax;
         $ret->settlementType = $this->settlementType;
         $ret->allowanceChargeDescription = $this->allowanceChargeDescription;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

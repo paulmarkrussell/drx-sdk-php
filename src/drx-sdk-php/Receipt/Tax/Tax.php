@@ -7,12 +7,13 @@
  */
 
 namespace Dreceiptx\Receipt\Tax;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class Tax implements \JsonSerializable
 {
     public function jsonSerialize()
     {
         $ret = new \stdClass();
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Common;
 require_once __DIR__."/Address.php";
 require_once __DIR__."/Contact.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class LocationInformation implements \JsonSerializable
 {
@@ -36,6 +37,6 @@ class LocationInformation implements \JsonSerializable
         $ret = new \stdClass();
         $ret->address = $this->address;
         $ret->contacts = $this->contacts;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

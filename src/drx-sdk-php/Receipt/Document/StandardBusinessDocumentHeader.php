@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Document;
 require_once __DIR__."/DocumentOwner.php";
 require_once __DIR__."/DocumentIdentification.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class StandardBusinessDocumentHeader implements \JsonSerializable
 {
@@ -46,6 +47,6 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
         $ret->sender = $this->sender;
         $ret->receiver = $this->receiver;
         $ret->documentIdentification = $this->documentIdentification;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

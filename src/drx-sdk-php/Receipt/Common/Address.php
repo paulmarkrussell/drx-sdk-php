@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Common;
 
 require_once __DIR__."/GeographicalCoordinates.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class Address implements \JsonSerializable
 {
@@ -107,6 +108,6 @@ class Address implements \JsonSerializable
         $ret->state = $this->state;
         $ret->countryCode = $this->countryCode;
         $ret->geographicalCoordinates = $this->geographicalCoordinates;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

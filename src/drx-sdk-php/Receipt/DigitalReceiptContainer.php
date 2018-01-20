@@ -10,6 +10,7 @@ namespace Dreceiptx\Receipt;
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__ . '/DRxDigitalReceipt.php';
+require_once __DIR__."/../Utils/Utils.php";
 
 class DigitalReceiptContainer implements \JsonSerializable
 {
@@ -46,6 +47,6 @@ class DigitalReceiptContainer implements \JsonSerializable
     {
         $ret = new \stdClass();
         $ret->dRxDigitalReceipt = $this->dRxDigitalReceipt;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

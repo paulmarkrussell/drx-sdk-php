@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Document;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class DocumentOwnerIdentification implements \JsonSerializable
 {
@@ -35,6 +36,6 @@ class DocumentOwnerIdentification implements \JsonSerializable
         $ret = new \stdClass();
         $ret->authority = $this->authority;
         $ret->value = $this->value;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

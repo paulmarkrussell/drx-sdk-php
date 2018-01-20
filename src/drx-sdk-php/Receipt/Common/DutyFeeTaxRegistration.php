@@ -7,6 +7,7 @@
  */
 
 namespace Dreceiptx\Receipt\Common;
+require_once __DIR__."/../../Utils/Utils.php";
 
 class DutyFeeTaxRegistration implements \JsonSerializable
 {
@@ -34,6 +35,6 @@ class DutyFeeTaxRegistration implements \JsonSerializable
         $ret = new \stdClass();
         $ret->dutyFeeTaxTypeCode = $this->dutyFeeTaxTypeCode;
         $ret->dutyFeeTaxRegistationID = $this->dutyFeeTaxRegistationID;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }

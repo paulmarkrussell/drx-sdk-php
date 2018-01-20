@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Common;
 require_once __DIR__."/SellerInformation.php";
 require_once __DIR__."/DutyFeeTaxRegistration.php";
+require_once __DIR__."/../../Utils/Utils.php";
 
 class TransactionalParty implements \JsonSerializable
 {
@@ -37,6 +38,6 @@ class TransactionalParty implements \JsonSerializable
         $ret = new \stdClass();
         $ret->organisationDetails = $this->organisationDetails;
         $ret->dutyFeeTaxRegistration = $this->dutyFeeTaxRegistration;
-        return $ret;
+        return \Utils::removeNullProperties($ret);
     }
 }
