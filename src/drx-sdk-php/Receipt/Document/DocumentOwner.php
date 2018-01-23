@@ -8,7 +8,7 @@
 
 namespace Dreceiptx\Receipt\Document;
 require_once __DIR__."/DocumentOwnerIdentification.php";
-require_once __DIR__."/DocumentOwnerContact.php";
+require_once __DIR__ . "/ReceiptContact.php";
 require_once __DIR__."/../../Utils/Utils.php";
 
 class DocumentOwner implements \JsonSerializable
@@ -25,7 +25,7 @@ class DocumentOwner implements \JsonSerializable
     }
 
     /**
-     * @param DocumentOwnerContact[] $contactInformation
+     * @param ReceiptContact[] $contactInformation
      */
     public function setContactInformation(array $contactInformation)
     {

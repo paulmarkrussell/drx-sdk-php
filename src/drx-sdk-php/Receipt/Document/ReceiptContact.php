@@ -12,7 +12,7 @@ require_once __DIR__."/ReceiptContactType.php";
 require_once __DIR__."/../Common/Contact.php";
 require_once __DIR__."/../../Utils/Utils.php";
 
-class DocumentOwnerContact implements \JsonSerializable
+class ReceiptContact implements \JsonSerializable
 {
     private $receiptContactType;
     private $personName;
