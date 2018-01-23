@@ -20,23 +20,22 @@ require_once __DIR__."/../../Utils/Utils.php";
 
 class Invoice implements \JsonSerializable
 {
+    private $creationDateTime;
     private $documentStatusCode;
-    private $invoiceType;
-    private $seller;
-    private $billTo;
+    private $invoiceIdentification;
+    private $salesOrder;
     private $purchaseOrder;
     private $customerReference;
-    private $invoiceIdentification ;
-    private $creationDateTime ;
-    private $invoiceCurrencyCode ;
-    private $countryOfSupplyOfGoods ;
+    private $billTo;
+    private $invoiceType;
+    private $countryOfSupplyOfGoods;
+    private $invoiceCurrencyCode;
+    private $invoiceTotals;
     private $invoiceLineItem;
     private $invoiceAllowanceCharge;
     private $shipFrom;
     private $shipTo;
-    private $despatchInformation ;
-    private $invoiceTotals;
-    private $salesOrder;
+    private $despatchInformation;
 
     /**
      * @param string $documentStatusCode
@@ -52,14 +51,6 @@ class Invoice implements \JsonSerializable
     public function setInvoiceType($invoiceType)
     {
         $this->invoiceType = $invoiceType;
-    }
-
-    /**
-     * @param \Dreceiptx\Receipt\Common\TransactionalParty $seller
-     */
-    public function setSeller($seller)
-    {
-        $this->seller = $seller;
     }
 
     /**
@@ -180,7 +171,6 @@ class Invoice implements \JsonSerializable
         $ret = new \stdClass();
         $ret->documentStatusCode = $this->documentStatusCode;
         $ret->invoiceType = $this->invoiceType;
-        $ret->seller = $this->seller;
         $ret->billTo = $this->billTo;
         $ret->purchaseOrder = $this->purchaseOrder;
         $ret->customerReference = $this->customerReference;
