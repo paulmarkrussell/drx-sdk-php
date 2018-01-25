@@ -14,7 +14,7 @@ require_once __DIR__."/../../Utils/Utils.php";
 class InvoiceSummary implements \JsonSerializable
 {
     private $totalInvoiceAmount;
-    private $totalLineAmountInclusiveAllowanceesCharges;
+    private $totalLineAmountInclusiveAllowancesCharges;
     private $totalTaxAmount;
 
     /**
@@ -26,11 +26,11 @@ class InvoiceSummary implements \JsonSerializable
     }
 
     /**
-     * @param \Dreceiptx\Receipt\Common\Amount $totalLineAmountInclusiveAllowanceesCharges
+     * @param \Dreceiptx\Receipt\Common\Amount $totalLineAmountInclusiveAllowancesCharges
      */
-    public function setTotalLineAmountInclusiveAllowanceesCharges($totalLineAmountInclusiveAllowanceesCharges)
+    public function setTotalLineAmountInclusiveAllowancesCharges($totalLineAmountInclusiveAllowancesCharges)
     {
-        $this->totalLineAmountInclusiveAllowanceesCharges = $totalLineAmountInclusiveAllowanceesCharges;
+        $this->totalLineAmountInclusiveAllowancesCharges = $totalLineAmountInclusiveAllowancesCharges;
     }
 
     /**
@@ -45,7 +45,7 @@ class InvoiceSummary implements \JsonSerializable
     {
         $ret = new \stdClass();
         $ret->totalInvoiceAmount = $this->totalInvoiceAmount;
-        $ret->totalLineAmountInclusiveAllowanceesCharges = $this->totalLineAmountInclusiveAllowanceesCharges;
+        $ret->totalLineAmountInclusiveAllowancesCharges = $this->totalLineAmountInclusiveAllowancesCharges;
         $ret->totalTaxAmount = $this->totalTaxAmount;
         return \Utils::removeNullProperties($ret);
     }

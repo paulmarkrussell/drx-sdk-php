@@ -152,9 +152,8 @@ class Invoice implements \JsonSerializable
     /**
      * @param InvoiceSummary $invoiceTotals
      */
-    public function getInvoiceTotals($invoiceTotals)
+    public function setInvoiceTotals($invoiceTotals)
     {
-        // TODO create invoice totals
         $this->invoiceTotals = $invoiceTotals;
     }
 
