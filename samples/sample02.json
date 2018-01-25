@@ -115,16 +115,7 @@
           "invoiceAllowanceCharge": []
         }
       ],
-      "invoiceAllowanceCharge": [],
-      "seller": {
-        "organisationDetails": {
-          "organisationName": "Concierge Travel Group Pty Limited"
-        },
-        "dutyFeeTaxRegistration": {
-          "dutyFeeTaxTypeCode": "GST",
-          "dutyFeeTaxRegistrationID": "92 002 144 130"
-        }
-      }
+      "invoiceAllowanceCharge": []
     },
     "paymentReceipts": []
   }

@@ -183,7 +183,7 @@
           "currencyCode": "AUD",
           "value": 51.90
         },
-        "totalLineAmountInclusiveAllowanceesCharges": {
+        "totalLineAmountInclusiveAllowancesCharges": {
           "currencyCode": "AUD",
           "value": 54.90
         },
@@ -193,15 +193,6 @@
         }
       }
     },
-    "paymentReceipts": [ ],
-    "seller": {
-        "organisationDetails": {
-          "organisationName": "Hardware Store"
-        },
-        "dutyFeeTaxRegistration": {
-          "dutyFeeTaxTypeCode": "GST",
-          "dutyFeeTaxRegistrationID": "11 222 333 444"
-        }
-      }
+    "paymentReceipts": [ ]
 	}
 }

@@ -65,6 +65,7 @@ class TradeItemMeasurements implements \JsonSerializable
         $ret->width = $this->width;
         $ret->depth = $this->depth;
         $ret->diameter = $this->diameter;
+        $ret->netContent = $this->netContent;
         return \Utils::removeNullProperties($ret);
     }
 }

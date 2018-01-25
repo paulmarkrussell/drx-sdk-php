@@ -31,7 +31,7 @@ class LineItem implements \JsonSerializable
     private $transactionalTradeItem;
     private $invoiceAllowanceCharge;
     private $invoiceLineTaxInformation;
-    private $AVPList;
+    private $avpList;
     private $shipFrom;
     private $shipTo;
     private $despatchInformation;
@@ -133,11 +133,11 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @param \Dreceiptx\Receipt\Ecom\AVP[] $AVPList
+     * @param \Dreceiptx\Receipt\Ecom\AVP[] $avpList
      */
-    public function setAVPList(array $AVPList)
+    public function setAvpList(array $avpList)
     {
-        $this->AVPList = $AVPList;
+        $this->avpList = $avpList;
     }
 
     /**
@@ -179,7 +179,7 @@ class LineItem implements \JsonSerializable
         $ret->transactionalTradeItem = $this->transactionalTradeItem;
         $ret->invoiceAllowanceCharge = $this->invoiceAllowanceCharge;
         $ret->invoiceLineTaxInformation = $this->invoiceLineTaxInformation;
-        $ret->AVPList = $this->AVPList;
+        $ret->avpList = $this->avpList;
         $ret->shipFrom = $this->shipFrom;
         $ret->shipTo = $this->shipTo;
         $ret->despatchInformation = $this->despatchInformation;

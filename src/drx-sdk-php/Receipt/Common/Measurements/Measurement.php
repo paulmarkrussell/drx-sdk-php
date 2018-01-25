@@ -14,7 +14,7 @@ class Measurement implements \JsonSerializable
 {
 
     private $measurementUnitCode;
-    private $vale;
+    private $value;
 
     /**
      * @param string $measurementUnitCode
@@ -25,18 +25,18 @@ class Measurement implements \JsonSerializable
     }
 
     /**
-     * @param double $vale
+     * @param double $value
      */
-    public function setVale($vale)
+    public function setValue($value)
     {
-        $this->vale = $vale;
+        $this->value = $value;
     }
 
     public function jsonSerialize()
     {
         $ret = new \stdClass();
         $ret->measurementUnitCode = $this->measurementUnitCode;
-        $ret->vale = $this->vale;
+        $ret->value = $this->value;
         return \Utils::removeNullProperties($ret);
     }
 }

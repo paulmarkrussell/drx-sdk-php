@@ -14,16 +14,16 @@ require_once __DIR__."/../../Utils/Utils.php";
 
 class ReceiptContact implements \JsonSerializable
 {
-    private $receiptContactType;
+    private $contactTypeCode;
     private $personName;
     private $communicationChannelCode;
 
     /**
-     * @param string $receiptContactType
+     * @param string $contactTypeCode
      */
-    public function setReceiptContactType($receiptContactType)
+    public function setContactTypeCode($contactTypeCode)
     {
-        $this->receiptContactType = $receiptContactType;
+        $this->contactTypeCode = $contactTypeCode;
     }
 
     /**
@@ -45,7 +45,7 @@ class ReceiptContact implements \JsonSerializable
     public function jsonSerialize()
     {
         $ret = new \stdClass();
-        $ret->receiptContactType = $this->receiptContactType;
+        $ret->contactTypeCode = $this->contactTypeCode;
         $ret->personName = $this->personName;
         $ret->communicationChannelCode = $this->communicationChannelCode;
         return \Utils::removeNullProperties($ret);
