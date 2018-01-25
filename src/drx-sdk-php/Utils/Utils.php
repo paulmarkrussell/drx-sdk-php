@@ -11,7 +11,7 @@ class Utils
     public static function removeNullProperties($obj){
         $ret = new \stdClass();
         foreach($obj as $property => $value)  {
-            if ($value != null) {
+            if ($value !== null) {
                 $ret->$property = $value;
             }
         }
