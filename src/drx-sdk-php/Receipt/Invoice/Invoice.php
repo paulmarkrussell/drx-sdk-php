@@ -175,7 +175,7 @@ class Invoice implements \JsonSerializable
         $ret->purchaseOrder = $this->purchaseOrder;
         $ret->customerReference = $this->customerReference;
         $ret->invoiceIdentification  = $this->invoiceIdentification;
-        $ret->creationDateTime  = $this->creationDateTime;
+        $ret->creationDateTime  = $this->creationDateTime->format("Y-m-d\TH:i:sP");
         $ret->invoiceCurrencyCode  = $this->invoiceCurrencyCode;
         $ret->countryOfSupplyOfGoods  = $this->countryOfSupplyOfGoods;
         $ret->invoiceLineItem = $this->invoiceLineItem;

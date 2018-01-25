@@ -24,16 +24,14 @@ class DigitalReceiptContainer implements \JsonSerializable
         $this->dRxDigitalReceipt = $dRxDigitalReceipt;
     }
 
+    /**
+     * @return DigitalReceiptContainer
+     */
     public static function fromJson($json)
     {
         $mapper = new \JsonMapper();
         $receipt = $mapper->map($json, new DigitalReceiptContainer());
         return $receipt;
-    }
-
-    public function toJson()
-    {
-        return json_encode($this);
     }
 
     /**

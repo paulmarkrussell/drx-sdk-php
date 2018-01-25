@@ -8,9 +8,15 @@
 
 class ObjectComparator
 {
-    public static function compare($first, $second, $path = "") {
+    const INVALID = "invalid";
+
+    public static function compare($first, $second, $path = "ROOT") {
         if (!is_object($first) && !is_object($second) && !is_array($first) && !is_array($second)) {
             if (strval($first) != strval($second)) {
+                // Check for booleans
+                if (ObjectComparator::isBool($first) && ObjectComparator::isBool($second) && ObjectComparator::boolValue($first) == ObjectComparator::boolValue($second)) {
+                    return true;
+                }
                 print ("Values don't match first object has ".$first.", second object has ".$second." as ".$path."\n");
                 return false;
             }
@@ -49,8 +55,23 @@ class ObjectComparator
             return true;
         }
         else {
-            print ("Value types don't match at ".$path."\n");
+            print ("Value types don't match first is ".gettype($first)." second is ".gettype($second)." at ".$path."\n");
             return false;
+        }
+    }
+
+    public static function isBool($value){
+        return (ObjectComparator::boolValue($value) != ObjectComparator::INVALID);
+    }
+
+    public static function boolValue($value) {
+        if (($value == "true") || ($value == 1) || ($value == true)) {
+            return "true";
+        }
+        else if (($value == "false") || ($value == 0) || ($value == false)) {
+            return "false";
+        } else {
+            return ObjectComparator::INVALID;
         }
     }
 }
