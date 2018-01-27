@@ -7,17 +7,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHP" type="php">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/drx-sdk-php/vendor/composer" />
-          <root url="file://$MODULE_DIR$/drx-sdk-php/vendor/netresearch/jsonmapper" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/drx-sdk-php/vendor/composer" />
-          <root url="file://$MODULE_DIR$/drx-sdk-php/vendor/netresearch/jsonmapper" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
