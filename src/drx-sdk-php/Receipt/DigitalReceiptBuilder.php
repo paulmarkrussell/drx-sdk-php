@@ -15,10 +15,13 @@ class DigitalReceiptBuilder
 
     public function __construct()
     {
+        $this->receipt = new DRxDigitalReceipt();
     }
 
     public function build()
     {
-        return $this->receipt;
+        $container = new DigitalReceiptContainer();
+        $container->setDRxDigitalReceipt($this->receipt);
+        return $container;
     }
 }
