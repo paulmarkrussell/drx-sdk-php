@@ -1,0 +1,23 @@
+{
+	"id": "93489790000085",
+	"fullName": "Goldmand Travel Corporation Pty Ltd",
+	"commonName": "Goldmand Travel",
+	"businessTaxNumber": "71 105 456 899",
+	"businessTaxNumberType": "GST",
+	"businessRegistrationNumber": "105 456 899",
+	"primaryPhone": "+61 2 8333 7700",
+	"primaryEmail": "sales@goldmantravel.com.au",
+	"website": "http://www.goldmantravel.com.au/",
+	"primaryAddress": {
+		"buildingnumber": "Level 18, Westfield Tower One",
+		"streetnumber": "520",
+		"street": "Oxford St",
+		"city": "Bondi Junction",
+		"state": "NSW",
+		"postcode": "2022",
+		"country": "AUS"
+	},
+	"sector": "Corporate Travel",
+	"industry": "Travel Management Company",
+	"status": "Active"
+}
