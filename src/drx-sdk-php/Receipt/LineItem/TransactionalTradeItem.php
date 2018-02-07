@@ -31,11 +31,27 @@ class TransactionalTradeItem implements \JsonSerializable
     }
 
     /**
+     * @return TradeItemDescriptionInformation
+     */
+    public function getTradeItemDescriptionInformation()
+    {
+        return $this->tradeItemDescriptionInformation;
+    }
+
+    /**
      * @param TransactionaltemData $transactionItemData
      */
     public function setTransactionItemData($transactionItemData)
     {
         $this->transactionItemData = $transactionItemData;
+    }
+
+    /**
+     * @return TransactionaltemData
+     */
+    public function getTransactionItemData()
+    {
+        return $this->transactionItemData;
     }
 
     /**
@@ -47,11 +63,27 @@ class TransactionalTradeItem implements \JsonSerializable
     }
 
     /**
+     * @return TradeItemIdentification[]
+     */
+    public function getAdditionalTradeItemIdentification()
+    {
+        return $this->additionalTradeItemIdentification;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements $tradeItemMeasurements
      */
     public function setTradeItemMeasurements($tradeItemMeasurements)
     {
         $this->tradeItemMeasurements = $tradeItemMeasurements;
+    }
+
+    /**
+     * @return \Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements
+     */
+    public function getTradeItemMeasurements()
+    {
+        return $this->tradeItemMeasurements;
     }
 
     public function jsonSerialize()

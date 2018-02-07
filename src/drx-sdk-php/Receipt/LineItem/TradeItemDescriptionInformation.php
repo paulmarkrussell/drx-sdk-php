@@ -29,11 +29,27 @@ class TradeItemDescriptionInformation implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getBrandName()
+    {
+        return $this->brandName;
+    }
+
+    /**
      * @param string $descriptionShort
      */
     public function setDescriptionShort($descriptionShort)
     {
         $this->descriptionShort = $descriptionShort;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
     }
 
     /**
@@ -45,11 +61,27 @@ class TradeItemDescriptionInformation implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getTradeItemDescription()
+    {
+        return $this->tradeItemDescription;
+    }
+
+    /**
      * @param boolean $isTradeItemAService
      */
     public function setIsTradeItemAService($isTradeItemAService)
     {
         $this->isTradeItemAService = $isTradeItemAService;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getisTradeItemAService()
+    {
+        return $this->isTradeItemAService;
     }
 
     /**
@@ -61,6 +93,14 @@ class TradeItemDescriptionInformation implements \JsonSerializable
     }
 
     /**
+     * @return boolean
+     */
+    public function getisTradeItemReconditioned()
+    {
+        return $this->isTradeItemReconditioned;
+    }
+
+    /**
      * @param string $tradeItemGroupIdentificationCode
      */
     public function setTradeItemGroupIdentificationCode($tradeItemGroupIdentificationCode)
@@ -69,11 +109,27 @@ class TradeItemDescriptionInformation implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getTradeItemGroupIdentificationCode()
+    {
+        return $this->tradeItemGroupIdentificationCode;
+    }
+
+    /**
      * @param string $gtin
      */
     public function setGtin($gtin)
     {
         $this->gtin = $gtin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGtin()
+    {
+        return $this->gtin;
     }
 
     public function jsonSerialize()

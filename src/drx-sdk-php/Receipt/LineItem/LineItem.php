@@ -19,6 +19,8 @@ require_once __DIR__."/../../Utils/Utils.php";
 class LineItem implements \JsonSerializable
 {
 
+    const LINE_ITEM_TYPE_IDENTIFIER = "DRX_LINEITEM_TYPE";
+
     private $lineItemNumber;
     private $creditLineIndicator;
     private $creditReason;
@@ -45,11 +47,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getLineItemNumber()
+    {
+        return $this->lineItemNumber;
+    }
+
+    /**
      * @param boolean $creditLineIndicator
      */
     public function setCreditLineIndicator($creditLineIndicator)
     {
         $this->creditLineIndicator = $creditLineIndicator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreditLineIndicator()
+    {
+        return $this->creditLineIndicator;
     }
 
     /**
@@ -61,11 +79,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getCreditReason()
+    {
+        return $this->creditReason;
+    }
+
+    /**
      * @param double $amountExclusiveAllowancesCharges
      */
     public function setAmountExclusiveAllowancesCharges($amountExclusiveAllowancesCharges)
     {
         $this->amountExclusiveAllowancesCharges = $amountExclusiveAllowancesCharges;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmountExclusiveAllowancesCharges()
+    {
+        return $this->amountExclusiveAllowancesCharges;
     }
 
     /**
@@ -77,11 +111,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getAmountInclusiveAllowancesCharges()
+    {
+        return $this->amountInclusiveAllowancesCharges;
+    }
+
+    /**
      * @param double $invoicedQuantity
      */
     public function setInvoicedQuantity($invoicedQuantity)
     {
         $this->invoicedQuantity = $invoicedQuantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvoicedQuantity()
+    {
+        return $this->invoicedQuantity;
     }
 
     /**
@@ -93,11 +143,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getItemPriceExclusiveAllowancesCharges()
+    {
+        return $this->itemPriceExclusiveAllowancesCharges;
+    }
+
+    /**
      * @param string $note
      */
     public function setNote($note)
     {
         $this->note = $note;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 
     /**
@@ -109,11 +175,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getBillingCostCentre()
+    {
+        return $this->billingCostCentre;
+    }
+
+    /**
      * @param TransactionalTradeItem $transactionalTradeItem
      */
     public function setTransactionalTradeItem($transactionalTradeItem)
     {
         $this->transactionalTradeItem = $transactionalTradeItem;
+    }
+
+    /**
+     * @return TransactionalTradeItem
+     */
+    public function getTransactionalTradeItem()
+    {
+        return $this->transactionalTradeItem;
     }
 
     /**
@@ -125,11 +207,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getInvoiceAllowanceCharge()
+    {
+        return $this->invoiceAllowanceCharge;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Tax\Tax[] $invoiceLineTaxInformation
      */
     public function setInvoiceLineTaxInformation(array $invoiceLineTaxInformation)
     {
         $this->invoiceLineTaxInformation = $invoiceLineTaxInformation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvoiceLineTaxInformation()
+    {
+        return $this->invoiceLineTaxInformation;
     }
 
     /**
@@ -141,11 +239,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getAvpList()
+    {
+        return $this->avpList;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\LocationInformation $shipTo
      */
     public function setShipTo($shipTo)
     {
         $this->shipTo = $shipTo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShipTo()
+    {
+        return $this->shipTo;
     }
 
     /**
@@ -157,11 +271,27 @@ class LineItem implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getShipFrom()
+    {
+        return $this->shipFrom;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\DespatchInformation $despatchInformation
      */
     public function setDespatchInformation($despatchInformation)
     {
         $this->despatchInformation = $despatchInformation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDespatchInformation()
+    {
+        return $this->despatchInformation;
     }
 
     public function jsonSerialize()
