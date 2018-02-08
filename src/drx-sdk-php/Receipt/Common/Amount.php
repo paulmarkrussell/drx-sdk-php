@@ -15,6 +15,18 @@ class Amount implements \JsonSerializable
     private $value;
 
     /**
+     * @param string $code
+     * @param double $value
+     * @return Amount
+     */
+    public static function create($code, $value) {
+        $amount = new Amount();
+        $amount->currencyCode = $code;
+        $amount->value = $value;
+        return $amount;
+    }
+
+    /**
      * @param string $currencyCode
      */
     public function setCurrencyCode($currencyCode)

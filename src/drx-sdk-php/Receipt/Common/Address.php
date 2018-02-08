@@ -161,7 +161,7 @@ class Address implements \JsonSerializable
     }
 
     /**
-     * @return \Dreceiptx\Receipt\Common\GeographicalCoordinates
+     * @return GeographicalCoordinates
      */
     public function getGeographicalCoordinates()
     {

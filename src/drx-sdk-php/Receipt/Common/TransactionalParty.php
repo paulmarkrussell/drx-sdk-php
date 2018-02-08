@@ -45,9 +45,6 @@ class TransactionalParty implements \JsonSerializable
      */
     public function getOrganisationDetails()
     {
-        if ($this->organisationDetails == null) {
-            $this->organisationDetails = new SellerInformation();
-        }
         return $this->organisationDetails;
     }
 
@@ -64,9 +61,6 @@ class TransactionalParty implements \JsonSerializable
      */
     public function getDutyFeeTaxRegistration()
     {
-        if ($this->dutyFeeTaxRegistration == null) {
-            $this->dutyFeeTaxRegistration = new DutyFeeTaxRegistration();
-        }
         return $this->dutyFeeTaxRegistration;
     }
 

@@ -20,6 +20,24 @@ class TradeItemMeasurements implements \JsonSerializable
 
     /**
      * @param Measurement $height
+     * @param Measurement $width
+     * @param Measurement $depth
+     * @param Measurement $diameter
+     * @param Measurement $netContent
+     * @return TradeItemMeasurements
+     */
+    public static function create($height, $width, $depth, $diameter, $netContent) {
+        $measurement = new TradeItemMeasurements();
+        $measurement->height = $height;
+        $measurement->width = $width;
+        $measurement->depth = $depth;
+        $measurement->diameter = $diameter;
+        $measurement->netContent = $netContent;
+        return $measurement;
+    }
+
+    /**
+     * @param Measurement $height
      */
     public function setHeight($height)
     {
@@ -31,9 +49,6 @@ class TradeItemMeasurements implements \JsonSerializable
      */
     public function getHeight()
     {
-        if($this->height == null) {
-            $this->height = new Measurement();
-        }
         return $this->height;
     }
 
@@ -50,10 +65,6 @@ class TradeItemMeasurements implements \JsonSerializable
      */
     public function getWidth()
     {
-        if($this->width == null) {
-            $this->width = new Measurement();
-        }
-
         return $this->width;
     }
 
@@ -70,9 +81,6 @@ class TradeItemMeasurements implements \JsonSerializable
      */
     public function getDepth()
     {
-        if($this->depth == null) {
-            $this->depth = new Measurement();
-        }
         return $this->depth;
     }
 
@@ -89,9 +97,6 @@ class TradeItemMeasurements implements \JsonSerializable
      */
     public function getDiameter()
     {
-        if($this->diameter == null) {
-            $this->diameter = new Measurement();
-        }
         return $this->diameter;
     }
 
@@ -108,10 +113,6 @@ class TradeItemMeasurements implements \JsonSerializable
      */
     public function getNetContent()
     {
-        if($this->netContent == null) {
-            $this->netContent = new Measurement();
-        }
-
         return $this->netContent;
     }
 

@@ -17,6 +17,18 @@ class Measurement implements \JsonSerializable
     private $value;
 
     /**
+     * @param string $code
+     * @param double $value
+     * @return Measurement
+     */
+    public static function create($code, $value) {
+        $measurement = new Measurement();
+        $measurement->measurementUnitCode = $code;
+        $measurement->value = $value;
+        return $measurement;
+    }
+
+    /**
      * @param string $measurementUnitCode
      */
     public function setMeasurementUnitCode($measurementUnitCode)
@@ -41,7 +53,7 @@ class Measurement implements \JsonSerializable
     }
 
     /**
-     * @return string
+     * @return double
      */
     public function getValue()
     {
