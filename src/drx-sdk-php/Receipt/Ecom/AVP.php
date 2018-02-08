@@ -16,12 +16,26 @@ class AVP implements \JsonSerializable
     private $qualifierCodeListVersion;
     private $value;
 
+    public static function create($key, $value) {
+        $item = new AVP();
+        $item->setAttributeName($key);
+        $item->setValue($value);
+        return $item;
+    }
     /**
      * @param string $attributeName
      */
     public function setAttributeName($attributeName)
     {
         $this->attributeName = $attributeName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttributeName()
+    {
+        return $this->attributeName;
     }
 
     /**
@@ -33,6 +47,14 @@ class AVP implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getQualifierCodeList()
+    {
+        return $this->qualifierCodeList;
+    }
+
+    /**
      * @param string $qualifierCodeListVersion
      */
     public function setQualifierCodeListVersion($qualifierCodeListVersion)
@@ -41,11 +63,27 @@ class AVP implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getQualifierCodeListVersion()
+    {
+        return $this->qualifierCodeListVersion;
+    }
+
+    /**
      * @param string $value
      */
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 
     public function jsonSerialize()

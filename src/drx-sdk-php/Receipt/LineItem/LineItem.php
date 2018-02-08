@@ -8,6 +8,9 @@
 
 namespace Dreceiptx\Receipt\LineItem;
 
+use Dreceiptx\Receipt\Common\DespatchInformation;
+use Dreceiptx\Receipt\Ecom\AVP;
+
 require_once __DIR__."/../Tax/Tax.php";
 require_once __DIR__."/../Ecom/AVP.php";
 require_once __DIR__."/../Common/Measurements/Measurement.php";
@@ -30,12 +33,15 @@ class LineItem implements \JsonSerializable
     private $itemPriceExclusiveAllowancesCharges;
     private $note;
     private $billingCostCentre;
+    /** @var TransactionalTradeItem $transactionalTradeItem */
     private $transactionalTradeItem;
     private $invoiceAllowanceCharge;
     private $invoiceLineTaxInformation;
+    /** @var AVP[] $despatchInformation */
     private $avpList;
     private $shipFrom;
     private $shipTo;
+    /** @var DespatchInformation $despatchInformation */
     private $despatchInformation;
 
     /**
@@ -47,7 +53,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getLineItemNumber()
     {
@@ -63,7 +69,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
     public function getCreditLineIndicator()
     {
@@ -79,7 +85,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCreditReason()
     {
@@ -95,7 +101,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getAmountExclusiveAllowancesCharges()
     {
@@ -111,7 +117,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getAmountInclusiveAllowancesCharges()
     {
@@ -127,7 +133,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getInvoicedQuantity()
     {
@@ -143,7 +149,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return double
      */
     public function getItemPriceExclusiveAllowancesCharges()
     {
@@ -159,7 +165,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNote()
     {
@@ -175,7 +181,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return BillingCostCentre
      */
     public function getBillingCostCentre()
     {
@@ -207,7 +213,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge[]
      */
     public function getInvoiceAllowanceCharge()
     {
@@ -223,7 +229,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return \Dreceiptx\Receipt\Tax\Tax[]
      */
     public function getInvoiceLineTaxInformation()
     {
@@ -238,13 +244,32 @@ class LineItem implements \JsonSerializable
         $this->avpList = $avpList;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAvpList()
-    {
-        return $this->avpList;
+    public function getValue($key) {
+        foreach ($this->avpList as $avpItem) {
+            if ($avpItem->getAttributeName() == $key) {
+                return $avpItem->getValue();
+            }
+        }
+        return null;
     }
+
+    public function setValue($key, $value) {
+        for ($i = 0; $i < count($this->avpList); $i++) {
+            $avpItem = $this->avpList[$i];
+            if ($avpItem->getAttributeName() == $key) {
+                if ($value == null) {
+                    array_splice($this->avpList, $i, 1);
+                } else {
+                    $avpItem->setValue($value);
+                }
+                return;
+            }
+        }
+        if ($value != null) {
+            array_push($this->avpList, AVP::create($key, $value));
+        }
+    }
+
 
     /**
      * @param \Dreceiptx\Receipt\Common\LocationInformation $shipTo
@@ -255,7 +280,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return \Dreceiptx\Receipt\Common\LocationInformation
      */
     public function getShipTo()
     {
@@ -271,7 +296,7 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return \Dreceiptx\Receipt\Common\LocationInformation
      */
     public function getShipFrom()
     {
@@ -287,11 +312,53 @@ class LineItem implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return \Dreceiptx\Receipt\Common\DespatchInformation
      */
     public function getDespatchInformation()
     {
         return $this->despatchInformation;
+    }
+
+    public function setDespatchDate($date) {
+        if($this->despatchInformation == null) {
+            $this->despatchInformation = new DespatchInformation();
+        }
+        $this->despatchInformation->setDespatchDateTime($date);
+    }
+
+    public function getDespatchDate() {
+        if($this->despatchInformation == null) {
+            return null;
+        }
+        return $this->despatchInformation->getDespatchDateTime();
+    }
+
+    public function setDeliveryDate($date) {
+        if($this->despatchInformation == null) {
+            $this->despatchInformation = new DespatchInformation();
+        }
+        $this->despatchInformation->setDespatchDateTime($date);
+    }
+
+    public function getDeliveryDate() {
+        if($this->despatchInformation == null) {
+            return null;
+        }
+        return $this->despatchInformation->getEstimatedDeliveryDateTime();
+    }
+
+    public function setSerialNumber($serialNumber) {
+        if ($this->transactionalTradeItem == null) {
+            $this->transactionalTradeItem = new TransactionalTradeItem();
+        }
+        $this->transactionalTradeItem->getTransactionItemData()->setSerialNumber($serialNumber);
+    }
+
+    public function getSerialNumber() {
+        if ($this->transactionalTradeItem == null) {
+            return null;
+        }
+        return $this->transactionalTradeItem->getTransactionItemData()->getSerialNumber();
     }
 
     public function jsonSerialize()

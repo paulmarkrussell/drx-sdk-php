@@ -51,6 +51,9 @@ class TransactionalTradeItem implements \JsonSerializable
      */
     public function getTransactionItemData()
     {
+        if($this->transactionItemData == null) {
+            $this->transactionItemData = new TransactionaltemData();
+        }
         return $this->transactionItemData;
     }
 

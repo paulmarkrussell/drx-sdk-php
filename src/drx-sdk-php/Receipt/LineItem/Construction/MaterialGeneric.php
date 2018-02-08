@@ -6,6 +6,8 @@
  * Time: 07:04
  */
 
+namespace Dreceiptx\Receipt\LineItem\Construction;
+
 require_once __DIR__."/../LineItem.php";
 require_once __DIR__."/../TransactionalTradeItem.php";
 require_once __DIR__."/../TradeItemDescriptionInformation.php";

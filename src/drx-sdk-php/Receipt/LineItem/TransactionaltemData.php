@@ -16,7 +16,7 @@ class TransactionaltemData implements \JsonSerializable
     private $batchNumber;
 
     /**
-     * @param mixed $serialNumber
+     * @param string $serialNumber
      */
     public function setSerialNumber($serialNumber)
     {
@@ -24,11 +24,27 @@ class TransactionaltemData implements \JsonSerializable
     }
 
     /**
-     * @param mixed $batchNumber
+     * @return string
+     */
+    public function getSerialNumber()
+    {
+        return $this->serialNumber;
+    }
+
+    /**
+     * @param string $batchNumber
      */
     public function setBatchNumber($batchNumber)
     {
         $this->batchNumber = $batchNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBatchNumber()
+    {
+        return $this->batchNumber;
     }
 
     public function jsonSerialize()

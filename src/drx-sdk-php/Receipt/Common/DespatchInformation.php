@@ -24,6 +24,14 @@ class DespatchInformation implements \JsonSerializable
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getEstimatedDeliveryDateTime()
+    {
+        return $this->estimatedDeliveryDateTime;
+    }
+
+    /**
      * @param \DateTime $despatchDateTime
      */
     public function setDespatchDateTime($despatchDateTime)
@@ -32,11 +40,27 @@ class DespatchInformation implements \JsonSerializable
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getDespatchDateTime()
+    {
+        return $this->despatchDateTime;
+    }
+
+    /**
      * @param string $deliveryInstructions
      */
     public function setDeliveryInstructions($deliveryInstructions)
     {
         $this->deliveryInstructions = $deliveryInstructions;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeliveryInstructions()
+    {
+        return $this->deliveryInstructions;
     }
 
     public function jsonSerialize()
