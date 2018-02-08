@@ -15,12 +15,26 @@ class Payer implements \JsonSerializable
     private $gln;
     private $additionalPartyIdentification;
 
+    public static function create($gln, $authority, $value) {
+        $payer = new Payer();
+        $payer->gln = $gln;
+        $payer->additionalPartyIdentification = PartyIdentification::create($authority, $value);
+        return $payer;
+    }
     /**
      * @param string $gln
      */
     public function setGln($gln)
     {
         $this->gln = $gln;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGln()
+    {
+        return $this->gln;
     }
 
     /**
@@ -31,6 +45,13 @@ class Payer implements \JsonSerializable
         $this->additionalPartyIdentification = $additionalPartyIdentification;
     }
 
+    /**
+     * @return PartyIdentification
+     */
+    public function getAdditionalPartyIdentification()
+    {
+        return $this->additionalPartyIdentification;
+    }
 
     public function jsonSerialize()
     {

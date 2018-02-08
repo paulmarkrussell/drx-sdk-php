@@ -30,11 +30,27 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getSettlementCurrency()
+    {
+        return $this->settlementCurrency;
+    }
+
+    /**
      * @param string $settlementIdentification
      */
     public function setSettlementIdentification($settlementIdentification)
     {
         $this->settlementIdentification = $settlementIdentification;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSettlementIdentification()
+    {
+        return $this->settlementIdentification;
     }
 
     /**
@@ -46,11 +62,27 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getSettlementHandlingTypeCode()
+    {
+        return $this->settlementHandlingTypeCode;
+    }
+
+    /**
      * @param double $totalAmount
      */
     public function setTotalAmount($totalAmount)
     {
         $this->totalAmount = $totalAmount;
+    }
+
+    /**
+     * @return double
+     */
+    public function getTotalAmount()
+    {
+        return $this->totalAmount;
     }
 
     /**
@@ -62,11 +94,27 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return PaymentMethod
+     */
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
+
+    /**
      * @param Payee $payee
      */
     public function setPayee($payee)
     {
         $this->payee = $payee;
+    }
+
+    /**
+     * @return Payee
+     */
+    public function getPayee()
+    {
+        return $this->payee;
     }
 
     /**
@@ -78,10 +126,21 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return Payer
+     */
+    public function getPayer()
+    {
+        return $this->payer;
+    }
+
+    /**
      * @param SettlementLineItem[] $settlementLineItem
      */
     public function setSettlementLineItem(array $settlementLineItem)
     {
+        if($this->settlementLineItem == null) {
+            $this->settlementLineItem = array();
+        }
         $this->settlementLineItem = $settlementLineItem;
     }
 

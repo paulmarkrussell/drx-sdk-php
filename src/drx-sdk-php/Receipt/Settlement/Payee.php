@@ -15,10 +15,28 @@ class Payee implements \JsonSerializable
 
     /**
      * @param string $gln
+     * @return Payee
+     */
+    public static function create($gln) {
+        $payee = new Payee();
+        $payee->gln = $gln;
+        return $payee;
+    }
+
+    /**
+     * @param string $gln
      */
     public function setGln($gln)
     {
         $this->gln = $gln;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGln()
+    {
+        return $this->gln;
     }
 
     public function jsonSerialize()

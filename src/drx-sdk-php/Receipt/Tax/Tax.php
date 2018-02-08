@@ -27,11 +27,27 @@ class Tax implements \JsonSerializable
     }
 
     /**
+     * @return double
+     */
+    public function getDutyFeeTaxAmount()
+    {
+        return $this->dutyFeeTaxAmount;
+    }
+
+    /**
      * @param double $dutyFeeTaxBasisAmount
      */
     public function setDutyFeeTaxBasisAmount($dutyFeeTaxBasisAmount)
     {
         $this->dutyFeeTaxBasisAmount = $dutyFeeTaxBasisAmount;
+    }
+
+    /**
+     * @return double
+     */
+    public function getDutyFeeTaxBasisAmount()
+    {
+        return $this->dutyFeeTaxBasisAmount;
     }
 
     /**
@@ -43,6 +59,14 @@ class Tax implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getDutyFeeTaxCategoryCode()
+    {
+        return $this->dutyFeeTaxCategoryCode;
+    }
+
+    /**
      * @param double $dutyFeeTaxPercentage
      */
     public function setDutyFeeTaxPercentage($dutyFeeTaxPercentage)
@@ -51,11 +75,27 @@ class Tax implements \JsonSerializable
     }
 
     /**
+     * @return double
+     */
+    public function getDutyFeeTaxPercentage()
+    {
+        return $this->dutyFeeTaxPercentage;
+    }
+
+    /**
      * @param string $dutyFeeTaxTypeCode
      */
     public function setDutyFeeTaxTypeCode($dutyFeeTaxTypeCode)
     {
         $this->dutyFeeTaxTypeCode = $dutyFeeTaxTypeCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDutyFeeTaxTypeCode()
+    {
+        return $this->dutyFeeTaxTypeCode;
     }
 
     public function jsonSerialize()

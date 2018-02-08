@@ -14,12 +14,26 @@ class PaymentMethod implements \JsonSerializable
 
     public $paymentMethodCode;
 
+    public static function create($paymentMethodCode) {
+        $method = new PaymentMethod();
+        $method->paymentMethodCode = $paymentMethodCode;
+        return $method;
+    }
+
     /**
      * @param string $paymentMethodCode
      */
     public function setPaymentMethodCode($paymentMethodCode)
     {
         $this->paymentMethodCode = $paymentMethodCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentMethodCode()
+    {
+        return $this->paymentMethodCode;
     }
 
     public function jsonSerialize()

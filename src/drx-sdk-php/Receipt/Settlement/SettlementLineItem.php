@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\Settlement;
 
+use Dreceiptx\Receipt\Common\Amount;
+
 require_once __DIR__ . "/../../Utils/Utils.php";
 require_once __DIR__."/../Common/Amount.php";
 
@@ -27,11 +29,27 @@ class SettlementLineItem implements \JsonSerializable
     }
 
     /**
+     * @return integer
+     */
+    public function getLineItemNumber()
+    {
+        return $this->lineItemNumber;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\Amount $amountPaid
      */
     public function setAmountPaid($amountPaid)
     {
         $this->amountPaid = $amountPaid;
+    }
+
+    /**
+     * @return Amount
+     */
+    public function getAmountPaid()
+    {
+        return $this->amountPaid;
     }
 
     /**
@@ -43,11 +61,30 @@ class SettlementLineItem implements \JsonSerializable
     }
 
     /**
+     * @return SettlementParty
+     */
+    public function getSettlementParty()
+    {
+        return $this->settlementParty;
+    }
+
+    /**
      * @param TransactionalReference[] $transactionalReference
      */
     public function setTransactionalReference(array $transactionalReference)
     {
         $this->transactionalReference = $transactionalReference;
+    }
+
+    /**
+     * @return TransactionalReference[]
+     */
+    public function getTransactionalReference()
+    {
+        if($this->transactionalReference == null) {
+            $this->transactionalReference = array();
+        }
+        return $this->transactionalReference;
     }
 
     public function jsonSerialize()
