@@ -19,11 +19,31 @@ class ReceiptContact implements \JsonSerializable
     private $communicationChannelCode;
 
     /**
+     * @param string $typeCode
+     * @param string $personName
+     * @return ReceiptContact
+     */
+    public static function create($typeCode, $personName) {
+        $contact = new ReceiptContact();
+        $contact->contactTypeCode = $typeCode;
+        $contact->personName = $personName;
+        $contact->communicationChannelCode = array();
+        return $contact;
+    }
+    /**
      * @param string $contactTypeCode
      */
     public function setContactTypeCode($contactTypeCode)
     {
         $this->contactTypeCode = $contactTypeCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactTypeCode()
+    {
+        return $this->contactTypeCode;
     }
 
     /**
@@ -35,11 +55,30 @@ class ReceiptContact implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPersonName()
+    {
+        return $this->personName;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\Contact[] $communicationChannelCode
      */
     public function setCommunicationChannelCode(array $communicationChannelCode)
     {
         $this->communicationChannelCode = $communicationChannelCode;
+    }
+
+    /**
+     * @return \Dreceiptx\Receipt\Common\Contact[]
+     */
+    public function getCommunicationChannelCode()
+    {
+        if ($this->communicationChannelCode == null) {
+            $this->communicationChannelCode = array();
+        }
+        return $this->communicationChannelCode;
     }
 
     public function jsonSerialize()

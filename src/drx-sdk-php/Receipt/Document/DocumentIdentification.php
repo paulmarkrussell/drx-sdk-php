@@ -27,11 +27,27 @@ class DocumentIdentification implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getStandard()
+    {
+        return $this->standard;
+    }
+
+    /**
      * @param string $typeVersion
      */
     public function setTypeVersion($typeVersion)
     {
         $this->typeVersion = $typeVersion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeVersion()
+    {
+        return $this->typeVersion;
     }
 
     /**
@@ -43,11 +59,27 @@ class DocumentIdentification implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * @param string $instanceIdentifier
      */
     public function setInstanceIdentifier($instanceIdentifier)
     {
         $this->instanceIdentifier = $instanceIdentifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstanceIdentifier()
+    {
+        return $this->instanceIdentifier;
     }
 
     /**
@@ -59,11 +91,27 @@ class DocumentIdentification implements \JsonSerializable
     }
 
     /**
+     * @return boolean
+     */
+    public function getMultipleType()
+    {
+        return $this->multipleType;
+    }
+
+    /**
      * @param \DateTime $creationDateAndTime
      */
     public function setCreationDateAndTime($creationDateAndTime)
     {
         $this->creationDateAndTime = $creationDateAndTime;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreationDateAndTime()
+    {
+        return $this->creationDateAndTime;
     }
 
     public function jsonSerialize()

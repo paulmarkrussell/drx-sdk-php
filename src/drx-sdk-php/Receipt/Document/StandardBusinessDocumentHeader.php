@@ -26,6 +26,17 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     /**
+     * @return DocumentOwner[]
+     */
+    public function getSender()
+    {
+        if($this->sender == null) {
+            $this->sender = array();
+        }
+        return $this->sender;
+    }
+
+    /**
      * @param DocumentOwner[] $receiver
      */
     public function setReceiver(array $receiver)
@@ -34,11 +45,33 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     /**
+     * @return DocumentOwner[]
+     */
+    public function getReceiver()
+    {
+        if($this->receiver == null) {
+            $this->receiver = array();
+        }
+        return $this->receiver;
+    }
+
+    /**
      * @param DocumentIdentification $documentIdentification
      */
     public function setDocumentIdentification($documentIdentification)
     {
         $this->documentIdentification = $documentIdentification;
+    }
+
+    /**
+     * @return DocumentIdentification
+     */
+    public function getDocumentIdentification()
+    {
+        if($this->documentIdentification == null) {
+            $this->documentIdentification = new DocumentOwnerIdentification();
+        }
+        return $this->documentIdentification;
     }
 
     public function jsonSerialize()

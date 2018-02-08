@@ -57,10 +57,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Settlement/PaymentMethodCode.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Settlement/SettlementLineItem.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Settlement/PaymentReceipt.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/InvoiceAllowanceCharge.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Tax/Tax.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/test/JsonComparator.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/test/TestTester.php" />
@@ -72,7 +68,6 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/DRxDigitalReceipt.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Utils/Utils.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Invoice/InvoiceSummary.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/ReceiptContact.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/DigitalReceiptBuilder.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/ContactType.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/Country.php" />
@@ -107,7 +102,12 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/DutyFeeTaxRegistration.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/LocationInformation.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/SellerInformation.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentIdentification.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Common/TransactionalParty.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentOwner.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentOwnerIdentification.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/ReceiptContact.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Document/StandardBusinessDocumentHeader.php" />
       </list>
     </option>
   </component>
@@ -219,6 +219,13 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Receipt" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Document" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Receipt" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="LineItem" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -307,12 +314,12 @@
       <workItem from="1517944205919" duration="909000" />
       <workItem from="1517950801310" duration="1706000" />
       <workItem from="1517980239608" duration="6406000" />
-      <workItem from="1518022848428" duration="11630000" />
+      <workItem from="1518022848428" duration="12268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81108000" />
+    <option name="totallyTimeSpent" value="81746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -349,43 +356,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentOwner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/StandardBusinessDocumentHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/DRxDigitalReceipt.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Merchant/MerchantContact.php" />
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Merchant/MerchantAddress.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="122" column="1" lean-forward="true" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/jsonCompare.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -686,14 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/TransactionalParty.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/SellerInformation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -710,14 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/LocationInformation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/Language.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -726,10 +680,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/TransactionalParty.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="48" column="65" lean-forward="false" selection-start-line="48" selection-start-column="65" selection-end-line="48" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/LocationInformation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Common/GeographicalCoordinates.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="-319">
           <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentIdentification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentOwner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/DocumentOwnerIdentification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/ReceiptContact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/ReceiptContactType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/Receipt/Document/StandardBusinessDocumentHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="71" column="78" lean-forward="false" selection-start-line="71" selection-start-column="78" selection-end-line="71" selection-end-column="78" />
           <folding />
         </state>
       </provider>
