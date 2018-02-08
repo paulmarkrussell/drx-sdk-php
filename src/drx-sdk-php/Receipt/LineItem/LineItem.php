@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\LineItem;
 
 use Dreceiptx\Receipt\Common\DespatchInformation;
+use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Ecom\AVP;
 
 require_once __DIR__."/../Tax/Tax.php";
@@ -185,6 +186,9 @@ class LineItem implements \JsonSerializable
      */
     public function getBillingCostCentre()
     {
+        if ($this->billingCostCentre == null) {
+            $this->billingCostCentre = new BillingCostCentre();
+        }
         return $this->billingCostCentre;
     }
 
@@ -201,6 +205,9 @@ class LineItem implements \JsonSerializable
      */
     public function getTransactionalTradeItem()
     {
+        if($this->transactionalTradeItem == null) {
+            $this->transactionalTradeItem = new TransactionalTradeItem();
+        }
         return $this->transactionalTradeItem;
     }
 
@@ -245,6 +252,9 @@ class LineItem implements \JsonSerializable
     }
 
     public function getValue($key) {
+        if($this->avpList == null) {
+            return null;
+        }
         foreach ($this->avpList as $avpItem) {
             if ($avpItem->getAttributeName() == $key) {
                 return $avpItem->getValue();
@@ -254,6 +264,9 @@ class LineItem implements \JsonSerializable
     }
 
     public function setValue($key, $value) {
+        if ($this->avpList == null) {
+            $this->avpList = array();
+        }
         for ($i = 0; $i < count($this->avpList); $i++) {
             $avpItem = $this->avpList[$i];
             if ($avpItem->getAttributeName() == $key) {
@@ -284,6 +297,9 @@ class LineItem implements \JsonSerializable
      */
     public function getShipTo()
     {
+        if($this->shipTo == null) {
+            $this->shipTo = new LocationInformation();
+        }
         return $this->shipTo;
     }
 
@@ -300,6 +316,9 @@ class LineItem implements \JsonSerializable
      */
     public function getShipFrom()
     {
+        if ($this->shipFrom) {
+            $this->shipFrom = new LocationInformation();
+        }
         return $this->shipFrom;
     }
 

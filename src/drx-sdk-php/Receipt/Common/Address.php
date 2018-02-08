@@ -33,11 +33,27 @@ class Address implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * @param string $streetAddress1
      */
     public function setStreetAddress1($streetAddress1)
     {
         $this->streetAddress1 = $streetAddress1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreetAddress1()
+    {
+        return $this->streetAddress1;
     }
 
     /**
@@ -49,11 +65,27 @@ class Address implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getStreetAddress2()
+    {
+        return $this->streetAddress2;
+    }
+
+    /**
      * @param string $streetAddress3
      */
     public function setStreetAddress3($streetAddress3)
     {
         $this->streetAddress3 = $streetAddress3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreetAddress3()
+    {
+        return $this->streetAddress3;
     }
 
     /**
@@ -65,11 +97,27 @@ class Address implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
      * @param string $postalCode
      */
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
     }
 
     /**
@@ -81,6 +129,14 @@ class Address implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
      * @param string $countryCode
      */
     public function setCountryCode($countryCode)
@@ -89,11 +145,27 @@ class Address implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\GeographicalCoordinates $geographicalCoordinates
      */
     public function setGeographicalCoordinates($geographicalCoordinates)
     {
         $this->geographicalCoordinates = $geographicalCoordinates;
+    }
+
+    /**
+     * @return \Dreceiptx\Receipt\Common\GeographicalCoordinates
+     */
+    public function getGeographicalCoordinates()
+    {
+        return $this->geographicalCoordinates;
     }
 
     public function jsonSerialize()

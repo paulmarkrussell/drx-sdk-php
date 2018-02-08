@@ -25,11 +25,33 @@ class LocationInformation implements \JsonSerializable
     }
 
     /**
+     * @return Address
+     */
+    public function getAddress()
+    {
+        if ($this->address == null) {
+            $this->address = new Address();
+        }
+        return $this->address;
+    }
+
+    /**
      * @param Contact[] $contacts
      */
     public function setContacts(array $contacts)
     {
         $this->contacts = $contacts;
+    }
+
+    /**
+     * @return Contact[]
+     */
+    public function getContacts()
+    {
+        if ($this->contacts == null) {
+            $this->contacts = array();
+        }
+        return $this->contacts;
     }
 
     public function jsonSerialize()
