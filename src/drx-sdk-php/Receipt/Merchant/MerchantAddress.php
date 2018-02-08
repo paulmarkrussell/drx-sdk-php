@@ -34,11 +34,27 @@ class MerchantAddress implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getBuildingnumber()
+    {
+        return $this->buildingnumber;
+    }
+
+    /**
      * @param string $streetnumber
      */
     public function setStreetnumber($streetnumber)
     {
         $this->streetnumber = $streetnumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreetnumber()
+    {
+        return $this->streetnumber;
     }
 
     /**
@@ -50,11 +66,27 @@ class MerchantAddress implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
      * @param string $street1
      */
     public function setStreet1($street1)
     {
         $this->street1 = $street1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreet1()
+    {
+        return $this->street1;
     }
 
     /**
@@ -66,11 +98,27 @@ class MerchantAddress implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getStreet2()
+    {
+        return $this->street2;
+    }
+
+    /**
      * @param string $street3
      */
     public function setStreet3($street3)
     {
         $this->street3 = $street3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreet3()
+    {
+        return $this->street3;
     }
 
     /**
@@ -82,11 +130,27 @@ class MerchantAddress implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
      * @param string $state
      */
     public function setState($state)
     {
         $this->state = $state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 
     /**
@@ -98,11 +162,27 @@ class MerchantAddress implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPostcode()
+    {
+        return $this->postcode;
+    }
+
+    /**
      * @param string $country
      */
     public function setCountry($country)
     {
         $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
    public function jsonSerialize()

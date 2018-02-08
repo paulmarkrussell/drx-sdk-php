@@ -38,11 +38,27 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
+    }
+
+    /**
      * @param string $sector
      */
     public function setSector($sector)
     {
         $this->sector = $sector;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSector()
+    {
+        return $this->sector;
     }
 
     /**
@@ -54,11 +70,27 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @param string $fullName
      */
     public function setFullName($fullName)
     {
         $this->fullName = $fullName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->fullName;
     }
 
     /**
@@ -70,11 +102,27 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCommonName()
+    {
+        return $this->commonName;
+    }
+
+    /**
      * @param string $businessTaxNumber
      */
     public function setBusinessTaxNumber($businessTaxNumber)
     {
         $this->businessTaxNumber = $businessTaxNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBusinessTaxNumber()
+    {
+        return $this->businessTaxNumber;
     }
 
     /**
@@ -86,11 +134,27 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getBusinessTaxNumberType()
+    {
+        return $this->businessTaxNumberType;
+    }
+
+    /**
      * @param string $businessRegistrationNumber
      */
     public function setBusinessRegistrationNumber($businessRegistrationNumber)
     {
         $this->businessRegistrationNumber = $businessRegistrationNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBusinessRegistrationNumber()
+    {
+        return $this->businessRegistrationNumber;
     }
 
     /**
@@ -102,11 +166,30 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPrimaryPhone()
+    {
+        return $this->primaryPhone;
+    }
+
+    /**
      * @param MerchantAddress $primaryAddress
      */
     public function setPrimaryAddress($primaryAddress)
     {
         $this->primaryAddress = $primaryAddress;
+    }
+
+    /**
+     * @return MerchantAddress
+     */
+    public function getPrimaryAddress()
+    {
+        if($this->primaryAddress == null) {
+            $this->primaryAddress = new MerchantAddress();
+        }
+        return $this->primaryAddress;
     }
 
     /**
@@ -118,11 +201,27 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPrimaryEmail()
+    {
+        return $this->primaryEmail;
+    }
+
+    /**
      * @param string $website
      */
     public function setWebsite($website)
     {
         $this->website = $website;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
     }
 
     /**
@@ -134,11 +233,30 @@ class Merchant implements \JsonSerializable
     }
 
     /**
+     * @return MerchantAddress[]
+     */
+    public function getContacts()
+    {
+        if ($this->contacts == null) {
+            $this->contacts = array();
+        }
+        return $this->contacts;
+    }
+
+    /**
      * @param string $status
      */
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
