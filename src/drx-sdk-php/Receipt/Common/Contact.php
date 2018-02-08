@@ -16,7 +16,18 @@ class Contact implements \JsonSerializable
     private $communicationValue;
 
     /**
-     * @param mixed $communicationChannelCode
+     * @param string $communicationChannelCode
+     * @param string $communicationValue
+     * @return Contact
+     */
+    public static function create($communicationChannelCode, $communicationValue) {
+        $contact = new Contact();
+        $contact->communicationChannelCode = $communicationChannelCode;
+        $contact->communicationValue = $communicationValue;
+        return $contact;
+    }
+    /**
+     * @param string $communicationChannelCode
      */
     public function setCommunicationChannelCode($communicationChannelCode)
     {
@@ -24,11 +35,27 @@ class Contact implements \JsonSerializable
     }
 
     /**
-     * @param mixed $communicationValue
+     * @return string
+     */
+    public function getCommunicationChannelCode()
+    {
+        return $this->communicationChannelCode;
+    }
+
+    /**
+     * @param string $communicationValue
      */
     public function setCommunicationValue($communicationValue)
     {
         $this->communicationValue = $communicationValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommunicationValue()
+    {
+        return $this->communicationValue;
     }
 
     public function jsonSerialize()

@@ -16,10 +16,30 @@ class GeographicalCoordinates implements \JsonSerializable
 
     /**
      * @param string $latitude
+     * @param string $longitude
+     * @return GeographicalCoordinates
+     */
+    public static function create($latitude, $longitude) {
+        $coords = new GeographicalCoordinates();
+        $coords->latitude = $latitude;
+        $coords->longitude = $longitude;
+        return $coords;
+    }
+
+    /**
+     * @param string $latitude
      */
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
     }
 
     /**
@@ -28,6 +48,14 @@ class GeographicalCoordinates implements \JsonSerializable
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     public function jsonSerialize()

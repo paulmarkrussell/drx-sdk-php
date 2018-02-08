@@ -15,6 +15,17 @@ class DutyFeeTaxRegistration implements \JsonSerializable
     private $dutyFeeTaxRegistationID;
 
     /**
+     * @param string $dutyFreeTaxTypeCode
+     * @param string $dutyFeeTaxRegistationID
+     * @return DutyFeeTaxRegistration
+     */
+    public static function create($dutyFreeTaxTypeCode, $dutyFeeTaxRegistationID) {
+        $registration = new DutyFeeTaxRegistration();
+        $registration->dutyFeeTaxTypeCode = $dutyFreeTaxTypeCode;
+        $registration->dutyFeeTaxRegistationID = $dutyFeeTaxRegistationID;
+        return $registration;
+    }
+    /**
      * @param string $dutyFeeTaxTypeCode
      */
     public function setDutyFeeTaxTypeCode($dutyFeeTaxTypeCode)
@@ -23,11 +34,27 @@ class DutyFeeTaxRegistration implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getDutyFeeTaxTypeCode()
+    {
+        return $this->dutyFeeTaxTypeCode;
+    }
+
+    /**
      * @param string $dutyFeeTaxRegistationID
      */
     public function setDutyFeeTaxRegistationID($dutyFeeTaxRegistationID)
     {
         $this->dutyFeeTaxRegistationID = $dutyFeeTaxRegistationID;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDutyFeeTaxRegistationID()
+    {
+        return $this->dutyFeeTaxRegistationID;
     }
 
     public function jsonSerialize()

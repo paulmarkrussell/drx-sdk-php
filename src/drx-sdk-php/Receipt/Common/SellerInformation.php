@@ -15,10 +15,28 @@ class SellerInformation implements \JsonSerializable
 
     /**
      * @param string $organisationName
+     * @return SellerInformation
+     */
+    public static function create($organisationName) {
+        $seller = new SellerInformation();
+        $seller->organisationName = $organisationName;
+        return $seller;
+    }
+
+    /**
+     * @param string $organisationName
      */
     public function setOrganisationName($organisationName)
     {
         $this->organisationName = $organisationName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganisationName()
+    {
+        return $this->organisationName;
     }
 
     public function jsonSerialize()

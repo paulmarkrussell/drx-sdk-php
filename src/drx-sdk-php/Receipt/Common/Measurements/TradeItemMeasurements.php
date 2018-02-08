@@ -27,11 +27,34 @@ class TradeItemMeasurements implements \JsonSerializable
     }
 
     /**
+     * @return Measurement
+     */
+    public function getHeight()
+    {
+        if($this->height == null) {
+            $this->height = new Measurement();
+        }
+        return $this->height;
+    }
+
+    /**
      * @param Measurement $width
      */
     public function setWidth($width)
     {
         $this->width = $width;
+    }
+
+    /**
+     * @return Measurement
+     */
+    public function getWidth()
+    {
+        if($this->width == null) {
+            $this->width = new Measurement();
+        }
+
+        return $this->width;
     }
 
     /**
@@ -43,7 +66,18 @@ class TradeItemMeasurements implements \JsonSerializable
     }
 
     /**
-     * @param mixed $diameter
+     * @return Measurement
+     */
+    public function getDepth()
+    {
+        if($this->depth == null) {
+            $this->depth = new Measurement();
+        }
+        return $this->depth;
+    }
+
+    /**
+     * @param Measurement $diameter
      */
     public function setDiameter($diameter)
     {
@@ -51,11 +85,34 @@ class TradeItemMeasurements implements \JsonSerializable
     }
 
     /**
-     * @param mixed $netContent
+     * @return Measurement
+     */
+    public function getDiameter()
+    {
+        if($this->diameter == null) {
+            $this->diameter = new Measurement();
+        }
+        return $this->diameter;
+    }
+
+    /**
+     * @param Measurement $netContent
      */
     public function setNetContent($netContent)
     {
         $this->netContent = $netContent;
+    }
+
+    /**
+     * @return Measurement
+     */
+    public function getNetContent()
+    {
+        if($this->netContent == null) {
+            $this->netContent = new Measurement();
+        }
+
+        return $this->netContent;
     }
 
     public function jsonSerialize()

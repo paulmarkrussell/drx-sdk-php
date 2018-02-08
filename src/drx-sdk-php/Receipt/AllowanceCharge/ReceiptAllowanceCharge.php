@@ -29,11 +29,27 @@ class ReceiptAllowanceCharge implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getAllowanceOrChargeType()
+    {
+        return $this->allowanceOrChargeType;
+    }
+
+    /**
      * @param string $allowanceChargeType
      */
     public function setAllowanceChargeType($allowanceChargeType)
     {
         $this->allowanceChargeType = $allowanceChargeType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllowanceChargeType()
+    {
+        return $this->allowanceChargeType;
     }
 
     /**
@@ -45,11 +61,30 @@ class ReceiptAllowanceCharge implements \JsonSerializable
     }
 
     /**
+     * @return double
+     */
+    public function getBaseAmount()
+    {
+        return $this->baseAmount;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Tax\Tax[] $leviedDutyFeeTax
      */
     public function setLeviedDutyFeeTax(array $leviedDutyFeeTax)
     {
         $this->leviedDutyFeeTax = $leviedDutyFeeTax;
+    }
+
+    /**
+     * @return Tax[]
+     */
+    public function getLeviedDutyFeeTax()
+    {
+        if ($this->leviedDutyFeeTax == null) {
+            $this->leviedDutyFeeTax = array();
+        }
+        return $this->leviedDutyFeeTax;
     }
 
     /**
@@ -61,11 +96,27 @@ class ReceiptAllowanceCharge implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getSettlementType()
+    {
+        return $this->settlementType;
+    }
+
+    /**
      * @param string $allowanceChargeDescription
      */
     public function setAllowanceChargeDescription($allowanceChargeDescription)
     {
         $this->allowanceChargeDescription = $allowanceChargeDescription;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllowanceChargeDescription()
+    {
+        return $this->allowanceChargeDescription;
     }
 
     public function jsonSerialize()

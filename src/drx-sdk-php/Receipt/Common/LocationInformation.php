@@ -18,6 +18,17 @@ class LocationInformation implements \JsonSerializable
 
     /**
      * @param Address $address
+     * @param Contact[] $contacts
+     * @return LocationInformation
+     */
+    public static function create($address, $contacts) {
+        $location = new LocationInformation();
+        $location->address = $address;
+        $location->contacts = $contacts;
+        return $location;
+    }
+    /**
+     * @param Address $address
      */
     public function setAddress($address)
     {

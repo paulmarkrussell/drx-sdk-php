@@ -23,11 +23,27 @@ class Amount implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
+    }
+
+    /**
      * @param double $value
      */
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * @return double
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 
     public function jsonSerialize()
