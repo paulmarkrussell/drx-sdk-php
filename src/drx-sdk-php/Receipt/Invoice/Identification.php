@@ -16,10 +16,27 @@ class Identification implements \JsonSerializable
 
     /**
      * @param string $entityIdentification
+     * @return Identification
+     */
+    public static function create($entityIdentification){
+        $id = new Identification();
+        $id->entityIdentification = $entityIdentification;
+        return $id;
+    }
+    /**
+     * @param string $entityIdentification
      */
     public function setEntityIdentification($entityIdentification)
     {
         $this->entityIdentification = $entityIdentification;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEntityIdentification()
+    {
+        return $this->entityIdentification;
     }
 
 

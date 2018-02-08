@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\Invoice;
 
+use Dreceiptx\Receipt\Common\Amount;
+
 require_once __DIR__."/../Common/Amount.php";
 require_once __DIR__."/../../Utils/Utils.php";
 
@@ -26,6 +28,14 @@ class InvoiceSummary implements \JsonSerializable
     }
 
     /**
+     * @return Amount
+     */
+    public function getTotalInvoiceAmount()
+    {
+        return $this->totalInvoiceAmount;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\Amount $totalLineAmountInclusiveAllowancesCharges
      */
     public function setTotalLineAmountInclusiveAllowancesCharges($totalLineAmountInclusiveAllowancesCharges)
@@ -34,11 +44,27 @@ class InvoiceSummary implements \JsonSerializable
     }
 
     /**
+     * @return Amount
+     */
+    public function getTotalLineAmountInclusiveAllowancesCharges()
+    {
+        return $this->totalLineAmountInclusiveAllowancesCharges;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\Amount $totalTaxAmount
      */
     public function setTotalTaxAmount($totalTaxAmount)
     {
         $this->totalTaxAmount = $totalTaxAmount;
+    }
+
+    /**
+     * @return Amount
+     */
+    public function getTotalTaxAmount()
+    {
+        return $this->totalTaxAmount;
     }
 
     public function jsonSerialize()

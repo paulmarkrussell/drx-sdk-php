@@ -8,6 +8,12 @@
 
 namespace Dreceiptx\Receipt\Invoice;
 
+use Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge;
+use Dreceiptx\Receipt\Common\DespatchInformation;
+use Dreceiptx\Receipt\Common\LocationInformation;
+use Dreceiptx\Receipt\Common\TransactionalParty;
+use Dreceiptx\Receipt\LineItem\LineItem;
+
 require_once __DIR__."/../LineItem/LineItem.php";
 require_once __DIR__."/../AllowanceCharge/ReceiptAllowanceCharge.php";
 require_once __DIR__."/../Common/DespatchInformation.php";
@@ -46,11 +52,27 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getDocumentStatusCode()
+    {
+        return $this->documentStatusCode;
+    }
+
+    /**
      * @param string $invoiceType
      */
     public function setInvoiceType($invoiceType)
     {
         $this->invoiceType = $invoiceType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceType()
+    {
+        return $this->invoiceType;
     }
 
     /**
@@ -62,11 +84,33 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return TransactionalParty
+     */
+    public function getBillTo()
+    {
+        if($this->billTo == null) {
+            $this->billTo = new TransactionalParty();
+        }
+        return $this->billTo;
+    }
+
+    /**
      * @param Identification $purchaseOrder
      */
     public function setPurchaseOrder($purchaseOrder)
     {
         $this->purchaseOrder = $purchaseOrder;
+    }
+
+    /**
+     * @return Identification
+     */
+    public function getPurchaseOrder()
+    {
+        if($this->purchaseOrder == null){
+            $this->purchaseOrder = new Identification();
+        }
+        return $this->purchaseOrder;
     }
 
     /**
@@ -78,11 +122,33 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return Identification
+     */
+    public function getCustomerReference()
+    {
+        if($this->customerReference == null){
+            $this->customerReference = new Identification();
+        }
+        return $this->customerReference;
+    }
+
+    /**
      * @param Identification $invoiceIdentification
      */
     public function setInvoiceIdentification($invoiceIdentification)
     {
         $this->invoiceIdentification = $invoiceIdentification;
+    }
+
+    /**
+     * @return Identification
+     */
+    public function getInvoiceIdentification()
+    {
+        if($this->invoiceIdentification == null){
+            $this->invoiceIdentification = new Identification();
+        }
+        return $this->invoiceIdentification;
     }
 
     /**
@@ -94,11 +160,27 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getCreationDateTime()
+    {
+        return $this->creationDateTime;
+    }
+
+    /**
      * @param string $invoiceCurrencyCode
      */
     public function setInvoiceCurrencyCode($invoiceCurrencyCode)
     {
         $this->invoiceCurrencyCode = $invoiceCurrencyCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceCurrencyCode()
+    {
+        return $this->invoiceCurrencyCode;
     }
 
     /**
@@ -110,11 +192,30 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCountryOfSupplyOfGoods()
+    {
+        return $this->countryOfSupplyOfGoods;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\LineItem\LineItem[] $invoiceLineItem
      */
     public function setInvoiceLineItem(array $invoiceLineItem)
     {
         $this->invoiceLineItem = $invoiceLineItem;
+    }
+
+    /**
+     * @return LineItem[]
+     */
+    public function getInvoiceLineItem()
+    {
+        if($this->invoiceLineItem == null) {
+            $this->invoiceLineItem = array();
+        }
+        return $this->invoiceLineItem;
     }
 
     /**
@@ -126,11 +227,33 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return ReceiptAllowanceCharge[]
+     */
+    public function getInvoiceAllowanceCharge()
+    {
+        if($this->invoiceAllowanceCharge == null) {
+            $this->invoiceAllowanceCharge = array();
+        }
+        return $this->invoiceAllowanceCharge;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\LocationInformation $shipFrom
      */
     public function setShipFrom($shipFrom)
     {
         $this->shipFrom = $shipFrom;
+    }
+
+    /**
+     * @return LocationInformation
+     */
+    public function getShipFrom()
+    {
+        if($this->shipFrom == null) {
+            $this->shipFrom = new LocationInformation();
+        }
+        return $this->shipFrom;
     }
 
     /**
@@ -142,11 +265,33 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return LocationInformation
+     */
+    public function getShipTo()
+    {
+        if($this->shipTo == null) {
+            $this->shipTo = new LocationInformation();
+        }
+        return $this->shipTo;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Common\DespatchInformation $despatchInformation
      */
     public function setDespatchInformation($despatchInformation)
     {
         $this->despatchInformation = $despatchInformation;
+    }
+
+    /**
+     * @return DespatchInformation
+     */
+    public function getDespatchInformation()
+    {
+        if($this->despatchInformation == null) {
+            $this->despatchInformation = new DespatchInformation();
+        }
+        return $this->despatchInformation;
     }
 
     /**
@@ -158,11 +303,33 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return InvoiceSummary
+     */
+    public function getInvoiceTotals()
+    {
+        if($this->invoiceTotals == null) {
+            $this->invoiceTotals = new InvoiceSummary();
+        }
+        return $this->invoiceTotals;
+    }
+
+    /**
      * @param Identification $salesOrder
      */
     public function setSalesOrder($salesOrder)
     {
         $this->salesOrder = $salesOrder;
+    }
+
+    /**
+     * @return Identification
+     */
+    public function getSalesOrder()
+    {
+        if($this->salesOrder == null) {
+            $this->salesOrder = new Identification();
+        }
+        return $this->salesOrder;
     }
 
     public function jsonSerialize()

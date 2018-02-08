@@ -31,7 +31,7 @@ class AVP implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAttributeName()
     {
@@ -47,7 +47,7 @@ class AVP implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getQualifierCodeList()
     {
@@ -63,7 +63,7 @@ class AVP implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getQualifierCodeListVersion()
     {
@@ -79,7 +79,7 @@ class AVP implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {
