@@ -14,6 +14,11 @@ class BillingCostCentre implements \JsonSerializable
 
     private $entityIdentification;
 
+    public static function create($id) {
+        $centre = new BillingCostCentre();
+        $centre->entityIdentification = $id;
+        return $centre;
+    }
     /**
      * @param string $entityIdentification
      */

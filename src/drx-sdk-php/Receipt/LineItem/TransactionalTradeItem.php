@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\LineItem;
 
+use Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements;
+
 require_once __DIR__."/TradeItemDescriptionInformation.php";
 require_once __DIR__."/TradeItemIdentification.php";
 require_once __DIR__."/TransactionaltemData.php";
@@ -35,6 +37,9 @@ class TransactionalTradeItem implements \JsonSerializable
      */
     public function getTradeItemDescriptionInformation()
     {
+        if ($this->tradeItemDescriptionInformation == null) {
+            $this->tradeItemDescriptionInformation = new TradeItemDescriptionInformation();
+        }
         return $this->tradeItemDescriptionInformation;
     }
 
@@ -70,6 +75,9 @@ class TransactionalTradeItem implements \JsonSerializable
      */
     public function getAdditionalTradeItemIdentification()
     {
+        if($this->additionalTradeItemIdentification == null) {
+            $this->additionalTradeItemIdentification = array();
+        }
         return $this->additionalTradeItemIdentification;
     }
 
@@ -86,6 +94,9 @@ class TransactionalTradeItem implements \JsonSerializable
      */
     public function getTradeItemMeasurements()
     {
+        if($this->tradeItemMeasurements == null) {
+            $this->tradeItemMeasurements = new TradeItemMeasurements();
+        }
         return $this->tradeItemMeasurements;
     }
 

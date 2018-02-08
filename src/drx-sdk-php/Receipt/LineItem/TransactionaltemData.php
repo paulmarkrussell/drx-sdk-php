@@ -17,6 +17,18 @@ class TransactionaltemData implements \JsonSerializable
 
     /**
      * @param string $serialNumber
+     * @param string $batchNumber
+     * @return TransactionaltemData
+     */
+    public static function create($serialNumber, $batchNumber) {
+        $data = new TransactionaltemData();
+        $data->serialNumber = $serialNumber;
+        $data->batchNumber = $batchNumber;
+        return $data;
+    }
+
+    /**
+     * @param string $serialNumber
      */
     public function setSerialNumber($serialNumber)
     {

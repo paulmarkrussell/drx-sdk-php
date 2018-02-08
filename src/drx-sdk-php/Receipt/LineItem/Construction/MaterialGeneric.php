@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\LineItem\Construction;
 
+use Dreceiptx\Receipt\LineItem\TradeItemIdentification;
+
 require_once __DIR__."/../LineItem.php";
 require_once __DIR__."/../TransactionalTradeItem.php";
 require_once __DIR__."/../TradeItemDescriptionInformation.php";
@@ -35,13 +37,8 @@ class MaterialGeneric extends \Dreceiptx\Receipt\LineItem\LineItem
         $tradeItem = new \Dreceiptx\Receipt\LineItem\TransactionalTradeItem();
         $tradeItem->setTradeItemDescriptionInformation($tradeItemDescriptionInformation);
 
-        $tradeItemIdentification = new \Dreceiptx\Receipt\LineItem\TradeItemIdentification();
-
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationType(\Dreceiptx\Receipt\LineItem\LineItem::LINE_ITEM_TYPE_IDENTIFIER);
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationValue(MaterialGeneric::LINE_ITEM_TYPE_VALUE);
-        $tradeItem->setAdditionalTradeItemIdentification([
-
-        ]);
+        $tradeItemIdentification = TradeItemIdentification::create(LineItem::LINE_ITEM_TYPE_IDENTIFIER, MaterialGeneric::LINE_ITEM_TYPE_VALUE);
+        array_push($tradeItem->getAdditionalTradeItemIdentification(), $tradeItemIdentification);
 
         $lineItem->setTransactionalTradeItem($tradeItem);
 

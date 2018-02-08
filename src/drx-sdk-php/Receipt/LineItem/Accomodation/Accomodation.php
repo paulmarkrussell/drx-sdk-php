@@ -8,6 +8,10 @@
 
 namespace Dreceiptx\Receipt\LineItem\Accomodation;
 
+use Dreceiptx\Receipt\Ecom\AVPType;
+use Dreceiptx\Receipt\LineItem\TradeItemIdentification;
+use Dreceiptx\Receipt\LineItem\TransactionalTradeItem;
+
 require_once __DIR__."/../LineItem.php";
 require_once __DIR__."/../TransactionalTradeItem.php";
 require_once __DIR__."/../TradeItemDescriptionInformation.php";
@@ -35,16 +39,11 @@ class Accomodation extends \Dreceiptx\Receipt\LineItem\LineItem
         $lineItem->setItemPriceExclusiveAllowancesCharges($price);
 
 
-        $tradeItem = new \Dreceiptx\Receipt\LineItem\TransactionalTradeItem();
+        $tradeItem = new TransactionalTradeItem();
         $tradeItem->setTradeItemDescriptionInformation($tradeItemDescriptionInformation);
 
-        $tradeItemIdentification = new \Dreceiptx\Receipt\LineItem\TradeItemIdentification();
-
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationType(\Dreceiptx\Receipt\LineItem\LineItem::LINE_ITEM_TYPE_IDENTIFIER);
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationValue(Accomodation::LINE_ITEM_TYPE_VALUE);
-        $tradeItem->setAdditionalTradeItemIdentification([
-
-        ]);
+        $tradeItemIdentification = TradeItemIdentification::create(LineItem::LINE_ITEM_TYPE_IDENTIFIER, Accomodation::LINE_ITEM_TYPE_VALUE);
+        array_push($tradeItem->getAdditionalTradeItemIdentification(), $tradeItemIdentification);
 
         $lineItem->setTransactionalTradeItem($tradeItem);
 
@@ -68,11 +67,11 @@ class Accomodation extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function setPassengerName($passengerName) {
-        $this->setValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME, $passengerName);
+        $this->setValue(AVPType::PASSENGER_NAME, $passengerName);
     }
 
     public function getPassengerName() {
-        return $this->getValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME);
+        return $this->getValue(AVPType::PASSENGER_NAME);
     }
 
     public function setDepartureDate($date) {

@@ -9,6 +9,8 @@
 namespace Dreceiptx\Receipt\LineItem\Accomodation;
 
 use Dreceiptx\Receipt\Ecom\AVPType;
+use Dreceiptx\Receipt\LineItem\TradeItemIdentification;
+use Dreceiptx\Receipt\LineItem\TransactionalTradeItem;
 
 require_once __DIR__."/../LineItem.php";
 require_once __DIR__."/../TransactionalTradeItem.php";
@@ -37,16 +39,11 @@ class GroundTransport extends \Dreceiptx\Receipt\LineItem\LineItem
         $lineItem->setItemPriceExclusiveAllowancesCharges($price);
 
 
-        $tradeItem = new \Dreceiptx\Receipt\LineItem\TransactionalTradeItem();
+        $tradeItem = new TransactionalTradeItem();
         $tradeItem->setTradeItemDescriptionInformation($tradeItemDescriptionInformation);
 
-        $tradeItemIdentification = new \Dreceiptx\Receipt\LineItem\TradeItemIdentification();
-
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationType(\Dreceiptx\Receipt\LineItem\LineItem::LINE_ITEM_TYPE_IDENTIFIER);
-        $tradeItemIdentification->setAdditionalTradeItemIdentificationValue(Accomodation::LINE_ITEM_TYPE_VALUE);
-        $tradeItem->setAdditionalTradeItemIdentification([
-
-        ]);
+        $tradeItemIdentification = TradeItemIdentification::create(LineItem::LINE_ITEM_TYPE_IDENTIFIER,Accomodation::LINE_ITEM_TYPE_VALUE);
+        array_push($tradeItem->getAdditionalTradeItemIdentification(), $tradeItemIdentification);
 
         $lineItem->setTransactionalTradeItem($tradeItem);
 
@@ -70,35 +67,35 @@ class GroundTransport extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function setPassengerName($passengerName) {
-        $this->setValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME, $passengerName);
+        $this->setValue(AVPType::PASSENGER_NAME, $passengerName);
     }
 
     public function getPassengerName() {
-        return $this->getValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME);
+        return $this->getValue(AVPType::PASSENGER_NAME);
     }
 
     public function setPassengerNameRecord($passengerNameRecord) {
-        $this->setValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME_RECORD, $passengerNameRecord);
+        $this->setValue(AVPType::PASSENGER_NAME_RECORD, $passengerNameRecord);
     }
 
     public function getPassengerNameRecord() {
-        return $this->getValue(\Dreceiptx\Receipt\Ecom\AVPType::PASSENGER_NAME_RECORD);
+        return $this->getValue(AVPType::PASSENGER_NAME_RECORD);
     }
 
     public function setVehicleIndentifier($identifier) {
-        $this->setValue(\Dreceiptx\Receipt\Ecom\AVPType::VEHICLE_IDENTIFIER, $identifier);
+        $this->setValue(AVPType::VEHICLE_IDENTIFIER, $identifier);
     }
 
     public function getVehicleIndentifier() {
-        return $this->getValue(\Dreceiptx\Receipt\Ecom\AVPType::VEHICLE_IDENTIFIER);
+        return $this->getValue(AVPType::VEHICLE_IDENTIFIER);
     }
 
     public function setTripDistance($distance) {
-        $this->setValue(\Dreceiptx\Receipt\Ecom\AVPType::TRIP_DISTANCE, $distance);
+        $this->setValue(AVPType::TRIP_DISTANCE, $distance);
     }
 
     public function getTripDistance() {
-        return $this->getValue(\Dreceiptx\Receipt\Ecom\AVPType::TRIP_DISTANCE);
+        return $this->getValue(AVPType::TRIP_DISTANCE);
     }
 
     public function setDepartureDate($date) {
