@@ -53,6 +53,17 @@ class SettlementLineItem implements \JsonSerializable
     }
 
     /**
+     * @return Amount
+     */
+    public function getAmountPaidNotNull()
+    {
+        if($this->amountPaid == null) {
+            $this->amountPaid = new Amount();
+        }
+        return $this->amountPaid;
+    }
+
+    /**
      * @param SettlementParty $settlementParty
      */
     public function setSettlementParty($settlementParty)
@@ -65,6 +76,17 @@ class SettlementLineItem implements \JsonSerializable
      */
     public function getSettlementParty()
     {
+        return $this->settlementParty;
+    }
+
+    /**
+     * @return SettlementParty
+     */
+    public function getSettlementPartyNotNull()
+    {
+        if($this->settlementParty == null) {
+            $this->settlementParty = new SettlementParty();
+        }
         return $this->settlementParty;
     }
 

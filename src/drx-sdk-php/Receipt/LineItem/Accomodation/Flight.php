@@ -51,19 +51,19 @@ class Flight extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function getAirlineName() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getBrandName();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getBrandName();
     }
 
     public function getItinerary() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getDescriptionShort();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getDescriptionShort();
     }
 
     public function getItineraryDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemDescription();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemDescription();
     }
 
     public function getFlightType() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemGroupIdentificationCode();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemGroupIdentificationCode();
     }
 
     public function setPassengerName($passengerName) {

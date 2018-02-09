@@ -46,14 +46,14 @@ class MaterialGeneric extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function getBrandName() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getBrandName();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getBrandName();
     }
 
     public function getProductName() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getDescriptionShort();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getDescriptionShort();
     }
 
     public function getProductDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemDescription();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemDescription();
     }
 }

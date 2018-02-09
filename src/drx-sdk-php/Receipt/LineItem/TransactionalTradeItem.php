@@ -37,12 +37,19 @@ class TransactionalTradeItem implements \JsonSerializable
      */
     public function getTradeItemDescriptionInformation()
     {
+        return $this->tradeItemDescriptionInformation;
+    }
+
+    /**
+     * @return TradeItemDescriptionInformation
+     */
+    public function getTradeItemDescriptionInformationNotNull()
+    {
         if ($this->tradeItemDescriptionInformation == null) {
             $this->tradeItemDescriptionInformation = new TradeItemDescriptionInformation();
         }
         return $this->tradeItemDescriptionInformation;
     }
-
     /**
      * @param TransactionaltemData $transactionItemData
      */
@@ -55,6 +62,14 @@ class TransactionalTradeItem implements \JsonSerializable
      * @return TransactionaltemData
      */
     public function getTransactionItemData()
+    {
+        return $this->transactionItemData;
+    }
+
+    /**
+     * @return TransactionaltemData
+     */
+    public function getTransactionItemDataNotNull()
     {
         if($this->transactionItemData == null) {
             $this->transactionItemData = new TransactionaltemData();
@@ -93,6 +108,14 @@ class TransactionalTradeItem implements \JsonSerializable
      * @return \Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements
      */
     public function getTradeItemMeasurements()
+    {
+        return $this->tradeItemMeasurements;
+    }
+
+    /**
+     * @return \Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements
+     */
+    public function getTradeItemMeasurementsNotNull()
     {
         if($this->tradeItemMeasurements == null) {
             $this->tradeItemMeasurements = new TradeItemMeasurements();

@@ -53,6 +53,17 @@ class Payer implements \JsonSerializable
         return $this->additionalPartyIdentification;
     }
 
+    /**
+     * @return PartyIdentification
+     */
+    public function getAdditionalPartyIdentificationNotNull()
+    {
+        if($this->additionalPartyIdentification == null) {
+            $this->additionalPartyIdentification = new PartyIdentification();
+        }
+        return $this->additionalPartyIdentification;
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();

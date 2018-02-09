@@ -50,20 +50,24 @@ class Accomodation extends \Dreceiptx\Receipt\LineItem\LineItem
         return $lineItem;
     }
 
+    public function setProviderName($provider) {
+        $this->setBrandName($provider);
+    }
+
     public function getProviderName() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getBrandName();
+        return $this->getBrandName();
     }
 
     public function getShortDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getDescriptionShort();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getDescriptionShort();
     }
 
     public function getProductDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemDescription();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemDescription();
     }
 
     public function getAccomodationType() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemGroupIdentificationCode();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemGroupIdentificationCode();
     }
 
     public function setPassengerName($passengerName) {

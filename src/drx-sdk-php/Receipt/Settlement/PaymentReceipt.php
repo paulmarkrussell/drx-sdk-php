@@ -102,6 +102,17 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return PaymentMethod
+     */
+    public function getPaymentMethodNotNull()
+    {
+        if($this->paymentMethod == null) {
+            $this->paymentMethod = new PaymentMethod();
+        }
+        return $this->paymentMethod;
+    }
+
+    /**
      * @param Payee $payee
      */
     public function setPayee($payee)
@@ -114,6 +125,17 @@ class PaymentReceipt implements \JsonSerializable
      */
     public function getPayee()
     {
+        return $this->payee;
+    }
+
+    /**
+     * @return Payee
+     */
+    public function getPayeeNotNull()
+    {
+        if($this->payee == null) {
+            $this->payee = new Payee();
+        }
         return $this->payee;
     }
 
@@ -134,14 +156,33 @@ class PaymentReceipt implements \JsonSerializable
     }
 
     /**
+     * @return Payer
+     */
+    public function getPayerNotNull()
+    {
+        if($this->payer == null) {
+            $this->payer = new Payer();
+        }
+        return $this->payer;
+    }
+
+    /**
      * @param SettlementLineItem[] $settlementLineItem
      */
     public function setSettlementLineItem(array $settlementLineItem)
     {
+        $this->settlementLineItem = $settlementLineItem;
+    }
+
+    /**
+     * @return SettlementLineItem[]
+     */
+    public function getSettlementLineItem()
+    {
         if($this->settlementLineItem == null) {
             $this->settlementLineItem = array();
         }
-        $this->settlementLineItem = $settlementLineItem;
+        return $this->settlementLineItem;
     }
 
     public function jsonSerialize()

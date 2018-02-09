@@ -186,6 +186,14 @@ class Merchant implements \JsonSerializable
      */
     public function getPrimaryAddress()
     {
+        return $this->primaryAddress;
+    }
+
+    /**
+     * @return MerchantAddress
+     */
+    public function getPrimaryAddressNotNull()
+    {
         if($this->primaryAddress == null) {
             $this->primaryAddress = new MerchantAddress();
         }

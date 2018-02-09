@@ -88,9 +88,6 @@ class Invoice implements \JsonSerializable
      */
     public function getBillTo()
     {
-        if($this->billTo == null) {
-            $this->billTo = new TransactionalParty();
-        }
         return $this->billTo;
     }
 
@@ -107,9 +104,6 @@ class Invoice implements \JsonSerializable
      */
     public function getPurchaseOrder()
     {
-        if($this->purchaseOrder == null){
-            $this->purchaseOrder = new Identification();
-        }
         return $this->purchaseOrder;
     }
 
@@ -126,9 +120,6 @@ class Invoice implements \JsonSerializable
      */
     public function getCustomerReference()
     {
-        if($this->customerReference == null){
-            $this->customerReference = new Identification();
-        }
         return $this->customerReference;
     }
 
@@ -145,9 +136,6 @@ class Invoice implements \JsonSerializable
      */
     public function getInvoiceIdentification()
     {
-        if($this->invoiceIdentification == null){
-            $this->invoiceIdentification = new Identification();
-        }
         return $this->invoiceIdentification;
     }
 
@@ -250,9 +238,6 @@ class Invoice implements \JsonSerializable
      */
     public function getShipFrom()
     {
-        if($this->shipFrom == null) {
-            $this->shipFrom = new LocationInformation();
-        }
         return $this->shipFrom;
     }
 
@@ -269,9 +254,6 @@ class Invoice implements \JsonSerializable
      */
     public function getShipTo()
     {
-        if($this->shipTo == null) {
-            $this->shipTo = new LocationInformation();
-        }
         return $this->shipTo;
     }
 
@@ -288,9 +270,6 @@ class Invoice implements \JsonSerializable
      */
     public function getDespatchInformation()
     {
-        if($this->despatchInformation == null) {
-            $this->despatchInformation = new DespatchInformation();
-        }
         return $this->despatchInformation;
     }
 
@@ -307,9 +286,6 @@ class Invoice implements \JsonSerializable
      */
     public function getInvoiceTotals()
     {
-        if($this->invoiceTotals == null) {
-            $this->invoiceTotals = new InvoiceSummary();
-        }
         return $this->invoiceTotals;
     }
 
@@ -326,9 +302,6 @@ class Invoice implements \JsonSerializable
      */
     public function getSalesOrder()
     {
-        if($this->salesOrder == null) {
-            $this->salesOrder = new Identification();
-        }
         return $this->salesOrder;
     }
 

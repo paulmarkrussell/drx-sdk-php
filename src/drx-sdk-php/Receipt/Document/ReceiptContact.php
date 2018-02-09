@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\Document;
 
+use Dreceiptx\Receipt\Common\Contact;
+
 require_once __DIR__."/ReceiptContactType.php";
 require_once __DIR__."/../Common/Contact.php";
 require_once __DIR__."/../../Utils/Utils.php";
@@ -71,7 +73,7 @@ class ReceiptContact implements \JsonSerializable
     }
 
     /**
-     * @return \Dreceiptx\Receipt\Common\Contact[]
+     * @return Contact[]
      */
     public function getCommunicationChannelCode()
     {

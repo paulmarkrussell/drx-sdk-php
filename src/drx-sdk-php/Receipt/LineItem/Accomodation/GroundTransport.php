@@ -51,19 +51,19 @@ class GroundTransport extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function getProvider() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getBrandName();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getBrandName();
     }
 
     public function getShortDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getDescriptionShort();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getDescriptionShort();
     }
 
     public function getLongDescription() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemDescription();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemDescription();
     }
 
     public function getGroundTransportType() {
-        return $this->getTransactionalTradeItem()->getTradeItemDescriptionInformation()->getTradeItemGroupIdentificationCode();
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->getTradeItemGroupIdentificationCode();
     }
 
     public function setPassengerName($passengerName) {
@@ -124,11 +124,11 @@ class GroundTransport extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function setTipCode($code) {
-        $this->getBillingCostCentre()->setEntityIdentification($code);
+        $this->getBillingCostCentreNotNull()->setEntityIdentification($code);
     }
 
     public function getTripCode() {
-        return $this->getBillingCostCentre()->getEntityIdentification();
+        return $this->getBillingCostCentreNotNull()->getEntityIdentification();
     }
 
     public function setTripReason($reason) {
@@ -140,19 +140,19 @@ class GroundTransport extends \Dreceiptx\Receipt\LineItem\LineItem
     }
 
     public function setDepartureGeoLocation($location) {
-        $this->getShipFrom()->getAddress()->setGeographicalCoordinates($location);
+        $this->getShipFromNotNull()->getAddressNotNull()->setGeographicalCoordinates($location);
     }
 
     public function getDepartureGeoLocation() {
-        $this->getShipFrom()->getAddress()->getGeographicalCoordinates();
+        $this->getShipFromNotNull()->getAddressNotNull()->getGeographicalCoordinates();
     }
 
     public function setArrivalGeoLocation($location) {
-        $this->getShipTo()->getAddress()->setGeographicalCoordinates($location);
+        $this->getShipToNotNull()->getAddressNotNull()->setGeographicalCoordinates($location);
     }
 
     public function getArrivalGeoLocation() {
-        $this->getShipTo()->getAddress()->getGeographicalCoordinates();
+        $this->getShipToNotNull()->getAddressNotNull()->getGeographicalCoordinates();
     }
 
     public function SetDepartureDetails($departureDate, $departureCoordinates) {

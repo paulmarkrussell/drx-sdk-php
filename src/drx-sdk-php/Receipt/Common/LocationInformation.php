@@ -40,6 +40,14 @@ class LocationInformation implements \JsonSerializable
      */
     public function getAddress()
     {
+        return $this->address;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddressNotNull()
+    {
         if ($this->address == null) {
             $this->address = new Address();
         }

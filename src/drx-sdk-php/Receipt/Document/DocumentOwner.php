@@ -29,9 +29,6 @@ class DocumentOwner implements \JsonSerializable
      */
     public function getIdentifier()
     {
-        if ($this->identifier == null) {
-            $this->identifier = new DocumentOwnerIdentification();
-        }
         return $this->identifier;
     }
 

@@ -16,12 +16,34 @@ class AVP implements \JsonSerializable
     private $qualifierCodeListVersion;
     private $value;
 
+    /**
+     * @param string $key
+     * @param string $value
+     * @return AVP
+     */
     public static function create($key, $value) {
         $item = new AVP();
-        $item->setAttributeName($key);
-        $item->setValue($value);
+        $item->attributeName = $key;
+        $item->value = $value;
         return $item;
     }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @param string $qualifierCodeList
+     * @param string $qualifierCodeListVersion
+     * @return AVP
+     */
+    public static function createWithQualifier($key, $value, $qualifierCodeList, $qualifierCodeListVersion) {
+        $item = new AVP();
+        $item->attributeName = $key;
+        $item->value = $value;
+        $item->qualifierCodeList = $qualifierCodeList;
+        $item->qualifierCodeListVersion = $qualifierCodeListVersion;
+        return $item;
+    }
+
     /**
      * @param string $attributeName
      */

@@ -68,9 +68,6 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
      */
     public function getDocumentIdentification()
     {
-        if($this->documentIdentification == null) {
-            $this->documentIdentification = new DocumentOwnerIdentification();
-        }
         return $this->documentIdentification;
     }
 
