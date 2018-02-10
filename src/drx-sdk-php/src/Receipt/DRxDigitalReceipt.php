@@ -8,7 +8,7 @@
 
 namespace Dreceiptx\Receipt;
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 require_once __DIR__ . '/Document/StandardBusinessDocumentHeader.php';
 require_once __DIR__ . '/Invoice/Invoice.php';
 require_once __DIR__ . '/Settlement/PaymentReceipt.php';

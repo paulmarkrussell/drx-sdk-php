@@ -8,7 +8,7 @@
 
 namespace Dreceiptx\Receipt\Merchant;
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
 require_once __DIR__."/../../Utils/Utils.php";
 require_once __DIR__."/MerchantAddress.php";
 
