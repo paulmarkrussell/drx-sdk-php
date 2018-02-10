@@ -53,32 +53,58 @@ class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(12340, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
     }
 
-    public function testLineItemWithNoTaxTax() {
+    public function testLineItemWithMissingTax() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
-        $invoice->addLineItem($this->createStandardLineItem(1, 123.4));
-        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
-        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $invoice->addLineItem($this->createStandardLineItem(1, 1500));
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
         $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
-    public function testLineItemWithZeroTaxTax() {
+    public function testLineItemWithZeroTax() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
-        $lineItem = $this->createStandardLineItem(1, 123.4);
+        $lineItem = $this->createStandardLineItem(1, 1500);
         $lineItem->addTax("Category code", 0, "Type code");
         $invoice->addLineItem($lineItem);
-        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
-        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
         $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
-    public function testLineItemWithValidTaxTax() {
+    public function testLineItemWithValidTax() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
-        $lineItem = $this->createStandardLineItem(1, 123.4);
-        $lineItem->addTax("Category code", 12.3, "Type code");
+        $lineItem = $this->createStandardLineItem(1, 1500);
+        $lineItem->addTax("Category code", 10.1, "Type code");
         $invoice->addLineItem($lineItem);
-        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
-        $this->assertEquals(138.5782, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
-        $this->assertEquals(15.1782, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1651.5, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(151.5, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
+    public function testLineItemWithMultipleTaxes() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $lineItem = $this->createStandardLineItem(1, 1500);
+        $lineItem->addTax("Category code", 10.1, "Type code");
+        $lineItem->addTax("Category code", 9.9, "Type code");
+        $invoice->addLineItem($lineItem);
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1800, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(300, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
+    public function testMultipleLineItemsWithTaxes() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $lineItem1 = $this->createStandardLineItem(1, 500);
+        $lineItem1->addTax("Category code", 10.1, "Type code");
+        $lineItem1->addTax("Category code", 9.9, "Type code");
+        $invoice->addLineItem($lineItem1);
+        $lineItem2 = $this->createStandardLineItem(1, 1000);
+        $lineItem2->addTax("Category code", 5.5, "Type code");
+        $lineItem2->addTax("Category code", 4.5, "Type code");
+        $invoice->addLineItem($lineItem2);
+        $this->assertEquals(1500, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1700, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(200, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
     private function createStandardLineItem($quantity, $price) {
