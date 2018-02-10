@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\Invoice;
 
 use Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge;
+use Dreceiptx\Receipt\Common\Amount;
 use Dreceiptx\Receipt\Common\DespatchInformation;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\TransactionalParty;
@@ -207,6 +208,16 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @param LineItem $lineItem
+     */
+    public function addLineItem($lineItem) {
+        if($this->invoiceLineItem == null) {
+            $this->invoiceLineItem = array();
+        }
+        array_push($this->invoiceLineItem, $lineItem);
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge[] $invoiceAllowanceCharge
      */
     public function setInvoiceAllowanceCharge(array $invoiceAllowanceCharge)
@@ -286,6 +297,7 @@ class Invoice implements \JsonSerializable
      */
     public function getInvoiceTotals()
     {
+        $this->calculateTotals();
         return $this->invoiceTotals;
     }
 
@@ -303,6 +315,18 @@ class Invoice implements \JsonSerializable
     public function getSalesOrder()
     {
         return $this->salesOrder;
+    }
+
+    /**
+     * @return InvoiceSummary
+     */
+    private function calculateTotals() {
+        $this->invoiceTotals = new InvoiceSummary();
+        $total = 0;
+        foreach ($this->getInvoiceLineItem() as $lineItem) {
+            $total += $lineItem->getItemPriceExclusiveAllowancesCharges();
+        }
+        $this->invoiceTotals->setTotalInvoiceAmount(Amount::create($this->getInvoiceCurrencyCode(), $total));
     }
 
     public function jsonSerialize()

@@ -46,6 +46,16 @@ class LineItem implements \JsonSerializable
     /** @var DespatchInformation $despatchInformation */
     private $despatchInformation;
 
+    public static function create($brand, $name, $description, $quantity, $price) {
+        $lineItem = new LineItem();
+        $lineItem->setBrandName($brand);
+        $lineItem->setShortDesription($name);
+        $lineItem->setTradeItemDescription($description);
+        $lineItem->setInvoicedQuantity($quantity);
+        $lineItem->setItemPriceExclusiveAllowancesCharges($price);
+        return $lineItem;
+    }
+
     /**
      * @param integer $lineItemNumber
      */
@@ -241,6 +251,35 @@ class LineItem implements \JsonSerializable
         }
         return $this->transactionalTradeItem->getTradeItemDescriptionInformation()->getBrandName();
     }
+
+    public function setShortDesription($shortDescription) {
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->setDescriptionShort($shortDescription);
+    }
+
+    public function getShortDescription() {
+        if ($this->transactionalTradeItem == null) {
+            return null;
+        }
+        if($this->transactionalTradeItem->getTradeItemDescriptionInformation() == null) {
+            return null;
+        }
+        return $this->transactionalTradeItem->getTradeItemDescriptionInformation()->getDescriptionShort();
+    }
+
+    public function setTradeItemDescription($description) {
+        return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->setTradeItemDescription($description);
+    }
+
+    public function getTradeItemDescription() {
+        if ($this->transactionalTradeItem == null) {
+            return null;
+        }
+        if($this->transactionalTradeItem->getTradeItemDescriptionInformation() == null) {
+            return null;
+        }
+        return $this->transactionalTradeItem->getTradeItemDescriptionInformation()->getTradeItemDescription();
+    }
+
     /**
      * @param \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge[] $invoiceAllowanceCharge
      */
