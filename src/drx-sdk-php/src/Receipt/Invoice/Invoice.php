@@ -322,13 +322,21 @@ class Invoice implements \JsonSerializable
      */
     private function calculateTotals() {
         $this->invoiceTotals = new InvoiceSummary();
-        $total = 0;
+        $netTotal = 0;
+        $totalTax = 0;
         foreach ($this->getInvoiceLineItem() as $lineItem) {
-            $total += $lineItem->getInvoicedQuantity() * $lineItem->getItemPriceExclusiveAllowancesCharges();
+            $itemPrice = $lineItem->getInvoicedQuantity() * $lineItem->getItemPriceExclusiveAllowancesCharges();
+            $itemTax = 0;
+            foreach ($lineItem->getInvoiceLineTaxInformation() as $tax) {
+                $tax->setDutyFeeTaxBasisAmount($itemPrice);
+                $itemTax += $tax->getDutyFeeTaxAmount();
+            }
+            $netTotal += $itemPrice;
+            $totalTax += $itemTax;
         }
-        $this->invoiceTotals->setTotalInvoiceAmount(Amount::create($this->getInvoiceCurrencyCode(), $total));
-        $this->invoiceTotals->setTotalLineAmountInclusiveAllowancesCharges(Amount::create($this->getInvoiceCurrencyCode(), $total));
-        $this->invoiceTotals->setTotalTaxAmount(Amount::create($this->getInvoiceCurrencyCode(), 0));
+        $this->invoiceTotals->setTotalInvoiceAmount(Amount::create($this->getInvoiceCurrencyCode(), $netTotal + $totalTax));
+        $this->invoiceTotals->setTotalLineAmountInclusiveAllowancesCharges(Amount::create($this->getInvoiceCurrencyCode(), $netTotal + $totalTax));
+        $this->invoiceTotals->setTotalTaxAmount(Amount::create($this->getInvoiceCurrencyCode(), $totalTax));
     }
 
     public function jsonSerialize()

@@ -12,6 +12,7 @@ use Dreceiptx\Receipt\Common\DespatchInformation;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements;
 use Dreceiptx\Receipt\Ecom\AVP;
+use Dreceiptx\Receipt\Tax\Tax;
 
 require_once __DIR__."/../Tax/Tax.php";
 require_once __DIR__."/../Ecom/AVP.php";
@@ -313,6 +314,16 @@ class LineItem implements \JsonSerializable
             $this->invoiceLineTaxInformation = array();
         }
         return $this->invoiceLineTaxInformation;
+    }
+
+    public function addTax($dutyFeeTaxCategoryCode, $dutyFeeTaxPercentage, $dutyFeeTaxTypeCode) {
+        if ($this->invoiceLineTaxInformation == null) {
+            $this->invoiceLineTaxInformation = array();
+        }
+        $total = $this->getInvoicedQuantity() * $this->getItemPriceExclusiveAllowancesCharges();
+        $tax = Tax::create($dutyFeeTaxCategoryCode, $dutyFeeTaxPercentage, $dutyFeeTaxTypeCode);
+        $tax->setDutyFeeTaxBasisAmount($total);
+        array_push($this->invoiceLineTaxInformation, $tax);
     }
 
     /**

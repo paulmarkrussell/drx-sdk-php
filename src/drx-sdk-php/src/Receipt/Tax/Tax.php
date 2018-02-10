@@ -18,6 +18,14 @@ class Tax implements \JsonSerializable
     private $dutyFeeTaxPercentage;
     private $dutyFeeTaxTypeCode;
 
+    public static function create($dutyFeeTaxCategoryCode, $dutyFeeTaxPercentage, $dutyFeeTaxTypeCode) {
+        $tax = new Tax();
+        $tax->setDutyFeeTaxCategoryCode($dutyFeeTaxCategoryCode);
+        $tax->setDutyFeeTaxPercentage($dutyFeeTaxPercentage);
+        $tax->setDutyFeeTaxTypeCode($dutyFeeTaxTypeCode);
+        return $tax;
+    }
+
     /**
      * @param double $dutyFeeTaxAmount
      */
@@ -40,6 +48,7 @@ class Tax implements \JsonSerializable
     public function setDutyFeeTaxBasisAmount($dutyFeeTaxBasisAmount)
     {
         $this->dutyFeeTaxBasisAmount = $dutyFeeTaxBasisAmount;
+        $this->dutyFeeTaxAmount = $this->dutyFeeTaxBasisAmount * $this->getDutyFeeTaxPercentage() / 100.0;
     }
 
     /**

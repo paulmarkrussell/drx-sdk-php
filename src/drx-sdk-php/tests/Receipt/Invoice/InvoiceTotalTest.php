@@ -61,6 +61,26 @@ class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
+    public function testLineItemWithZeroTaxTax() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $lineItem = $this->createStandardLineItem(1, 123.4);
+        $lineItem->addTax("Category code", 0, "Type code");
+        $invoice->addLineItem($lineItem);
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
+    public function testLineItemWithValidTaxTax() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $lineItem = $this->createStandardLineItem(1, 123.4);
+        $lineItem->addTax("Category code", 12.3, "Type code");
+        $invoice->addLineItem($lineItem);
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(138.5782, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(15.1782, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
     private function createStandardLineItem($quantity, $price) {
         return \Dreceiptx\Receipt\LineItem\LineItem::create("Brand", "Name", "Line item description", $quantity, $price);
     }
