@@ -6,7 +6,7 @@
  * Time: 09:29
  */
 require_once (__DIR__."/../drx-sdk-php/Receipt/DigitalReceiptContainer.php");
-require_once (__DIR__."/../drx-sdk-php/test/ObjectComparator.php");
+require_once (__DIR__ . "/../drx-sdk-php/Utils/ObjectComparator.php");
 
 if (count($argv) == 1) {
     print "File path of json to parse required.";
