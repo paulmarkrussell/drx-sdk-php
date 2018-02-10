@@ -12,20 +12,53 @@ class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
 {
     public function testEmptyReceiptHasZeroTotal() {
         $invoice = new \Dreceiptx\Receipt\Invoice\Invoice();
-        $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
     }
 
-    public function testZeroValuedLineItemYieldsGoodTotal() {
+    public function testMissingLineItem() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
         $lineItem = new Dreceiptx\Receipt\LineItem\LineItem();
         $invoice->addLineItem($lineItem);
-        $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
     }
 
-    public function testSingleValuedLineItemYieldsGoodTotal() {
+    public function testZeroValueLineItem() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
-        $invoice->addLineItem($this->createStandardLineItem(1, 123.1));
-        $this->assertEquals(123.1, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $invoice->addLineItem($this->createStandardLineItem(1, 0));
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testZeroCountLineItem() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItem(0, 1000000));
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testSingleLineItem() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItem(1, 123.4));
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testTwoLineItems() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItem(1, 123.4));
+        $invoice->addLineItem($this->createStandardLineItem(1, 432.1));
+        $this->assertEquals(555.5, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testSingleLineItemLargeQuantity() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItem(100, 123.4));
+        $this->assertEquals(12340, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testLineItemWithNoTaxTax() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItem(1, 123.4));
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(0, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
     private function createStandardLineItem($quantity, $price) {

@@ -324,9 +324,11 @@ class Invoice implements \JsonSerializable
         $this->invoiceTotals = new InvoiceSummary();
         $total = 0;
         foreach ($this->getInvoiceLineItem() as $lineItem) {
-            $total += $lineItem->getItemPriceExclusiveAllowancesCharges();
+            $total += $lineItem->getInvoicedQuantity() * $lineItem->getItemPriceExclusiveAllowancesCharges();
         }
         $this->invoiceTotals->setTotalInvoiceAmount(Amount::create($this->getInvoiceCurrencyCode(), $total));
+        $this->invoiceTotals->setTotalLineAmountInclusiveAllowancesCharges(Amount::create($this->getInvoiceCurrencyCode(), $total));
+        $this->invoiceTotals->setTotalTaxAmount(Amount::create($this->getInvoiceCurrencyCode(), 0));
     }
 
     public function jsonSerialize()

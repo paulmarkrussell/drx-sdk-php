@@ -67,6 +67,11 @@ class InvoiceSummary implements \JsonSerializable
         return $this->totalTaxAmount;
     }
 
+    public function getSubTotal() {
+        $total = $this->getTotalInvoiceAmount()->getValue() - $this->getTotalTaxAmount()->getValue();
+        return Amount::create($this->getTotalInvoiceAmount()->getCurrencyCode(), $total);
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();
