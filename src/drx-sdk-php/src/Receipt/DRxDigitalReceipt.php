@@ -8,6 +8,10 @@
 
 namespace Dreceiptx\Receipt;
 
+use Dreceiptx\Receipt\Document\StandardBusinessDocumentHeader;
+use Dreceiptx\Receipt\Invoice\Invoice;
+use Dreceiptx\Receipt\Settlement\PaymentReceipt;
+
 require_once __DIR__.'/../../vendor/autoload.php';
 require_once __DIR__ . '/Document/StandardBusinessDocumentHeader.php';
 require_once __DIR__ . '/Invoice/Invoice.php';
@@ -29,6 +33,14 @@ class DRxDigitalReceipt implements \JsonSerializable
     }
 
     /**
+     * @return StandardBusinessDocumentHeader
+     */
+    public function getStandardBusinessDocumentHeader()
+    {
+        return $this->standardBusinessDocumentHeader;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Invoice\Invoice $invoice
      */
     public function setInvoice($invoice)
@@ -37,11 +49,30 @@ class DRxDigitalReceipt implements \JsonSerializable
     }
 
     /**
+     * @return Invoice
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
+    /**
      * @param \Dreceiptx\Receipt\Settlement\PaymentReceipt[] $paymentReceipts
      */
     public function setPaymentReceipts(array $paymentReceipts)
     {
         $this->paymentReceipts = $paymentReceipts;
+    }
+
+    /**
+     * @return PaymentReceipt[]
+     */
+    public function getPaymentReceipts()
+    {
+        if($this->paymentReceipts == null) {
+            $this->paymentReceipts = array();
+        }
+        return $this->paymentReceipts;
     }
 
     public function jsonSerialize()
