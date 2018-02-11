@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Receipt\Invoice;
 
+use Dreceiptx\Receipt\AllowanceCharge\AllowanceOrChargeType;
 use Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge;
 use Dreceiptx\Receipt\Common\Amount;
 use Dreceiptx\Receipt\Common\DespatchInformation;
@@ -236,6 +237,34 @@ class Invoice implements \JsonSerializable
         return $this->invoiceAllowanceCharge;
     }
 
+    public function addAllowanceCharge($allowanceCharge) {
+        if($this->invoiceAllowanceCharge == null) {
+            $this->invoiceAllowanceCharge = array();
+        }
+        array_push($this->invoiceAllowanceCharge, $allowanceCharge);
+    }
+
+    public function addCreateAllowanceCharge(
+        $allowanceOrChargeType,
+        $allowanceChargeType,
+        $baseAmount,
+        $leviedDutyFeeTax,
+        $settlementType,
+        $allowanceChargeDescription){
+        if($this->invoiceAllowanceCharge == null) {
+            $this->invoiceAllowanceCharge = array();
+        }
+        array_push($this->invoiceAllowanceCharge,
+                ReceiptAllowanceCharge::create(
+                        $allowanceOrChargeType,
+                        $allowanceChargeType,
+                        $baseAmount,
+                        $leviedDutyFeeTax,
+                        $settlementType,
+                        $allowanceChargeDescription)
+        );
+    }
+
     /**
      * @param \Dreceiptx\Receipt\Common\LocationInformation $shipFrom
      */
@@ -326,17 +355,29 @@ class Invoice implements \JsonSerializable
         $totalTax = 0;
         foreach ($this->getInvoiceLineItem() as $lineItem) {
             $itemPrice = $lineItem->getInvoicedQuantity() * $lineItem->getItemPriceExclusiveAllowancesCharges();
-            $itemTax = 0;
-            foreach ($lineItem->getInvoiceLineTaxInformation() as $tax) {
-                $tax->setDutyFeeTaxBasisAmount($itemPrice);
-                $itemTax += $tax->getDutyFeeTaxAmount();
+            $netTotal += $itemPrice;
+            $totalTax += $this->calculateItemTax($itemPrice, $lineItem->getInvoiceLineTaxInformation());
+        }
+        foreach ($this->getInvoiceAllowanceCharge() as $allowanceCharge) {
+            $itemPrice = $allowanceCharge->getBaseAmount();
+            if($allowanceCharge->getAllowanceOrChargeType() == AllowanceOrChargeType::ALLOWANCE) {
+                $itemPrice = -$itemPrice;
             }
             $netTotal += $itemPrice;
-            $totalTax += $itemTax;
+            $totalTax += $this->calculateItemTax($itemPrice, $allowanceCharge->getLeviedDutyFeeTax());
         }
         $this->invoiceTotals->setTotalInvoiceAmount(Amount::create($this->getInvoiceCurrencyCode(), $netTotal + $totalTax));
         $this->invoiceTotals->setTotalLineAmountInclusiveAllowancesCharges(Amount::create($this->getInvoiceCurrencyCode(), $netTotal + $totalTax));
         $this->invoiceTotals->setTotalTaxAmount(Amount::create($this->getInvoiceCurrencyCode(), $totalTax));
+    }
+
+    private function calculateItemTax($baseAmount, $taxes) {
+        $itemTax = 0;
+        foreach ($taxes as $tax) {
+            $tax->setDutyFeeTaxBasisAmount($baseAmount);
+            $itemTax += $tax->getDutyFeeTaxAmount();
+        }
+        return $itemTax;
     }
 
     public function jsonSerialize()

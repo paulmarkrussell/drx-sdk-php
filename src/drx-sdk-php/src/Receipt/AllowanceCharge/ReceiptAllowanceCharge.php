@@ -15,10 +15,30 @@ class ReceiptAllowanceCharge implements \JsonSerializable
 {
     private $allowanceOrChargeType;
     private $allowanceChargeType;
-    private $baseAmount;
-    private $leviedDutyFeeTax;
+    private $baseAmount; // Amount of the allowance or charge
+    private $leviedDutyFeeTax; // Taxes on the base amount
     private $settlementType ;
     private $allowanceChargeDescription;
+
+    public static function create(
+            $allowanceOrChargeType,
+            $allowanceChargeType,
+            $baseAmount,
+            $leviedDutyFeeTax,
+            $settlementType,
+            $allowanceChargeDescription){
+        if($allowanceOrChargeType != AllowanceOrChargeType::ALLOWANCE && $allowanceOrChargeType != AllowanceOrChargeType::CHARGE) {
+            throw new Exception('allowanceOrChargeType must be either '.AllowanceOrChargeType::ALLOWANCE." or ".AllowanceOrChargeType::CHARGE.", but was ".$allowanceOrChargeType);
+        }
+        $allowanceCharge = new ReceiptAllowanceCharge();
+        $allowanceCharge->allowanceOrChargeType = $allowanceOrChargeType;
+        $allowanceCharge->allowanceChargeType = $allowanceChargeType;
+        $allowanceCharge->baseAmount = $baseAmount;
+        $allowanceCharge->leviedDutyFeeTax = $leviedDutyFeeTax;
+        $allowanceCharge->settlementType = $settlementType;
+        $allowanceCharge->allowanceChargeDescription = $allowanceChargeDescription;
+        return $allowanceCharge;
+    }
 
     /**
      * @param string $allowanceOrChargeType

@@ -7,6 +7,9 @@
  */
 
 require_once __DIR__ . "/../../../src/Receipt/Invoice/Invoice.php";
+require_once __DIR__ . "/../../../src/Receipt/AllowanceCharge/AllowanceOrChargeType.php";
+require_once __DIR__ . "/../../../src/Receipt/AllowanceCharge/AllowanceChargeType.php";
+require_once __DIR__ . "/../../../src/Receipt/AllowanceCharge/SettlementType.php";
 
 class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
 {
@@ -107,7 +110,99 @@ class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(200, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
+    public function testSingleChargeWithNoTax() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $taxes = array();
+        $invoice->addAllowanceCharge($this->createStandardCharge(123.4, $taxes));
+        $this->assertEquals(123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testSingleChargeWithTaxes() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $taxes = array();
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", 4.6, "Type code"));
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", 15.4, "Type code"));
+
+        $invoice->addAllowanceCharge($this->createStandardCharge(1000, $taxes));
+        $this->assertEquals(1000, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1200, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(200, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
+    public function testSingleAllowanceWithNoTax() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $taxes = array();
+        $invoice->addAllowanceCharge($this->createStandardAllowance(123.4, $taxes));
+        $this->assertEquals(-123.4, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+    }
+
+    public function testSingleAllowanceWithTaxes() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $taxes = array();
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", 4.6, "Type code"));
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", 15.4, "Type code"));
+        $invoice->addAllowanceCharge($this->createStandardAllowance(1000, $taxes));
+        $this->assertEquals(-1000, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(-1200, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(-200, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
+    public function testReceiptTotal() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $invoice->addLineItem($this->createStandardLineItemWithTax(3, 100, 10));
+        $invoice->addLineItem($this->createStandardLineItemWithTax(10, 300, 20));
+        $invoice->addLineItem($this->createStandardLineItemWithTax(5, 400, 30));
+        $invoice->addAllowanceCharge($this->createStandardAllowanceWithTax(50, 10));
+        $invoice->addAllowanceCharge($this->createStandardAllowanceWithTax(10, 20));
+        $invoice->addAllowanceCharge($this->createStandardChargeWithTax(20, 20));
+        $invoice->addAllowanceCharge($this->createStandardChargeWithTax(15, 10));
+
+        $this->assertEquals(5275, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(6503.5, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(1228.5, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
+
     private function createStandardLineItem($quantity, $price) {
         return \Dreceiptx\Receipt\LineItem\LineItem::create("Brand", "Name", "Line item description", $quantity, $price);
+    }
+
+    private function createStandardLineItemWithTax($quantity, $price, $tax) {
+        $lineItem = \Dreceiptx\Receipt\LineItem\LineItem::create("Brand", "Name", "Line item description", $quantity, $price);
+        $lineItem->addTax("Category code", $tax, "Type code");
+        return $lineItem;
+    }
+
+    private function createStandardAllowanceWithTax($amount, $tax) {
+        $taxes = array();
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", $tax, "Type code"));
+        return $this->createStandardAllowance($amount, $taxes);
+    }
+
+    private function createStandardAllowance($amount, $taxes) {
+        return \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge::create(
+            \Dreceiptx\Receipt\AllowanceCharge\AllowanceOrChargeType::ALLOWANCE,
+            \Dreceiptx\Receipt\AllowanceCharge\AllowanceChargeType::CREDIT_CUSTOMER_ACCOUNT,
+            $amount,
+            $taxes,
+            \Dreceiptx\Receipt\AllowanceCharge\SettlementType::GeneralDiscount,
+            "Discount"
+        );
+    }
+
+    private function createStandardChargeWithTax($amount, $tax) {
+        $taxes = array();
+        array_push($taxes, \Dreceiptx\Receipt\Tax\Tax::create("Category code", $tax, "Type code"));
+        return $this->createStandardCharge($amount, $taxes);
+    }
+
+    private function createStandardCharge($amount, $taxes) {
+        return \Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge::create(
+            \Dreceiptx\Receipt\AllowanceCharge\AllowanceOrChargeType::CHARGE,
+            \Dreceiptx\Receipt\AllowanceCharge\AllowanceChargeType::CHARGE_TO_BE_PAID_BY_CUSTOMER,
+            $amount,
+            $taxes,
+            \Dreceiptx\Receipt\AllowanceCharge\SettlementType::PackagingFee,
+            "Cost of pretty package"
+        );
     }
 }
