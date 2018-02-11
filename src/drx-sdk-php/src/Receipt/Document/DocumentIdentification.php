@@ -122,7 +122,7 @@ class DocumentIdentification implements \JsonSerializable
         $ret->type = $this->type;
         $ret->instanceIdentifier = $this->instanceIdentifier;
         $ret->multipleType = $this->multipleType;
-        $ret->creationDateAndTime = $this->creationDateAndTime->format("Y-m-d\TH:i:sP");
+        $ret->creationDateAndTime = $this->creationDateAndTime->format("Y-m-d\TH:i:sO");
         return \Utils::removeNullProperties($ret);
     }
 }

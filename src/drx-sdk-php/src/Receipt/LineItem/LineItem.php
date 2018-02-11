@@ -570,9 +570,11 @@ class LineItem implements \JsonSerializable
     public function getItemTax() {
         $totalTax = 0;
         $total = $this->getNetItemTotal();
-        foreach ($this->getInvoiceLineTaxInformation() as $tax) {
-            $tax->setDutyFeeTaxBasisAmount($total);
-            $totalTax += $tax->getDutyFeeTaxAmount();
+        if($this->invoiceLineTaxInformation != null) {
+            foreach ($this->invoiceLineTaxInformation as $tax) {
+                $tax->setDutyFeeTaxBasisAmount($total);
+                $totalTax += $tax->getDutyFeeTaxAmount();
+            }
         }
         return $totalTax;
     }

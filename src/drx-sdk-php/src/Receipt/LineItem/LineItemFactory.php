@@ -6,6 +6,8 @@
  * Time: 10:02
  */
 
+namespace Dreceiptx\Receipt\LineItem;
+
 use Dreceiptx\Receipt\LineItem\Construction\MaterialGeneric;
 
 require_once __DIR__."/Construction/MaterialGeneric.php";
@@ -21,7 +23,7 @@ class LineItemFactory
         switch ($lineItem->getTradeItemType()) {
             case MaterialGeneric::LINE_ITEM_TYPE_IDENTIFIER:
                 return MaterialGeneric::createFromLineItem($lineItem);
-            case Dreceiptx\Receipt\LineItem\Accomodation\Accomodation::LINE_ITEM_TYPE_IDENTIFIER:
+            case \Dreceiptx\Receipt\LineItem\Accomodation\Accomodation::LINE_ITEM_TYPE_IDENTIFIER:
                 return \Dreceiptx\Receipt\LineItem\Accomodation\Accomodation::createFromLineItem($lineItem);
             case \Dreceiptx\Receipt\LineItem\Accomodation\Flight::LINE_ITEM_TYPE_IDENTIFIER:
                 return \Dreceiptx\Receipt\LineItem\Accomodation\Flight::createFromLineItem($lineItem);

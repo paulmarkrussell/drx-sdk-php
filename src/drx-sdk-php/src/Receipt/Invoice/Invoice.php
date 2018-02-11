@@ -197,7 +197,7 @@ class Invoice implements \JsonSerializable
     {
         $typedLineItems = array();
         foreach ($invoiceLineItem as $item){
-            array_push($typedLineItems, LineItem::getTyped($item));
+            array_push($typedLineItems, \Dreceiptx\Receipt\LineItem\LineItemFactory::getTypedLineItem($item));
         }
         $this->invoiceLineItem = $typedLineItems;
     }
@@ -394,7 +394,7 @@ class Invoice implements \JsonSerializable
         $ret->purchaseOrder = $this->purchaseOrder;
         $ret->customerReference = $this->customerReference;
         $ret->invoiceIdentification  = $this->invoiceIdentification;
-        $ret->creationDateTime  = $this->creationDateTime->format("Y-m-d\TH:i:sP");
+        $ret->creationDateTime  = $this->creationDateTime->format("Y-m-d\TH:i:sO");
         $ret->invoiceCurrencyCode  = $this->invoiceCurrencyCode;
         $ret->countryOfSupplyOfGoods  = $this->countryOfSupplyOfGoods;
         $ret->invoiceLineItem = $this->invoiceLineItem;

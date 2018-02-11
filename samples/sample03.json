@@ -30,7 +30,7 @@
         "type": "DIGITALRECEIPT",
         "instanceIdentifier": "1234567",
         "multipleType": "true",
-        "creationDateAndTime": "2017-02-11T11:16:45+11:00"
+        "creationDateAndTime": "2017-02-11T11:16:45+1100"
       }
     },
     "invoice": {
@@ -42,7 +42,7 @@
       "invoiceIdentification": {
         "entityIdentification": "1234567"
       },
-      "creationDateTime": "0001-01-01T00:00:00",
+      "creationDateTime": "0001-01-01T00:00:00+0000",
       "invoiceCurrencyCode": "AUD",
       "countryOfSupplyOfGoods": "AUS",
       "invoiceLineItem": [
