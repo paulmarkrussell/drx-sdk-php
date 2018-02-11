@@ -15,6 +15,7 @@ use Dreceiptx\Receipt\Ecom\AVP;
 use Dreceiptx\Receipt\LineItem\Accomodation\Accomodation;
 use Dreceiptx\Receipt\LineItem\Accomodation\Flight;
 use Dreceiptx\Receipt\LineItem\Accomodation\GroundTransport;
+use Dreceiptx\Receipt\LineItem\Construction\MaterialGeneric;
 use Dreceiptx\Receipt\Tax\Tax;
 
 require_once __DIR__."/../Tax/Tax.php";
@@ -29,7 +30,7 @@ class LineItem implements \JsonSerializable
 {
 
     const LINE_ITEM_TYPE_IDENTIFIER = "DRX_LINEITEM_TYPE";
-    const DEFAULT_LINE_ITEM_TYPE = "DEFAULT";
+    const STANDARD_LINE_ITEM_TYPE = "STANDARD";
 
     private $lineItemNumber;
     private $creditLineIndicator;
@@ -58,21 +59,6 @@ class LineItem implements \JsonSerializable
         $lineItem->setTradeItemDescription($description);
         $lineItem->setInvoicedQuantity($quantity);
         $lineItem->setItemPriceExclusiveAllowancesCharges($price);
-        return $lineItem;
-    }
-
-    /**
-     * @param LineItem $lineItem
-     */
-    public static function getTyped($lineItem) {
-        switch ($lineItem->getTradeItemType()) {
-            case Accomodation::LINE_ITEM_TYPE_IDENTIFIER:
-                return Accomodation::createFromLineItem($lineItem);
-            case Flight::LINE_ITEM_TYPE_IDENTIFIER:
-                return Flight::createFromLineItem($lineItem);
-            case GroundTransport::LINE_ITEM_TYPE_IDENTIFIER:
-                return GroundTransport::createFromLineItem($lineItem);
-        }
         return $lineItem;
     }
 
@@ -522,7 +508,7 @@ class LineItem implements \JsonSerializable
                 return $item->getAdditionalTradeItemIdentificationValue();
             }
         }
-        return LineItem::DEFAULT_LINE_ITEM_TYPE;
+        return LineItem::STANDARD_LINE_ITEM_TYPE;
     }
 
     public function jsonSerialize()
