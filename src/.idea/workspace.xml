@@ -27,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineItemCalcTest.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LineItemCalcTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+            <state relative-caret-position="481">
+              <caret line="106" column="1" lean-forward="true" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -40,30 +40,30 @@
       <file leaf-file-name="LineItem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+            <state relative-caret-position="531">
+              <caret line="589" column="97" lean-forward="false" selection-start-line="589" selection-start-column="97" selection-end-line="589" selection-end-column="97" />
               <folding>
-                <element signature="e#129#178#0#PHP" expanded="true" />
+                <element signature="e#129#189#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineItemFactory.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItemFactory.php">
+      <file leaf-file-name="ReceiptAllowanceCharge.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+            <state relative-caret-position="567">
+              <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MaterialGeneric.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Construction/MaterialGeneric.php">
+      <file leaf-file-name="DigitalReceiptContainer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/DigitalReceiptContainer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="50">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -73,12 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>JsonMapper</find>
-      <find>informa</find>
-      <find>additionalTradeItemIdentificationadditionalTradeItemIdentification</find>
-      <find>LineItemTypeIdentifier</find>
-      <find>AVP</find>
-      <find>despa</find>
       <find>getDes</find>
       <find>getTr</find>
       <find>array(</find>
@@ -96,23 +90,31 @@
       <find>dutyFeeTaxPercentage</find>
       <find>$dutyFeeTaxCategoryCode</find>
       <find>print</find>
-      <find>allow</find>
-      <find>tax</find>
       <find>gettra</find>
       <find>get</find>
       <find>getT</find>
       <find>lineItem</find>
       <find>Mater</find>
+      <find>private</find>
+      <find>public</find>
+      <find>Standard</find>
+      <find>$this-&gt;createStandard</find>
+      <find>tax</find>
+      <find>allow</find>
+      <find>setAm</find>
+      <find>allowanceCha</find>
     </findStrings>
     <replaceStrings>
       <replace>= &quot;&quot;;</replace>
       <replace>string</replace>
+      <replace>public</replace>
+      <replace>public static</replace>
+      <replace>TestUtils::create</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/BillingCostCentre.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/TradeItemIdentification.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/LineItem/TransactionaltemData.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/Receipt/Merchant/MerchantAddress.php" />
@@ -153,16 +155,17 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/ReceiltTotalTest.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/Invoice/InvoiceSummary.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/Tax/Tax.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/Flight.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/GroundTransport.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Construction/MaterialGeneric.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItem.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/Invoice/Invoice.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/Accomodation.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItemFactory.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/TestUtils.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItem.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" />
       </list>
     </option>
   </component>
@@ -379,31 +382,36 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.InvoiceTotalTest">
+  <component name="RunManager" selected="PHPUnit.LineItemCalcTest">
     <configuration name="InvoiceTotalTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="InvoiceTotalTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php" scope="Class" />
     </configuration>
-    <configuration name="InvoiceTotalTest.testLineItemWithValidTaxTax" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="InvoiceTotalTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php" method="testLineItemWithValidTaxTax" scope="Method" />
+    <configuration name="LineItemCalcTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="LineItemCalcTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" scope="Class" />
     </configuration>
-    <configuration name="InvoiceTotalTest.testSingleLineItem" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="InvoiceTotalTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php" method="testSingleLineItem" scope="Method" />
+    <configuration name="LineItemCalcTest.testNetTotalForPrice" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="LineItemCalcTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" method="testNetTotalForPrice" scope="Method" />
     </configuration>
-    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner directory="$PROJECT_DIR$/drx-sdk-php/tests" />
+    <configuration name="LineItemCalcTest.testTotalWithAllowance" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="LineItemCalcTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" method="testTotalWithAllowance" scope="Method" />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.tests" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest.testSingleLineItem" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest.testLineItemWithValidTaxTax" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest" />
+    <configuration name="LineItemCalcTest.testTotalWithTax" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="LineItemCalcTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php" method="testTotalWithTax" scope="Method" />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testTotalWithTax" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testNetTotalForPrice" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testTotalWithAllowance" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest.testLineItemWithValidTaxTax" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest.testSingleLineItem" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testTotalWithAllowance" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testNetTotalForPrice" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.InvoiceTotalTest" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.LineItemCalcTest.testTotalWithTax" />
       </list>
     </recent_temporary>
   </component>
@@ -433,44 +441,44 @@
       <workItem from="1517950801310" duration="1706000" />
       <workItem from="1517980239608" duration="6406000" />
       <workItem from="1518022848428" duration="19980000" />
-      <workItem from="1518243963721" duration="23280000" />
+      <workItem from="1518243963721" duration="28263000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 00m 53s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 36m 02s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 01m 31s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 36m 32s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 03m 37s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 38m 46s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 04m 03s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 39m 12s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 04m 41s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 40m 01s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 04m 50s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 40m 34s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 06m 10s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 40m 49s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 06m 40s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 42m 00s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 07m 05s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest - 2018.02.11 at 11h 42m 06s.xml">
+      <configuration name="LineItemCalcTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="InvoiceTotalTest - 2018.02.11 at 10h 10m 21s.xml">
-      <configuration name="InvoiceTotalTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="LineItemCalcTest_testTotalWithAllowance - 2018.02.11 at 11h 35m 55s.xml">
+      <configuration name="LineItemCalcTest.testTotalWithAllowance" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112738000" />
+    <option name="totallyTimeSpent" value="117721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -508,14 +516,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Ecom/AVP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/FlightType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -740,14 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/DigitalReceiptContainer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Merchant/Merchant.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -791,14 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Tax/Tax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/AllowanceChargeType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -823,26 +807,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="161" column="34" lean-forward="false" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Invoice/InvoiceSummary.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -871,10 +839,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php">
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/Accomodation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        <state relative-caret-position="74">
+          <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItemFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -887,12 +863,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Tax/Tax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="39" column="20" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/TestUtils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/DigitalReceiptContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+        <state relative-caret-position="531">
+          <caret line="589" column="97" lean-forward="false" selection-start-line="589" selection-start-column="97" selection-end-line="589" selection-end-column="97" />
           <folding>
-            <element signature="e#129#178#0#PHP" expanded="true" />
+            <element signature="e#129#189#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -907,18 +923,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/Accomodation/Accomodation.php">
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/LineItem/LineItemCalcTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/LineItem/LineItemFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        <state relative-caret-position="481">
+          <caret line="106" column="1" lean-forward="true" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
           <folding />
         </state>
       </provider>

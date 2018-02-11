@@ -8,6 +8,8 @@
 
 namespace Dreceiptx\Receipt\AllowanceCharge;
 
+use Dreceiptx\Receipt\Tax\Tax;
+
 require_once __DIR__."/../Tax/Tax.php";
 require_once __DIR__."/../../Utils/Utils.php";
 
@@ -137,6 +139,27 @@ class ReceiptAllowanceCharge implements \JsonSerializable
     public function getAllowanceChargeDescription()
     {
         return $this->allowanceChargeDescription;
+    }
+
+    /**
+     * @return double
+     */
+    public function getNetAmount() {
+        if($this->allowanceOrChargeType == AllowanceOrChargeType::CHARGE) {
+            return $this->getBaseAmount();
+        } else {
+            return -$this->getBaseAmount();
+        }
+    }
+
+    public function getTotalTax() {
+        $net = $this->getNetAmount();
+        $totalTax = 0;
+        foreach ($this->getLeviedDutyFeeTax() as $tax) {
+            $tax->setDutyFeeTaxBasisAmount($net);
+            $totalTax += $tax->getDutyFeeTaxAmount();
+        }
+        return $totalTax;
     }
 
     public function jsonSerialize()
