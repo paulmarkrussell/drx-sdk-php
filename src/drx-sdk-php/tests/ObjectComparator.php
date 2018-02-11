@@ -61,17 +61,35 @@ class ObjectComparator
     }
 
     public static function isBool($value){
-        return (ObjectComparator::boolValue($value) != ObjectComparator::INVALID);
+        return (ObjectComparator::boolValue($value) !== ObjectComparator::INVALID);
     }
 
     public static function boolValue($value) {
-        if (($value == "true") || ($value == 1) || ($value == true)) {
-            return "true";
+        if($value === 0) {
+            return False;
+        } else if ($value === "0") {
+            return False;
+        } else if ($value === false) {
+            return False;
+        } else if ($value === "false") {
+            return False;
+        } else if ($value === "False") {
+            return False;
+        } else if ($value === "FALSE") {
+            return False;
+        } else if ($value === 1) {
+            return True;
+        } else if ($value === "1") {
+            return True;
+        } else if ($value === true) {
+            return True;
+        } else if ($value === "true") {
+            return True;
+        } else if ($value === "True") {
+            return True;
+        } else if ($value === "TRUE") {
+            return True;
         }
-        else if (($value == "false") || ($value == 0) || ($value == false)) {
-            return "false";
-        } else {
-            return ObjectComparator::INVALID;
-        }
+        return ObjectComparator::INVALID;
     }
 }
