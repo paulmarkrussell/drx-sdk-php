@@ -15,6 +15,7 @@ use Dreceiptx\Receipt\Common\DespatchInformation;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\TransactionalParty;
 use Dreceiptx\Receipt\LineItem\LineItem;
+use SebastianBergmann\Diff\Line;
 
 require_once __DIR__."/../LineItem/LineItem.php";
 require_once __DIR__."/../AllowanceCharge/ReceiptAllowanceCharge.php";
@@ -194,7 +195,11 @@ class Invoice implements \JsonSerializable
      */
     public function setInvoiceLineItem(array $invoiceLineItem)
     {
-        $this->invoiceLineItem = $invoiceLineItem;
+        $typedLineItems = array();
+        foreach ($invoiceLineItem as $item){
+            array_push($typedLineItems, LineItem::getTyped($item));
+        }
+        $this->invoiceLineItem = $typedLineItems;
     }
 
     /**
@@ -215,7 +220,7 @@ class Invoice implements \JsonSerializable
         if($this->invoiceLineItem == null) {
             $this->invoiceLineItem = array();
         }
-        array_push($this->invoiceLineItem, $lineItem);
+        array_push($this->invoiceLineItem, LineItem::getTyped($lineItem));
     }
 
     /**

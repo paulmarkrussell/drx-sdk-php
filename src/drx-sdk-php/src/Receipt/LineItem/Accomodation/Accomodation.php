@@ -9,6 +9,7 @@
 namespace Dreceiptx\Receipt\LineItem\Accomodation;
 
 use Dreceiptx\Receipt\Ecom\AVPType;
+use Dreceiptx\Receipt\LineItem\LineItem;
 use Dreceiptx\Receipt\LineItem\TradeItemIdentification;
 use Dreceiptx\Receipt\LineItem\TransactionalTradeItem;
 
@@ -48,6 +49,30 @@ class Accomodation extends \Dreceiptx\Receipt\LineItem\LineItem
         $lineItem->setTransactionalTradeItem($tradeItem);
 
         return $lineItem;
+    }
+
+    /**
+     * @param Accomodation $lineItem
+     */
+    public static function createFromLineItem($lineItem) {
+        $ret = new Accomodation();
+        $ret->setLineItemNumber($lineItem->getLineItemNumber());
+        $ret->setCreditLineIndicator($lineItem->getCreditLineIndicator());
+        $ret->setCreditReason($lineItem->getCreditReason());
+        $ret->setAmountExclusiveAllowancesCharges($lineItem->getAmountExclusiveAllowancesCharges());
+        $ret->setAmountInclusiveAllowancesCharges($lineItem->getAmountInclusiveAllowancesCharges());
+        $ret->setInvoicedQuantity($lineItem->getInvoicedQuantity());
+        $ret->setItemPriceExclusiveAllowancesCharges($lineItem->getItemPriceExclusiveAllowancesCharges());
+        $ret->setNote($lineItem->getNote());
+        $ret->setBillingCostCentre($lineItem->getBillingCostCentre());
+        $ret->setTransactionalTradeItem($lineItem->getTransactionalTradeItem());
+        $ret->setInvoiceAllowanceCharge($lineItem->getInvoiceAllowanceCharge());
+        $ret->setInvoiceLineTaxInformation($lineItem->getInvoiceLineTaxInformation());
+        $ret->setAvpList($lineItem->getAvpList());
+        $ret->setShipFrom($lineItem->getShipFrom());
+        $ret->setShipTo($lineItem->getShipTo());
+        $ret->setDespatchInformation($lineItem->getDespatchInformation());
+        return ret;
     }
 
     public function setProviderName($provider) {

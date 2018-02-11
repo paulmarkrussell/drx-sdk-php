@@ -12,6 +12,9 @@ use Dreceiptx\Receipt\Common\DespatchInformation;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\Measurements\TradeItemMeasurements;
 use Dreceiptx\Receipt\Ecom\AVP;
+use Dreceiptx\Receipt\LineItem\Accomodation\Accomodation;
+use Dreceiptx\Receipt\LineItem\Accomodation\Flight;
+use Dreceiptx\Receipt\LineItem\Accomodation\GroundTransport;
 use Dreceiptx\Receipt\Tax\Tax;
 
 require_once __DIR__."/../Tax/Tax.php";
@@ -26,6 +29,7 @@ class LineItem implements \JsonSerializable
 {
 
     const LINE_ITEM_TYPE_IDENTIFIER = "DRX_LINEITEM_TYPE";
+    const DEFAULT_LINE_ITEM_TYPE = "DEFAULT";
 
     private $lineItemNumber;
     private $creditLineIndicator;
@@ -54,6 +58,21 @@ class LineItem implements \JsonSerializable
         $lineItem->setTradeItemDescription($description);
         $lineItem->setInvoicedQuantity($quantity);
         $lineItem->setItemPriceExclusiveAllowancesCharges($price);
+        return $lineItem;
+    }
+
+    /**
+     * @param LineItem $lineItem
+     */
+    public static function getTyped($lineItem) {
+        switch ($lineItem->getTradeItemType()) {
+            case Accomodation::LINE_ITEM_TYPE_IDENTIFIER:
+                return Accomodation::createFromLineItem($lineItem);
+            case Flight::LINE_ITEM_TYPE_IDENTIFIER:
+                return Flight::createFromLineItem($lineItem);
+            case GroundTransport::LINE_ITEM_TYPE_IDENTIFIER:
+                return GroundTransport::createFromLineItem($lineItem);
+        }
         return $lineItem;
     }
 
@@ -271,6 +290,9 @@ class LineItem implements \JsonSerializable
         return $this->getTransactionalTradeItemNotNull()->getTradeItemDescriptionInformationNotNull()->setTradeItemDescription($description);
     }
 
+    /**
+     * @return string
+     */
     public function getTradeItemDescription() {
         if ($this->transactionalTradeItem == null) {
             return null;
@@ -332,6 +354,13 @@ class LineItem implements \JsonSerializable
     public function setAvpList(array $avpList)
     {
         $this->avpList = $avpList;
+    }
+
+    /**
+     * @return AVP[]
+     */
+    protected function getAvpList() {
+        return $this->avpList;
     }
 
     public function getValue($key) {
@@ -481,7 +510,20 @@ class LineItem implements \JsonSerializable
         if ($this->transactionalTradeItem->getTransactionItemData() == null) {
             return null;
         }
-        return $this->transactionalTradeItem->getTransactionItemData()->getSerialNumber();    }
+        return $this->transactionalTradeItem->getTransactionItemData()->getSerialNumber();
+    }
+
+    /**
+     * @return string
+     */
+    public function getTradeItemType() {
+        foreach ($this->getTransactionalTradeItemNotNull()->getAdditionalTradeItemIdentification() as $item) {
+            if($item->getAdditionalTradeItemIdentificationType() == LineItem::LINE_ITEM_TYPE_IDENTIFIER) {
+                return $item->getAdditionalTradeItemIdentificationValue();
+            }
+        }
+        return LineItem::DEFAULT_LINE_ITEM_TYPE;
+    }
 
     public function jsonSerialize()
     {
