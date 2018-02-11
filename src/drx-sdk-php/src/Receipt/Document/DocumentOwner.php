@@ -51,6 +51,13 @@ class DocumentOwner implements \JsonSerializable
         return $this->contactInformation;
     }
 
+    public function addContactinformation($contactInformation) {
+        if ($this->contactInformation == null) {
+            $this->contactInformation = array();
+        }
+        array_push($this->contactInformation, $contactInformation);
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();

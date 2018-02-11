@@ -13,9 +13,36 @@ require_once __DIR__."/../../Utils/Utils.php";
 
 class StandardBusinessDocumentHeader implements \JsonSerializable
 {
+    /** @var DocumentOwner[] $sender */
     private $sender;
+    /** @var DocumentOwner[] $receiver */
     private $receiver;
+    /** @var DocumentIdentification $documentIdentification */
     private $documentIdentification;
+
+    /**
+     * @return StandardBusinessDocumentHeader
+     */
+    public static function create() {
+        $header = new StandardBusinessDocumentHeader();
+
+        $merchant = new DocumentOwner();
+        $merchantIdentifier = DocumentOwnerIdentification::create("GS1", null);
+        $merchant->setIdentifier($merchantIdentifier);
+        $header->addSender($merchant);
+
+        $dRx = new DocumentOwner();
+        $dRxIdentifier = DocumentOwnerIdentification::create("GS1", null);
+        $dRx->setIdentifier($dRxIdentifier);
+        $header->addReceiver($dRx);
+
+        $user = new DocumentOwner();
+        $userIdentifier = DocumentOwnerIdentification::create("dRx", null);
+        $user->setIdentifier($userIdentifier);
+        $header->addReceiver($user);
+
+        return $header;
+    }
 
     /**
      * @param DocumentOwner[] $sender
@@ -34,6 +61,13 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
             $this->sender = array();
         }
         return $this->sender;
+    }
+
+    public function addSender($sender) {
+        if($this->sender == null) {
+            $this->sender = array();
+        }
+        array_push($this->sender, $sender);
     }
 
     /**
@@ -55,6 +89,13 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
         return $this->receiver;
     }
 
+    public function addReceiver($receiver) {
+        if($this->receiver == null) {
+            $this->receiver = array();
+        }
+        array_push($this->receiver, $receiver);
+    }
+
     /**
      * @param DocumentIdentification $documentIdentification
      */
@@ -69,6 +110,38 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     public function getDocumentIdentification()
     {
         return $this->documentIdentification;
+    }
+
+    public function setMerchantGLN($merchantGLN) {
+        $this->sender[0]->getIdentifier()->setValue($merchantGLN);
+    }
+
+    public function getMerchantGLN() {
+        return $this->sender[0]->getIdentifier()->getValue();
+    }
+
+   public function setdRxGLN($dRxGLN) {
+        $this->receiver[0]->getIdentifier()->setValue($dRxGLN);
+    }
+
+    public function getdRxGLN() {
+        return $this->receiver[0]->getIdentifier()->getValue();
+    }
+
+    public function setUserIdentifier($userIdentifier) {
+        $this->receiver[1]->getIdentifier()->setValue($userIdentifier);
+    }
+
+    public function getUserIdentifier() {
+        return $this->receiver[1]->getIdentifier()->getValue();
+    }
+
+    public function addMerchantContact($contact) {
+        $this->sender[0]->addContactinformation($contact);
+    }
+
+    public function addRMSContact($contact) {
+        $this->receiver[1]->addContactinformation($contact);
     }
 
     public function jsonSerialize()

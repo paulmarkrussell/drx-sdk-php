@@ -83,6 +83,13 @@ class ReceiptContact implements \JsonSerializable
         return $this->communicationChannelCode;
     }
 
+    public function addContact($type, $value) {
+        if ($this->communicationChannelCode == null) {
+            $this->communicationChannelCode = array();
+        }
+        array_push($this->communicationChannelCode, Contact::create($type, $value));
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();

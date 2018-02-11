@@ -15,6 +15,7 @@ use Dreceiptx\Receipt\Common\DespatchInformation;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\TransactionalParty;
 use Dreceiptx\Receipt\LineItem\LineItem;
+use Dreceiptx\Receipt\LineItem\LineItemFactory;
 
 require_once __DIR__."/../LineItem/LineItem.php";
 require_once __DIR__."/../AllowanceCharge/ReceiptAllowanceCharge.php";
@@ -220,7 +221,14 @@ class Invoice implements \JsonSerializable
         if($this->invoiceLineItem == null) {
             $this->invoiceLineItem = array();
         }
-        array_push($this->invoiceLineItem, \LineItemFactory::getTypedLineItem($lineItem));
+        $count = sizeof($this->invoiceLineItem);
+        $lineItem->setLineItemNumber($count);
+        array_push($this->invoiceLineItem, \Dreceiptx\Receipt\LineItem\LineItemFactory::getTypedLineItem($lineItem));
+        return $count;
+    }
+
+    public function removeLineItem($index) {
+        array_splice($this->invoiceLineItem, $index, 1);
     }
 
     /**
@@ -242,11 +250,20 @@ class Invoice implements \JsonSerializable
         return $this->invoiceAllowanceCharge;
     }
 
+    /**
+     * @param ReceiptAllowanceCharge $allowanceCharge
+     */
     public function addAllowanceCharge($allowanceCharge) {
         if($this->invoiceAllowanceCharge == null) {
             $this->invoiceAllowanceCharge = array();
         }
+        $index = count($this->invoiceAllowanceCharge);
         array_push($this->invoiceAllowanceCharge, $allowanceCharge);
+        return $index;
+    }
+
+    public function removeAllowanceCharge($index) {
+        array_splice($this->invoiceAllowanceCharge, $index, 1);
     }
 
     public function addCreateAllowanceCharge(

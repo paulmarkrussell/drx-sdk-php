@@ -21,6 +21,13 @@ class PaymentReceipt implements \JsonSerializable
     private $payer;
     private $settlementLineItem;
 
+    public static function create($paymentMethod, $totalAmount) {
+        $receipt = new PaymentReceipt();
+        $receipt->setPaymentMethod($paymentMethod);
+        $receipt->setTotalAmount($totalAmount);
+        return $receipt;
+    }
+
     /**
      * @param string $settlementCurrency
      */

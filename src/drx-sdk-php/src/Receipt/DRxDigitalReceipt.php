@@ -75,6 +75,20 @@ class DRxDigitalReceipt implements \JsonSerializable
         return $this->paymentReceipts;
     }
 
+    /**
+     * @param PaymentReceipt $receipt
+     */
+    public function addPaymentReceipt($receipt)    {
+        if($this->paymentReceipts == null) {
+            $this->paymentReceipts = array();
+        }
+        $index = count($this->paymentReceipts);
+        $receipt->setSettlementIdentification($index);
+        array_push($this->paymentReceipts, $receipt);
+
+    }
+
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();

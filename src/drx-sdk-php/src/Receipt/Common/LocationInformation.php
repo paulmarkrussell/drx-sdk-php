@@ -73,6 +73,13 @@ class LocationInformation implements \JsonSerializable
         return $this->contacts;
     }
 
+    public function addContact($contact) {
+        if ($this->contacts == null) {
+            $this->contacts = array();
+        }
+        array_push($this->contacts, $contact);
+    }
+
     public function jsonSerialize()
     {
         $ret = new \stdClass();

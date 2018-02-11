@@ -19,6 +19,14 @@ class DocumentIdentification implements \JsonSerializable
     private $creationDateAndTime;
 
     /**
+     * @return DocumentIdentification
+     */
+    public static function create() {
+        $identification = new DocumentIdentification();
+        return $identification;
+    }
+
+    /**
      * @param string $standard
      */
     public function setStandard($standard)
