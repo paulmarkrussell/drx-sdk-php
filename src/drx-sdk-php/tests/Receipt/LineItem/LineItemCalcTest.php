@@ -6,6 +6,9 @@
  * Time: 07:34
  */
 
+namespace Dreceiptx\Receipt\LineItem;
+use Dreceiptx\Receipt\TestUtils;
+
 require_once __DIR__ . "/../../../src/Receipt/Invoice/Invoice.php";
 require_once __DIR__ . "/../../../src/Receipt/AllowanceCharge/AllowanceOrChargeType.php";
 require_once __DIR__ . "/../../../src/Receipt/AllowanceCharge/AllowanceChargeType.php";
@@ -15,7 +18,7 @@ require_once __DIR__."/../TestUtils.php";
 class LineItemCalcTest extends \PHPUnit\Framework\TestCase
 {
     public function testNetTotalForZeroPrice() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $this->assertEquals(0, $lineItem->getNetTotal());
         $this->assertEquals(0, $lineItem->getTotal());
         $this->assertEquals(0, $lineItem->getTotalTax());
@@ -26,7 +29,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testNetTotalForPrice() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(1);
         $lineItem->setItemPriceExclusiveAllowancesCharges(123.4);
         $this->assertEquals(123.4, $lineItem->getNetTotal());
@@ -38,7 +41,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testNetTotalForMultipleItems() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(5);
         $lineItem->setItemPriceExclusiveAllowancesCharges(100);
         $this->assertEquals(500, $lineItem->getNetTotal());
@@ -50,7 +53,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testTotalWithTax() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(5);
         $lineItem->setItemPriceExclusiveAllowancesCharges(100);
         $lineItem->addTax("",10, "");
@@ -63,7 +66,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testTotalWithMultipleTaxes() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(5);
         $lineItem->setItemPriceExclusiveAllowancesCharges(100);
         $lineItem->addTax("",10, "");
@@ -77,7 +80,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testTotalWithTaxfreeAllowances() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(1);
         $lineItem->setItemPriceExclusiveAllowancesCharges(100);
         $lineItem->addInvoiceAllowanceCharge(TestUtils::createAllowance(13, array()));
@@ -91,7 +94,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testTotalWithTaxedAllowances() {
-        $lineItem = new \Dreceiptx\Receipt\LineItem\LineItem();
+        $lineItem = new LineItem();
         $lineItem->setInvoicedQuantity(1);
         $lineItem->setItemPriceExclusiveAllowancesCharges(100);
         $lineItem->addTax("", 15, "");

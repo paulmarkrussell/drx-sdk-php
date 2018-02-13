@@ -38,7 +38,6 @@ class DigitalReceiptBuilder
 
     private $defaultCountry;
     private $defaultLanguage;
-    private $defaultTimezone;
     private $defaultCurrency;
     private $defaultTaxCategory;
     private $defaultTaxCode;
@@ -52,7 +51,6 @@ class DigitalReceiptBuilder
     {
         $this->defaultCountry = $this->validateConfigOption($configuration, ConfigKeys::DefaultCountry);
         $this->defaultLanguage = $this->validateConfigOption($configuration, ConfigKeys::DefaultLanguage);
-        $this->defaultTimezone = $this->validateConfigOption($configuration, ConfigKeys::DefaultTimeZone);
         $this->defaultCurrency = $this->validateConfigOption($configuration, ConfigKeys::DefaultCurrency);
         $this->defaultTaxCategory = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCategory);
         $this->defaultTaxCode = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCode);
@@ -521,7 +519,7 @@ class DigitalReceiptBuilder
         if ($configManager->exists($key)) {
             return $configManager->getConfigValue($key);
         } else {
-            throw new \Exception("Required config parameter " + $key + " not supplied");
+            throw new \Exception("Required config parameter ".$key." not supplied");
         }
     }
 

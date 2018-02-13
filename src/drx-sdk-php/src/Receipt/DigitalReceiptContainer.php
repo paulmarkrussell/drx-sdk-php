@@ -25,6 +25,14 @@ class DigitalReceiptContainer implements \JsonSerializable
     }
 
     /**
+     * @return DRxDigitalReceipt
+     */
+    public function getDRxDigitalReceipt()
+    {
+        return $this->dRxDigitalReceipt;
+    }
+
+    /**
      * @param $json S row object containing receipt data
      * @return DigitalReceiptContainer
      * @throws \JsonMapper_Exception

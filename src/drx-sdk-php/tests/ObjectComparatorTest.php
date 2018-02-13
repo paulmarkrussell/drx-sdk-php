@@ -6,6 +6,7 @@
  * Time: 07:34
  */
 
+namespace Dreceiptx;
 require_once __DIR__ . "/ObjectComparator.php";
 
 class ObjectComparatorTest extends \PHPUnit\Framework\TestCase

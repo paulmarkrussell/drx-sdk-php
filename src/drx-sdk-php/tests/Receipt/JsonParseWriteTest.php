@@ -6,13 +6,9 @@
  * Time: 07:34
  */
 
-require_once __DIR__ . "/../../src/Receipt/Invoice/Invoice.php";
-require_once __DIR__ . "/../../src/Receipt/AllowanceCharge/AllowanceOrChargeType.php";
-require_once __DIR__ . "/../../src/Receipt/AllowanceCharge/AllowanceChargeType.php";
-require_once __DIR__ . "/../../src/Receipt/AllowanceCharge/SettlementType.php";
-require_once __DIR__ . "/../../src/Receipt/DigitalReceiptContainer.php";
+namespace Dreceiptx\Receipt;
+
 require_once __DIR__."/TestUtils.php";
-require_once __DIR__."/../ObjectComparator.php";
 
 class JsonParseWriteTest extends \PHPUnit\Framework\TestCase
 {

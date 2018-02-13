@@ -6,6 +6,8 @@
  * Time: 06:58
  */
 
+namespace Dreceiptx;
+
 class ObjectComparator
 {
     const INVALID = "invalid";
