@@ -9,6 +9,8 @@
 namespace Dreceiptx\Receipt;
 
 
+use Dreceiptx\Config\ConfigKeys;
+use Dreceiptx\Config\ConfigManager;
 use Dreceiptx\Receipt\AllowanceCharge\AllowanceChargeType;
 use Dreceiptx\Receipt\AllowanceCharge\AllowanceOrChargeType;
 use Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge;
@@ -18,7 +20,9 @@ use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\TransactionalParty;
 use Dreceiptx\Receipt\Document\ReceiptContact;
 use Dreceiptx\Receipt\Document\ReceiptContactType;
+use Dreceiptx\Receipt\Document\StandardBusinessDocumentHeader;
 use Dreceiptx\Receipt\Invoice\Identification;
+use Dreceiptx\Receipt\Invoice\Invoice;
 use Dreceiptx\Receipt\LineItem\LineItem;
 use Dreceiptx\Receipt\LineItem\TransactionalTradeItem;
 use Dreceiptx\Receipt\Settlement\PaymentReceipt;
@@ -32,12 +36,92 @@ class DigitalReceiptBuilder
      */
     private $receipt;
 
-    public function __construct()
+    private $defaultCountry;
+    private $defaultLanguage;
+    private $defaultTimezone;
+    private $defaultCurrency;
+    private $defaultTaxCategory;
+    private $defaultTaxCode;
+
+    /**
+     * DigitalReceiptBuilder constructor.
+     * @param ConfigManager $configuration
+     * @throws \Exception
+     */
+    public function __construct($configuration)
     {
+        $this->defaultCountry = $this->validateConfigOption($configuration, ConfigKeys::DefaultCountry);
+        $this->defaultLanguage = $this->validateConfigOption($configuration, ConfigKeys::DefaultLanguage);
+        $this->defaultTimezone = $this->validateConfigOption($configuration, ConfigKeys::DefaultTimeZone);
+        $this->defaultCurrency = $this->validateConfigOption($configuration, ConfigKeys::DefaultCurrency);
+        $this->defaultTaxCategory = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCategory);
+        $this->defaultTaxCode = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCode);
+
         $this->receipt = new DRxDigitalReceipt();
+        $header = new StandardBusinessDocumentHeader();
+        if($configuration->exists(ConfigKeys::dRxGLN)) {
+            $header->setdRxGLN($configuration->getConfigValue(ConfigKeys::dRxGLN));
+        }
+        if($configuration->exists(ConfigKeys::MerchantGLN)) {
+            $header->setMerchantGLN($configuration->getConfigValue(ConfigKeys::MerchantGLN));
+        }
+        if($configuration->exists(ConfigKeys::ReceiptVersion)) {
+            $header->setTypeVersion($configuration->getConfigValue(ConfigKeys::ReceiptVersion));
+        }
+        $header->setCreationDateAndTime(date("Y-m-d\TH:i:sO"));
+
+        $this->receipt->setStandardBusinessDocumentHeader($header);
+
+        $invoice = new Invoice();
+        $invoice->setInvoiceCurrencyCode($configuration->getConfigValue(ConfigKeys::DefaultCurrency));
+        $invoice->setCountryOfSupplyOfGoods($configuration->getConfigValue(ConfigKeys::DefaultCountry));
+        $this->receipt->setInvoice($invoice);
+
+        $paymentReceipts = array();
+        $this->receipt->setPaymentReceipts($paymentReceipts);
     }
 
-    public function setNerchantGLN($merchantGLN) {
+    /**
+     * @param mixed $defaultCountry
+     */
+    public function setDefaultCountry($defaultCountry)
+    {
+        $this->defaultCountry = $defaultCountry;
+    }
+
+    /**
+     * @param mixed $defaultLanguage
+     */
+    public function setDefaultLanguage($defaultLanguage)
+    {
+        $this->defaultLanguage = $defaultLanguage;
+    }
+
+    /**
+     * @param mixed $defaultCurrency
+     */
+    public function setDefaultCurrency($defaultCurrency)
+    {
+        $this->defaultCurrency = $defaultCurrency;
+    }
+
+    /**
+     * @param mixed $defaultTaxCategory
+     */
+    public function setDefaultTaxCategory($defaultTaxCategory)
+    {
+        $this->defaultTaxCategory = $defaultTaxCategory;
+    }
+
+    /**
+     * @param mixed $defaultTaxCode
+     */
+    public function setDefaultTaxCode($defaultTaxCode)
+    {
+        $this->defaultTaxCode = $defaultTaxCode;
+    }
+
+    public function setMerchantGLN($merchantGLN) {
         $this->receipt->getStandardBusinessDocumentHeader()->setMerchantGLN($merchantGLN);
         return $this;
     }
@@ -141,7 +225,14 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param LineItem $lineItem
+     * @return int
+     */
     public function addLineItem($lineItem) {
+        foreach ($lineItem->getInvoiceLineTaxInformation() as $tax) {
+            $this->configureTax($tax);
+        }
         return $this->receipt->getInvoice()->addLineItem($lineItem);
     }
 
@@ -151,6 +242,7 @@ class DigitalReceiptBuilder
      * @return int
      */
     public function addLineItemWithTax($lineItem, $tax) {
+        $this->configureTax($tax);
         $lineItem->addTax($tax->getDutyFeeTaxCategoryCode(), $tax->getDutyFeeTaxPercentage(), $tax->getDutyFeeTaxTypeCode());
         return $this->receipt->getInvoice()->addLineItem($lineItem);
     }
@@ -161,6 +253,7 @@ class DigitalReceiptBuilder
 
     public function addLineItemFromDataWithTax($brand, $name, $description, $quantity, $price, $tax) {
         $lineItem = LineItem::create($brand, $name, $description,  $quantity, $price);
+        $this->configureTax($tax);
         $lineItem->addTax($tax->getDutyFeeTaxCategoryCode(), $tax->getDutyFeeTaxPercentage(), $tax->getDutyFeeTaxTypeCode());
         return $this->receipt->getInvoice()->addLineItem($lineItem);
     }
@@ -177,11 +270,18 @@ class DigitalReceiptBuilder
     private function getTaxArray($tax){
         $taxArray = null;
         if($tax != null) {
+            $this->configureTax($tax);
             $taxArray = [$tax];
         }
         return $taxArray;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addGeneralDiscount($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::ALLOWANCE,
@@ -193,6 +293,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addTip($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -204,6 +310,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addPackagingFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -215,6 +327,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addDeliveryFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -226,6 +344,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addFreightFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -237,6 +361,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addProcessingFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -248,6 +378,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addBookingFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -259,6 +395,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addAdminFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -270,6 +412,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addAmendmentFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -281,6 +429,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addServiceFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -292,6 +446,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function addReturnOrCancellationFee($amount, $description, $tax) {
         $this->receipt->getInvoice()->addAllowanceCharge(ReceiptAllowanceCharge::create(
             AllowanceOrChargeType::CHARGE,
@@ -303,6 +463,12 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    /**
+     * @param double $amount
+     * @param string $description
+     * @param Tax $tax
+     * @return DigitalReceiptBuilder
+     */
     public function setDeliveryInformation($locationInformation, $deliveryFees, $despatchInformation) {
         $this->receipt->getInvoice()->setShipTo($locationInformation);
         foreach ($deliveryFees as $charge) {
@@ -344,6 +510,32 @@ class DigitalReceiptBuilder
     public function removeAllowanceOrChange($number) {
         $this->receipt->getInvoice()->removeAllowanceCharge($number);
         return $this;
+    }
+
+    /**
+     * @param ConfigManager $configManager
+     * @param string $key
+     * @return string
+     */
+    private function validateConfigOption($configManager, $key) {
+        if ($configManager->exists($key)) {
+            return $configManager->getConfigValue($key);
+        } else {
+            throw new \Exception("Required config parameter " + $key + " not supplied");
+        }
+    }
+
+    /**
+     * @param Tax $tax
+     */
+    private function configureTax($tax) {
+        if ($tax->getDutyFeeTaxCategoryCode() == null) {
+            $tax->setDutyFeeTaxCategoryCode($this->defaultTaxCategory);
+        }
+        if($tax->getDutyFeeTaxTypeCode() == null) {
+            $tax->setDutyFeeTaxTypeCode($this->defaultTaxCode);
+        }
+        return $tax;
     }
 
     public function build()

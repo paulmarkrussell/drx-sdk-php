@@ -7,6 +7,8 @@
  */
 
 namespace Dreceiptx\Receipt\Document;
+use Couchbase\DocIdSearchQuery;
+
 require_once __DIR__."/DocumentOwner.php";
 require_once __DIR__."/DocumentIdentification.php";
 require_once __DIR__."/../../Utils/Utils.php";
@@ -113,6 +115,7 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     public function setMerchantGLN($merchantGLN) {
+        $this->makeSureHasDocumentOwner($this->sender, 1);
         $this->sender[0]->getIdentifier()->setValue($merchantGLN);
     }
 
@@ -121,7 +124,8 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
    public function setdRxGLN($dRxGLN) {
-        $this->receiver[0]->getIdentifier()->setValue($dRxGLN);
+       $this->makeSureHasDocumentOwner($this->receiver, 1);
+       $this->receiver[0]->getIdentifier()->setValue($dRxGLN);
     }
 
     public function getdRxGLN() {
@@ -129,6 +133,7 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     public function setUserIdentifier($userIdentifier) {
+        $this->makeSureHasDocumentOwner($this->receiver, 2);
         $this->receiver[1]->getIdentifier()->setValue($userIdentifier);
     }
 
@@ -137,11 +142,37 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     public function addMerchantContact($contact) {
+        $this->makeSureHasDocumentOwner($this->sender);
         $this->sender[0]->addContactinformation($contact);
     }
 
     public function addRMSContact($contact) {
+        $this->makeSureHasDocumentOwner($this->receiver, 2);
         $this->receiver[1]->addContactinformation($contact);
+    }
+
+    public function setTypeVersion($typeVersion) {
+        if ($this->documentIdentification == null) {
+            $this->documentIdentification = new DocumentIdentification();
+        }
+        $this->documentIdentification->setTypeVersion($typeVersion);
+    }
+
+    public function setCreationDateAndTime($dateTime) {
+        if ($this->documentIdentification == null) {
+            $this->documentIdentification = new DocumentIdentification();
+        }
+        $this->documentIdentification->setCreationDateAndTime($dateTime);
+    }
+
+    private function makeSureHasDocumentOwner($arr, $cnt) {
+        if($this->$arr == null) {
+            $this->$arr = array();
+        }
+        while (count($this->$arr) < $cnt) {
+            array_push($this->$arr, new DocumentOwner());
+        }
+
     }
 
     public function jsonSerialize()
