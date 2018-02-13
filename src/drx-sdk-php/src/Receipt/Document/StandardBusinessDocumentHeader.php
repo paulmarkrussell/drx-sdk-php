@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Receipt\Document;
 use Couchbase\DocIdSearchQuery;
+use Dreceiptx\Receipt\Merchant\MerchantAddress;
 
 require_once __DIR__."/DocumentOwner.php";
 require_once __DIR__."/DocumentIdentification.php";
@@ -115,39 +116,42 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     }
 
     public function setMerchantGLN($merchantGLN) {
-        $this->makeSureHasDocumentOwner($this->sender, 1);
-        $this->sender[0]->getIdentifier()->setValue($merchantGLN);
+        $this->makeSureHasDocumentSender(1);
+        $this->sender[0]->getIdentifierNotNull()->setValue($merchantGLN);
     }
 
     public function getMerchantGLN() {
-        return $this->sender[0]->getIdentifier()->getValue();
+        return $this->sender[0]->getIdentifierNotNull()->getValue();
     }
 
    public function setdRxGLN($dRxGLN) {
-       $this->makeSureHasDocumentOwner($this->receiver, 1);
-       $this->receiver[0]->getIdentifier()->setValue($dRxGLN);
+       $this->makeSureHasDocumentReceiver(1);
+       $this->receiver[0]->getIdentifierNotNull()->setValue($dRxGLN);
     }
 
     public function getdRxGLN() {
-        return $this->receiver[0]->getIdentifier()->getValue();
+        return $this->receiver[0]->getIdentifierNotNull()->getValue();
     }
 
     public function setUserIdentifier($userIdentifier) {
-        $this->makeSureHasDocumentOwner($this->receiver, 2);
-        $this->receiver[1]->getIdentifier()->setValue($userIdentifier);
+        $this->makeSureHasDocumentReceiver(2);
+        $this->receiver[1]->getIdentifierNotNull()->setValue($userIdentifier);
     }
 
     public function getUserIdentifier() {
-        return $this->receiver[1]->getIdentifier()->getValue();
+        return $this->receiver[1]->getIdentifierNotNull()->getValue();
     }
 
+    /**
+     * @param ReceiptContact $contact
+     */
     public function addMerchantContact($contact) {
-        $this->makeSureHasDocumentOwner($this->sender);
+        $this->makeSureHasDocumentSender(1);
         $this->sender[0]->addContactinformation($contact);
     }
 
     public function addRMSContact($contact) {
-        $this->makeSureHasDocumentOwner($this->receiver, 2);
+        $this->makeSureHasDocumentReceiver(2);
         $this->receiver[1]->addContactinformation($contact);
     }
 
@@ -165,15 +169,24 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
         $this->documentIdentification->setCreationDateAndTime($dateTime);
     }
 
-    private function makeSureHasDocumentOwner($arr, $cnt) {
-        if($this->$arr == null) {
-            $this->$arr = array();
+    private function makeSureHasDocumentSender($cnt) {
+        if($this->sender == null) {
+            $this->sender = array();
         }
-        while (count($this->$arr) < $cnt) {
-            array_push($this->$arr, new DocumentOwner());
+        while (count($this->sender) < $cnt) {
+            array_push($this->sender, new DocumentOwner());
         }
-
     }
+
+    private function makeSureHasDocumentReceiver($cnt) {
+        if($this->receiver == null) {
+            $this->receiver = array();
+        }
+        while (count($this->receiver) < $cnt) {
+            array_push($this->receiver, new DocumentOwner());
+        }
+    }
+
 
     public function jsonSerialize()
     {

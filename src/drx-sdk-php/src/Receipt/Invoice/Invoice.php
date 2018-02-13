@@ -336,6 +336,17 @@ class Invoice implements \JsonSerializable
     }
 
     /**
+     * @return DespatchInformation
+     */
+    public function getDespatchInformationNotNull()
+    {
+        if($this->despatchInformation == null) {
+            $this->despatchInformation = new DespatchInformation();
+        }
+        return $this->despatchInformation;
+    }
+
+    /**
      * @param InvoiceSummary $invoiceTotals
      */
     public function setInvoiceTotals($invoiceTotals)

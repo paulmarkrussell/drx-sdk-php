@@ -487,7 +487,7 @@ class DigitalReceiptBuilder
     }
 
     public function setDeliveryDate($date) {
-        $this->receipt->getInvoice()->getDespatchInformation()->setDespatchDateTime($date);
+        $this->receipt->getInvoice()->getDespatchInformationNotNull()->setEstimatedDeliveryDateTime($date);
         return $this;
     }
 

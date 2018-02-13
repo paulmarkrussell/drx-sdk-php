@@ -33,6 +33,17 @@ class DocumentOwner implements \JsonSerializable
     }
 
     /**
+     * @return DocumentOwnerIdentification
+     */
+    public function getIdentifierNotNull()
+    {
+        if($this->identifier == null) {
+            $this->identifier = new DocumentOwnerIdentification();
+        }
+        return $this->identifier;
+    }
+
+    /**
      * @param ReceiptContact[] $contactInformation
      */
     public function setContactInformation(array $contactInformation)
