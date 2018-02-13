@@ -588,8 +588,8 @@ class LineItem implements \JsonSerializable
     }
 
     private function recalculate() {
-        $this->setAmountInclusiveAllowancesCharges($this->getTotal());
-        $this->setAmountExclusiveAllowancesCharges($this->getNetItemTotal() + $this->getItemTax());
+        $this->setAmountInclusiveAllowancesCharges($this->getNetTotal());
+        $this->setAmountExclusiveAllowancesCharges($this->getNetItemTotal());
     }
 
     public function jsonSerialize()

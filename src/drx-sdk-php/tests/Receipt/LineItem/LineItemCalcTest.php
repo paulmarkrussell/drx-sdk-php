@@ -58,8 +58,8 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(550, $lineItem->getTotal());
         $this->assertEquals(50, $lineItem->getTotalTax());
 
-        $this->assertEquals(550, $lineItem->getAmountInclusiveAllowancesCharges());
-        $this->assertEquals(550, $lineItem->getAmountExclusiveAllowancesCharges());
+        $this->assertEquals(500, $lineItem->getAmountInclusiveAllowancesCharges());
+        $this->assertEquals(500, $lineItem->getAmountExclusiveAllowancesCharges());
     }
 
     public function testTotalWithMultipleTaxes() {
@@ -72,8 +72,8 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(625, $lineItem->getTotal());
         $this->assertEquals(125, $lineItem->getTotalTax());
 
-        $this->assertEquals(625, $lineItem->getAmountInclusiveAllowancesCharges());
-        $this->assertEquals(625, $lineItem->getAmountExclusiveAllowancesCharges());
+        $this->assertEquals(500, $lineItem->getAmountInclusiveAllowancesCharges());
+        $this->assertEquals(500, $lineItem->getAmountExclusiveAllowancesCharges());
     }
 
     public function testTotalWithTaxfreeAllowances() {
@@ -101,7 +101,7 @@ class LineItemCalcTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(108.25, $lineItem->getTotal());
         $this->assertEquals(13.25, $lineItem->getTotalTax());
 
-        $this->assertEquals(108.25, $lineItem->getAmountInclusiveAllowancesCharges());
-        $this->assertEquals(115, $lineItem->getAmountExclusiveAllowancesCharges());
+        $this->assertEquals(95, $lineItem->getAmountInclusiveAllowancesCharges());
+        $this->assertEquals(100, $lineItem->getAmountExclusiveAllowancesCharges());
     }
 }
