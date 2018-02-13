@@ -17,16 +17,8 @@ require_once __DIR__."/../ObjectComparator.php";
 class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
 {
     public function testSample1() {
-        $this->assertTrue(InvoiceTotalTest::testReceipt(__DIR__."/../../../../samples/sample01.json"));
-        $this->assertTrue(InvoiceTotalTest::testReceipt(__DIR__."/../../../../samples/sample02.json"));
-        $this->assertTrue(InvoiceTotalTest::testReceipt(__DIR__."/../../../../samples/sample03.json"));
-    }
-
-    private static function testReceipt($filePath) {
-        print "Parsing file ".$filePath."\n";
-        $text = file_get_contents($filePath);
-        $json = json_decode($text);
-        $receipt = \Dreceiptx\Receipt\DigitalReceiptContainer::fromJson($json)->jsonSerialize();
-        return(ObjectComparator::compare($json, json_decode(json_encode($receipt))));
+        $this->assertTrue(TestUtils::testReceipt(__DIR__."/../../../../samples/sample01.json"));
+        $this->assertTrue(TestUtils::testReceipt(__DIR__."/../../../../samples/sample02.json"));
+        $this->assertTrue(TestUtils::testReceipt(__DIR__."/../../../../samples/sample03.json"));
     }
 }

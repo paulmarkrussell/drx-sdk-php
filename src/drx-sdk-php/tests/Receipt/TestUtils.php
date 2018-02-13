@@ -51,4 +51,12 @@ class TestUtils
             "Cost of pretty package"
         );
     }
+
+    public static function testReceipt($filePath) {
+        print "Parsing file ".$filePath."\n";
+        $text = file_get_contents($filePath);
+        $json = json_decode($text);
+        $receipt = \Dreceiptx\Receipt\DigitalReceiptContainer::fromJson($json)->jsonSerialize();
+        return(ObjectComparator::compare($json, json_decode(json_encode($receipt))));
+    }
 }

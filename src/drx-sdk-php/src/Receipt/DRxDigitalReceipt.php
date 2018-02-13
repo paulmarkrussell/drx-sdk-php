@@ -23,6 +23,7 @@ class DRxDigitalReceipt implements \JsonSerializable
     private $standardBusinessDocumentHeader;
     private $invoice;
     private $paymentReceipts;
+    private $seller;
 
     /**
      * @param \Dreceiptx\Receipt\Document\StandardBusinessDocumentHeader $standardBusinessDocumentHeader
@@ -88,6 +89,22 @@ class DRxDigitalReceipt implements \JsonSerializable
 
     }
 
+    /**
+     * @param mixed $seller
+     */
+    public function setSeller($seller)
+    {
+        $this->seller = $seller;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeller()
+    {
+        return $this->seller;
+    }
+
 
     public function jsonSerialize()
     {
@@ -95,6 +112,7 @@ class DRxDigitalReceipt implements \JsonSerializable
         $ret -> standardBusinessDocumentHeader = $this->standardBusinessDocumentHeader;
         $ret->invoice = $this->invoice;
         $ret->paymentReceipts = $this->paymentReceipts;
+        $ret->seller = $this->seller;
         return \Utils::removeNullProperties($ret);
     }
 }

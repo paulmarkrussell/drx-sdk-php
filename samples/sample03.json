@@ -193,6 +193,15 @@
         }
       }
     },
-    "paymentReceipts": [ ]
+    "paymentReceipts": [ ],
+	"seller": {
+		"organisationDetails": {
+			"organisationName": "Hardware Store"
+		},
+		"dutyFeeTaxRegistration": {
+			"dutyFeeTaxTypeCode": "GST",
+			"dutyFeeTaxRegistrationID": "11 222 333 444"
+		}
 	}
+  }
 }
