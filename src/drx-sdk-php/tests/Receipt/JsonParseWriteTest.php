@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../src/Receipt/DigitalReceiptContainer.php";
 require_once __DIR__."/TestUtils.php";
 require_once __DIR__."/../ObjectComparator.php";
 
-class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
+class JsonParseWriteTest extends \PHPUnit\Framework\TestCase
 {
     public function testSample1() {
         $this->assertTrue(TestUtils::testReceipt(__DIR__."/../../../../samples/sample01.json"));
