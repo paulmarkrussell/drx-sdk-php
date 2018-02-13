@@ -376,9 +376,9 @@ class Invoice implements \JsonSerializable
         $netTotal = 0;
         $totalTax = 0;
         foreach ($this->getInvoiceLineItem() as $lineItem) {
-            $itemPrice = $lineItem->getInvoicedQuantity() * $lineItem->getItemPriceExclusiveAllowancesCharges();
+            $itemPrice = $lineItem->getAmountInclusiveAllowancesCharges();
             $netTotal += $itemPrice;
-            $totalTax += $this->calculateItemTax($itemPrice, $lineItem->getInvoiceLineTaxInformation());
+            $totalTax += $lineItem->getTotalTax();
         }
         foreach ($this->getInvoiceAllowanceCharge() as $allowanceCharge) {
             $itemPrice = $allowanceCharge->getBaseAmount();
