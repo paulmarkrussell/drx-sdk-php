@@ -111,6 +111,24 @@ class InvoiceTotalTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(200, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
     }
 
+    public function testMultipleLineItemsWithTaxesAndAllowances() {
+        $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
+        $lineItem1 = TestUtils::createLineItem(1, 500);
+        $lineItem1->addTax("Category code", 10.1, "Type code");
+        $lineItem1->addTax("Category code", 9.9, "Type code");
+        $lineItem1->addInvoiceAllowanceCharge(TestUtils::createAllowanceWithTax(10, 10));
+        $lineItem1->addInvoiceAllowanceCharge(TestUtils::createChargeWithTax(50, 20));
+        $invoice->addLineItem($lineItem1);
+        $lineItem2 = TestUtils::createLineItem(10, 100);
+        $lineItem2->addTax("Category code", 5.5, "Type code");
+        $lineItem2->addTax("Category code", 4.5, "Type code");
+        $lineItem1->addInvoiceAllowanceCharge(TestUtils::createChargeWithTax(20, 25));
+        $lineItem1->addInvoiceAllowanceCharge(TestUtils::createChargeWithTax(50, 40));
+        $invoice->addLineItem($lineItem2);
+        $this->assertEquals(1610, $invoice->getInvoiceTotals()->getSubTotal()->getValue());
+        $this->assertEquals(1844, $invoice->getInvoiceTotals()->getTotalInvoiceAmount()->getValue());
+        $this->assertEquals(234, $invoice->getInvoiceTotals()->getTotalTaxAmount()->getValue());
+    }
     public function testSingleChargeWithNoTax() {
         $invoice = new Dreceiptx\Receipt\Invoice\Invoice();
         $taxes = array();
