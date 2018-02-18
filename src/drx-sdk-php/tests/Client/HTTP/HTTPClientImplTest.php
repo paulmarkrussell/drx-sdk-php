@@ -29,6 +29,14 @@ class HTTPClientImplTest extends TestCase
         $this->assertEquals("Hello World", $response->getContent());
     }
 
+    public function testSimplePost()
+    {
+        $client = new HTTPClientImpl();
+        $response = $client->post("localhost:8081");
+        $this->assertEquals("Hello Post", $response->getContent());
+    }
+
+
     public function testGetStatusCodes()
     {
         $client = new HTTPClientImpl();
@@ -52,17 +60,16 @@ class HTTPClientImplTest extends TestCase
         $this->assertEquals("moon", $returnedParams->goodby);
     }
 
-    public function testDelete() {
-        \Utils::deleteDir(__DIR__."/../../../../../../../../tmp/garbage");
-    }
-
     public function testDownload()
     {
         $client = new HTTPClientImpl();
         $tmpFolder = __DIR__."/../../../../tmp";
+        $receiptFile = $tmpFolder."/receipt.pdf";
         \Utils::deleteDir($tmpFolder);
         mkdir($tmpFolder);
-        $response = $client->download("localhost:8081/file", $tmpFolder."/receipt.pdf");
+        $client->download("localhost:8081/file", $receiptFile);
+        $this->assertTrue(file_exists($receiptFile));
+        $this->assertEquals(62269, filesize($receiptFile));
         \Utils::deleteDir($tmpFolder);
     }
 }

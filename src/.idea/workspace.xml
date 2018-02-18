@@ -67,21 +67,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPClientImpl.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HTTPClientImpl.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="336">
+              <caret line="85" column="42" lean-forward="false" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPClientImplTest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HTTPClientImplTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="65" column="8" lean-forward="true" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+            <state relative-caret-position="273">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding>
                 <element signature="e#310#346#0#PHP" expanded="true" />
               </folding>
@@ -93,7 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isRetur</find>
       <find>setReceiptNumber</find>
       <find>LineItemF</find>
       <find>tax</find>
@@ -123,6 +122,7 @@
       <find>@return string</find>
       <find>HttpResponse</find>
       <find>az</find>
+      <find>testDe</find>
     </findStrings>
     <replaceStrings>
       <replace>= &quot;&quot;;</replace>
@@ -190,8 +190,8 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPFileResponse.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClient.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Utils/Utils.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php" />
       </list>
     </option>
   </component>
@@ -340,7 +340,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.HTTPClientImplTest.testDownload">
+  <component name="RunManager" selected="PHPUnit.HTTPClientImplTest">
     <configuration name="HTTPClientImplTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\HTTP\HTTPClientImplTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" scope="Class" />
     </configuration>
@@ -365,9 +365,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
         <item index="3" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testSimpleGet" />
         <item index="4" class="java.lang.String" itemvalue="PHPUnit.ReceiptBuilderTest" />
       </list>
@@ -406,31 +406,19 @@
       <workItem from="1518515960873" duration="21074000" />
       <workItem from="1518590352731" duration="1153000" />
       <workItem from="1518633947845" duration="241000" />
-      <workItem from="1518783966495" duration="25881000" />
+      <workItem from="1518783966495" duration="27649000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 04m 43s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 30m 58s.xml">
+      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 04m 59s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 35m 42s.xml">
+      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 07m 11s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 11m 43s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 17m 04s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 19m 07s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 19m 44s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 36m 54s.xml">
+      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 23m 45s.xml">
       <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
@@ -441,9 +429,21 @@
     <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 25m 43s.xml">
       <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 13m 36s.xml">
+      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 13m 59s.xml">
+      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 14m 19s.xml">
+      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 14m 35s.xml">
+      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188073000" />
+    <option name="totallyTimeSpent" value="189841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -862,21 +862,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="65" column="8" lean-forward="true" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+        <state relative-caret-position="273">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding>
             <element signature="e#310#346#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="85" column="42" lean-forward="false" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>

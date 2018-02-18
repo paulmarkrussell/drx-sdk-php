@@ -35,13 +35,13 @@ class HTTPClientImpl implements HTTPClient
             $paramString = $paramString.$key."=".urlencode($value);
         }
         $parametrizedUrl = $url.$paramString;
+        $curlOptions = array(
+            CURLOPT_RETURNTRANSFER => true
+        );
         $ch = curl_init($parametrizedUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt_array($ch, $curlOptions);
         $result = curl_exec($ch);
         $info = curl_getinfo($ch);
-//        print("\n");
-//        print_r($info);
-//        print("\n");
         curl_close($ch);
         return new HTTPResponse($result, $info["http_code"], null);
 
@@ -58,16 +58,15 @@ class HTTPClientImpl implements HTTPClient
     {
         set_time_limit(0); // unlimited max execution time
         $file = fopen($filePath, "w+");
-        $options = array(
+        $curlOptions = array(
             CURLOPT_FILE    => $file,
             CURLOPT_TIMEOUT =>  60,
-            CURLOPT_URL     => $url,
             CURLOPT_BINARYTRANSFER => TRUE,
             CURLOPT_FOLLOWLOCATION => TRUE
         );
 
-        $ch = curl_init();
-        curl_setopt_array($ch, $options);
+        $ch = curl_init($url);
+        curl_setopt_array($ch, $curlOptions);
         curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
@@ -82,6 +81,16 @@ class HTTPClientImpl implements HTTPClient
      */
     public function post($url, $body = null, $options = [])
     {
-        // TODO: Implement post() method.
+        $curlOptions = array(
+            CURLOPT_POST => true,
+            CURLOPT_RETURNTRANSFER => true
+        );
+
+        $ch = curl_init($url);
+        curl_setopt_array($ch, $curlOptions);
+        $result = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        curl_close($ch);
+        return new HTTPResponse($result, $info["http_code"], null);
     }
 }

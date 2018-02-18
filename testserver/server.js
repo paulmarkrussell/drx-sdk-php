@@ -7,6 +7,10 @@ app.get("/", function (req, res) {
 	res.send("Hello World");
 })
 
+app.post("/", function (req, res) {
+	res.send("Hello Post");
+})
+
 app.get("/badRequest", function (req, res) {
 	res.status(400);
 	res.send("Bad request");
