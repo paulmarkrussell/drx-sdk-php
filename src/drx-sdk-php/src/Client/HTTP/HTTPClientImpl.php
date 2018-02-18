@@ -22,13 +22,28 @@ class HTTPClientImpl implements HTTPClient
      */
     public function get($url, $params = [], $options = [])
     {
-        $ch = curl_init("https://isitchristmas.com/");
+        $paramString = "";
+        $first = true;
+        foreach ($params as $key=>$value){
+            if ($first) {
+                $paramString = "?";
+                $first = false;
+            } else {
+                $paramString = $paramString."&";
+            }
+            $paramString = $paramString.$key."=".urlencode($value);
+        }
+        $parametrizedUrl = $url.$paramString;
+        $ch = curl_init($parametrizedUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        print("Errors ".curl_errno($ch)."\n");
         $result = curl_exec($ch);
-        print_r(curl_getinfo($ch));
+        $info = curl_getinfo($ch);
+//        print("\n");
+//        print_r($info);
+//        print("\n");
         curl_close($ch);
-        print("\n");
+        return new HTTPResponse($result, $info["http_code"], null);
+
     }
 
     /**
