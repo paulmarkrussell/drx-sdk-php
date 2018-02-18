@@ -70,8 +70,8 @@
       <file leaf-file-name="HTTPClientImpl.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="85" column="42" lean-forward="false" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+            <state relative-caret-position="314">
+              <caret line="87" column="42" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -80,8 +80,8 @@
       <file leaf-file-name="HTTPClientImplTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="405">
+              <caret line="47" column="61" lean-forward="true" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
               <folding>
                 <element signature="e#310#346#0#PHP" expanded="true" />
               </folding>
@@ -93,8 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setReceiptNumber</find>
-      <find>LineItemF</find>
       <find>tax</find>
       <find>taxb</find>
       <find>reca</find>
@@ -123,6 +121,8 @@
       <find>HttpResponse</find>
       <find>az</find>
       <find>testDe</find>
+      <find>goodb</find>
+      <find>goodbye</find>
     </findStrings>
     <replaceStrings>
       <replace>= &quot;&quot;;</replace>
@@ -136,6 +136,7 @@
       <replace>$this-&gt;sender</replace>
       <replace>@return HttpResponse</replace>
       <replace>\HttpResponse</replace>
+      <replace>goodnight</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -275,6 +276,27 @@
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Receipt" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Receipt" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AllowanceCharge" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="drx-sdk-php" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -340,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.HTTPClientImplTest">
+  <component name="RunManager" selected="PHPUnit.HTTPClientImplTest.testPostData">
     <configuration name="HTTPClientImplTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\HTTP\HTTPClientImplTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" scope="Class" />
     </configuration>
@@ -350,26 +372,26 @@
     <configuration name="HTTPClientImplTest.testDownload" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\HTTP\HTTPClientImplTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" method="testDownload" scope="Method" />
     </configuration>
+    <configuration name="HTTPClientImplTest.testPostData" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\HTTP\HTTPClientImplTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" method="testPostData" scope="Method" />
+    </configuration>
     <configuration name="HTTPClientImplTest.testSimpleGet" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\HTTP\HTTPClientImplTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php" method="testSimpleGet" scope="Method" />
     </configuration>
-    <configuration name="ReceiptBuilderTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Dreceiptx\Receipt\ReceiptBuilderTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Receipt/ReceiptBuilderTest.php" scope="Class" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.ReceiptBuilderTest" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testSimpleGet" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testSimpleGet" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testPostData" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testSimpleGet" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ReceiptBuilderTest" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testPostData" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDownload" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testDelete" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.HTTPClientImplTest.testSimpleGet" />
       </list>
     </recent_temporary>
   </component>
@@ -406,44 +428,44 @@
       <workItem from="1518515960873" duration="21074000" />
       <workItem from="1518590352731" duration="1153000" />
       <workItem from="1518633947845" duration="241000" />
-      <workItem from="1518783966495" duration="27649000" />
+      <workItem from="1518783966495" duration="30266000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 30m 58s.xml">
-      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 32m 08s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 35m 42s.xml">
-      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 33m 02s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest - 2018.02.18 at 14h 36m 54s.xml">
-      <configuration name="HTTPClientImplTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 35m 03s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 23m 45s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 35m 43s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 25m 16s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 36m 03s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 12h 25m 43s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 36m 32s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 13m 36s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 37m 29s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 13m 59s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 37m 34s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 14m 19s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 37m 45s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="HTTPClientImplTest_testDownload - 2018.02.18 at 13h 14m 35s.xml">
-      <configuration name="HTTPClientImplTest.testDownload" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="HTTPClientImplTest_testPostData - 2018.02.18 at 17h 45m 55s.xml">
+      <configuration name="HTTPClientImplTest.testPostData" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189841000" />
+    <option name="totallyTimeSpent" value="192458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -488,13 +510,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Receipt/Invoice/InvoiceTotalTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3075">
-          <caret line="128" column="32" lean-forward="false" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Document/DocumentIdentification.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
@@ -862,10 +877,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="175" column="1" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPClientImplTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="405">
+          <caret line="47" column="61" lean-forward="true" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
           <folding>
             <element signature="e#310#346#0#PHP" expanded="true" />
           </folding>
@@ -874,8 +897,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="85" column="42" lean-forward="false" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+        <state relative-caret-position="314">
+          <caret line="87" column="42" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
           <folding />
         </state>
       </provider>

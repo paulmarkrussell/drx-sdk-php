@@ -82,10 +82,15 @@ class HTTPClientImpl implements HTTPClient
     public function post($url, $body = null, $options = [])
     {
         $curlOptions = array(
-            CURLOPT_POST => true,
-            CURLOPT_RETURNTRANSFER => true
-        );
-
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $body,
+            CURLOPT_TIMEOUT =>  60,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'),
+            CURLOPT_TIMEOUT => 5,
+        CURLOPT_CONNECTTIMEOUT => 5
+    );
         $ch = curl_init($url);
         curl_setopt_array($ch, $curlOptions);
         $result = curl_exec($ch);

@@ -1,7 +1,13 @@
 var express = require("express");
 var path = require("path");
 var fs = require("fs");
+var bodyParser = require('body-parser')
+
 var app = express();
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 app.get("/", function (req, res) {
 	res.send("Hello World");
@@ -9,6 +15,13 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
 	res.send("Hello Post");
+})
+
+app.post("/data", function (req, res) {
+	var params = req.body;
+	console.log(req.body);
+	res.setHeader("Content-Type", "application/json");
+	res.send(JSON.stringify({ params: params }));
 })
 
 app.get("/badRequest", function (req, res) {

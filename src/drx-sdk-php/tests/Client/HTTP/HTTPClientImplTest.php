@@ -36,6 +36,18 @@ class HTTPClientImplTest extends TestCase
         $this->assertEquals("Hello Post", $response->getContent());
     }
 
+    public function testPostData()
+    {
+        $client = new HTTPClientImpl();
+        $body = new \stdClass();
+        $body->hello = "world";
+        $body->goodnight = "moon";
+        $response = $client->post("localhost:8081/data", json_encode($body));
+        print_r($response);
+        $returnedParams = json_decode($response->getContent())->params;
+        $this->assertEquals("world", $returnedParams->hello);
+        $this->assertEquals("moon", $returnedParams->goodnight);
+    }
 
     public function testGetStatusCodes()
     {
@@ -53,11 +65,11 @@ class HTTPClientImplTest extends TestCase
     public function testGetWithParams()
     {
         $client = new HTTPClientImpl();
-        $params = array("hello"=>"world", "goodby"=>"moon");
+        $params = array("hello"=>"world", "goodnight"=>"moon");
         $response = $client->get("localhost:8081/params", $params);
         $returnedParams = json_decode($response->getContent())->params;
         $this->assertEquals("world", $returnedParams->hello);
-        $this->assertEquals("moon", $returnedParams->goodby);
+        $this->assertEquals("moon", $returnedParams->goodnight);
     }
 
     public function testDownload()
