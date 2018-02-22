@@ -17,6 +17,7 @@ require_once __DIR__."/../../src/Receipt/Common/Currency.php";
 require_once __DIR__."/../../src/Receipt/Common/Language.php";
 require_once __DIR__."/../../src/Receipt/Common/Country.php";
 require_once __DIR__."/../../src/Receipt/DigitalReceiptBuilder.php";
+require_once __DIR__."/../../src/Receipt/DigitalReceiptContainer.php";
 require_once __DIR__."/../../src/Receipt/Tax/TaxCategory.php";
 require_once __DIR__."/../../src/Receipt/Tax/TaxCode.php";
 
@@ -28,6 +29,7 @@ use Dreceiptx\Receipt\Common\Country;
 use Dreceiptx\Receipt\Common\Currency;
 use Dreceiptx\Receipt\Common\Language;
 use Dreceiptx\Receipt\DigitalReceiptBuilder;
+use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\Tax\TaxCategory;
 use Dreceiptx\Receipt\Tax\TaxCode;
 use PHPUnit\Framework\TestCase;
@@ -55,7 +57,11 @@ class ClientTest extends TestCase
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager,$httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
-        $receipt = $receiptBuilder->build();
+
+        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
+        $json = json_decode($text);
+        $receipt = $json->dRxDigitalReceipt;
+        // $receipt = DigitalReceiptContainer::fromJson($json)->getDRxDigitalReceipt()->jsonSerialize();
         $response = $client->sendProductionReceipt($receipt);
         $this->assertEquals("Hello Post", $response->getContent());
     }

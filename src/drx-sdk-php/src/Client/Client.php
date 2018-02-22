@@ -14,6 +14,8 @@ require_once __DIR__."/../Users/NewUserRegistrationResult.php";
 require_once __DIR__."/../Receipt/DRxDigitalReceipt.php";
 require_once __DIR__."/../Config/ConfigKeys.php";
 require_once __DIR__."/../Config/ConfigManager.php";
+require_once __DIR__."/ExchangeClient.php";
+require_once __DIR__."/ValueExchangeCredentials.php";
 
 use Dreceiptx\Client\Response\MerchantResponse;
 use Dreceiptx\Client\Response\UserListResponse;
@@ -60,8 +62,8 @@ class Client implements ExchangeClient
         if($configManager->exists(ConfigKeys::DirectoryProtocol)) {
             $this->directoryProtocol = $configManager->getConfigValue(ConfigKeys::DirectoryProtocol);
         }
-        $this->exchangeApiHost = $this->exchangeProtocol."://".$this->exchangeApiHost;
-        $this->directoryHost = $this->directoryProtocol."://".$this->directoryHost;
+       // $this->exchangeApiHost = $this->exchangeProtocol."://".$this->exchangeApiHost;
+        //$this->directoryHost = $this->directoryProtocol."://".$this->directoryHost;
 
         $this->exchangeCredentials = new ValueExchangeCredentials(
             $this->validateConfigOption($configManager, ConfigKeys::APIRequesterId),
@@ -181,7 +183,9 @@ class Client implements ExchangeClient
         $container = new DigitalReceiptContainer();
         $container->setDRxDigitalReceipt($receipt);
         $headers = $this->getHeaders();
-        $this->httpClient->post($this->exchangeApiHost."/receipt", $container->jsonSerialize(), $headers);
+        $response = $this->httpClient->post($this->exchangeApiHost."/receipt", json_encode($container->jsonSerialize()), $headers);
+        print_r($response);
+        return $response;
     }
 
     /**
@@ -262,7 +266,13 @@ class Client implements ExchangeClient
     }
 
     private function getHeaders() {
-        $headers = [];
-        array_push();
+        $headers = array();
+        array_push($headers, "x-drx-receipt-type: production");
+        array_push($headers, "x-drx-version: 1.7.0");
+        array_push($headers, "x-drx-requester: requesterId");
+        array_push($headers, "x-drx-timestamp: 12345678910");
+        array_push($headers, "x-drx-receipt-type: production");
+        array_push($headers, "Content-Type: application/json");
+        return $headers;
     }
 }

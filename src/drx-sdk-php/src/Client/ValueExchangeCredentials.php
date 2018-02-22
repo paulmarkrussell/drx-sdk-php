@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Client;
 
+require_once __DIR__."/ExchangeCredentials.php";
 
 class ValueExchangeCredentials implements ExchangeCredentials
 {
