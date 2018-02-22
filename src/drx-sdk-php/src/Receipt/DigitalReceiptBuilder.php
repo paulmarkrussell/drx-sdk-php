@@ -66,7 +66,7 @@ class DigitalReceiptBuilder
         if($configuration->exists(ConfigKeys::ReceiptVersion)) {
             $header->setTypeVersion($configuration->getConfigValue(ConfigKeys::ReceiptVersion));
         }
-        $header->setCreationDateAndTime(date("Y-m-d\TH:i:sO"));
+        $header->setCreationDateAndTime(date_create());
 
         $this->receipt->setStandardBusinessDocumentHeader($header);
 
@@ -541,7 +541,6 @@ class DigitalReceiptBuilder
      */
     public function build()
     {
-        setDRxDigitalReceipt($this->receipt);
         return $this->receipt;
     }
 }
