@@ -31,8 +31,8 @@ interface HTTPClient
     /**
      * @param string $url
      * @param string $body
-     * @param string[] $options
+     * @param string[] $headers
      * @return HTTPResponse
      */
-    public function post($url, $body = null, $options = []);
+    public function post($url, $body = null, $headers = []);
 }

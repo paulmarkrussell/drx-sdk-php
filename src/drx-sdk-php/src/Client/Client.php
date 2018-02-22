@@ -48,7 +48,7 @@ class Client implements ExchangeClient
      * Client constructor.
      * @param ConfigManager $configManager
      */
-    public function __construct($configManager) {
+    public function __construct($configManager, $httpClient) {
         $this->exchangeApiHost = $this->validateConfigOption($configManager, ConfigKeys::ExchangeHost);
         $this->directoryHost = $this->validateConfigOption($configManager, ConfigKeys::DirectoryHost);
         $this->receiptVersion = $configManager->getConfigValue(ConfigKeys::ReceiptVersion);
@@ -68,6 +68,7 @@ class Client implements ExchangeClient
             $this->validateConfigOption($configManager, ConfigKeys::APIKey),
             $this->validateConfigOption($configManager, ConfigKeys::APISecret)
         );
+        $this->httpClient = $httpClient;
     }
 
     /**
@@ -132,7 +133,7 @@ class Client implements ExchangeClient
     {
         $encodedIdentifier = urlencode($identifier);
         $params = ["idtype" => $identifierType];
-        $response = $this->httpClient->get("/users/".$encodedIdentifier, $params);
+        $response = $this->httpClient->get($this->exchangeApiHost."/users/".$encodedIdentifier, $params);
         if($response->getStatus() == 404) {
             return null;
         } else if($response->getStatus() == 200){
@@ -158,7 +159,7 @@ class Client implements ExchangeClient
             array_push(urlencode($identifier));
         }
         $params = ["idtype" => $identifierType, "identifiers" => implode(";", $encodedIdentifiers)];
-        $response = $this->httpClient->get("/user", $params);
+        $response = $this->httpClient->get($this->exchangeApiHost."/user", $params);
         if($response->getStatus() == 404) {
             return null;
         } else if($response->getStatus() == 200){
@@ -177,6 +178,9 @@ class Client implements ExchangeClient
      */
     public function sendProductionReceipt($receipt)
     {
+        $container = new DigitalReceiptContainer();
+        $container->setDRxDigitalReceipt($receipt);
+        $this->httpClient->post($this->exchangeApiHost."/receipt", $container->jsonSerialize());
     }
 
     /**

@@ -536,10 +536,12 @@ class DigitalReceiptBuilder
         return $tax;
     }
 
+    /**
+     * @return DRxDigitalReceipt
+     */
     public function build()
     {
-        $container = new DigitalReceiptContainer();
-        $container->setDRxDigitalReceipt($this->receipt);
-        return $container;
+        setDRxDigitalReceipt($this->receipt);
+        return $this->receipt;
     }
 }

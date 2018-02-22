@@ -36,9 +36,10 @@ class HTTPClientImpl implements HTTPClient
         }
         $parametrizedUrl = $url.$paramString;
         $curlOptions = array(
+            CURLOPT_URL => $parametrizedUrl,
             CURLOPT_RETURNTRANSFER => true
         );
-        $ch = curl_init($parametrizedUrl);
+        $ch = curl_init();
         curl_setopt_array($ch, $curlOptions);
         $result = curl_exec($ch);
         $info = curl_getinfo($ch);
@@ -59,13 +60,14 @@ class HTTPClientImpl implements HTTPClient
         set_time_limit(0); // unlimited max execution time
         $file = fopen($filePath, "w+");
         $curlOptions = array(
+            CURLOPT_URL => $url,
             CURLOPT_FILE    => $file,
             CURLOPT_TIMEOUT =>  60,
             CURLOPT_BINARYTRANSFER => TRUE,
             CURLOPT_FOLLOWLOCATION => TRUE
         );
 
-        $ch = curl_init($url);
+        $ch = curl_init();
         curl_setopt_array($ch, $curlOptions);
         curl_exec($ch);
         $info = curl_getinfo($ch);
@@ -76,22 +78,22 @@ class HTTPClientImpl implements HTTPClient
     /**
      * @param string $url
      * @param string $body
-     * @param string[] $options
+     * @param string[] $headers
      * @return HTTPResponse
      */
-    public function post($url, $body = null, $options = [])
+    public function post($url, $body = null, $headers = [])
     {
         $curlOptions = array(
+            CURLOPT_URL => $url,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => $body,
             CURLOPT_TIMEOUT =>  60,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json'),
+            CURLOPT_HTTPHEADER => $headers,
             CURLOPT_TIMEOUT => 5,
         CURLOPT_CONNECTTIMEOUT => 5
     );
-        $ch = curl_init($url);
+        $ch = curl_init();
         curl_setopt_array($ch, $curlOptions);
         $result = curl_exec($ch);
         $info = curl_getinfo($ch);
