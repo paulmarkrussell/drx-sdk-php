@@ -36,19 +36,32 @@ use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
-    public function testSimplePost()
+//    public function testValidReceipt()
+//    {
+//        $configManager = $this->createTestConfig();
+//        $httpClient = new HTTPClientImpl();
+//        $client = new Client($configManager, $httpClient);
+//        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
+//        $receipt = DigitalReceiptContainer::fromJson(json_decode($text))->getDRxDigitalReceipt()->jsonSerialize();
+//        $response = $client->sendProductionReceipt($receipt);
+//        $this->assertTrue($response->isSuccess());
+//        $this->assertEquals(201, $response->getHttpCode());
+//        $this->assertEquals(null, $response->getExceptionMessage());
+//    }
+
+    public function testInvalidReceipt()
     {
         $configManager = $this->createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
 
-        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
-        $json = json_decode($text);
-        $receipt = $json->dRxDigitalReceipt;
-        $receipt = DigitalReceiptContainer::fromJson($json)->getDRxDigitalReceipt()->jsonSerialize();
+        $receipt = $receiptBuilder->build();
         $response = $client->sendProductionReceipt($receipt);
-        $this->assertEquals("Hello Post", $response->getContent());
+        $this->assertFalse($response->isSuccess());
+        $this->assertEquals(400, $response->getHttpCode());
+        $this->assertEquals(0, $response->getCode());
+        $this->assertEquals("The structure of the data provided didn't comply with the defined schema for version [1.7.0] and method [POST]::\n- object has missing required properties ([\"creationDateTime\",\"documentStatusCode\",\"invoiceIdentification\",\"invoiceTotals\",\"invoiceType\"])\n- object has missing required properties ([\"receiver\",\"sender\"])", $response->getExceptionMessage());
     }
 
     private function createTestConfig() {

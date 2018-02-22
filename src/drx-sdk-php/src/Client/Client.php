@@ -16,8 +16,11 @@ require_once __DIR__."/../Config/ConfigKeys.php";
 require_once __DIR__."/../Config/ConfigManager.php";
 require_once __DIR__."/ExchangeClient.php";
 require_once __DIR__."/ValueExchangeCredentials.php";
+require_once __DIR__."/Response/ReceiptSaveResponse.php";
+
 
 use Dreceiptx\Client\Response\MerchantResponse;
+use Dreceiptx\Client\Response\ReceiptSaveResponse;
 use Dreceiptx\Client\Response\UserListResponse;
 use Dreceiptx\Client\Response\UserResponse;
 use Dreceiptx\Config\ConfigKeys;
@@ -176,7 +179,7 @@ class Client implements ExchangeClient
 
     /**
      * @param DRxDigitalReceipt $receipt
-     * @return string
+     * @return ReceiptSaveResponse
      */
     public function sendProductionReceipt($receipt)
     {
@@ -184,8 +187,13 @@ class Client implements ExchangeClient
         $container->setDRxDigitalReceipt($receipt);
         $headers = $this->getHeaders(true);
         $response = $this->httpClient->post($this->exchangeApiHost."/receipt", json_encode($container->jsonSerialize()), $headers);
-        print_r($response);
-        return $response;
+        $responseObject = json_decode($response->getContent());
+        $errorMessage = $response->getErrorMessage();
+        if(isset($responseObject->exceptionMessage)) {
+            $errorMessage = $responseObject->exceptionMessage;
+        }
+        $result = new ReceiptSaveResponse($responseObject->success, $response->getStatus(), $responseObject->code, $errorMessage);
+        return $result;
     }
 
     /**

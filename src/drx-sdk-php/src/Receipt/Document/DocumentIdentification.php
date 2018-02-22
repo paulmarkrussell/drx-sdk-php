@@ -91,7 +91,7 @@ class DocumentIdentification implements \JsonSerializable
     }
 
     /**
-     * @param boolean $multipleType
+     * @param string $multipleType
      */
     public function setMultipleType($multipleType)
     {
@@ -99,7 +99,7 @@ class DocumentIdentification implements \JsonSerializable
     }
 
     /**
-     * @return boolean
+     * @return string
      */
     public function getMultipleType()
     {

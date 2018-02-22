@@ -162,6 +162,7 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
         $this->documentIdentification->setTypeVersion($typeVersion);
     }
 
+    /** @param \DateTime $dateTime */
     public function setCreationDateAndTime($dateTime) {
         if ($this->documentIdentification == null) {
             $this->documentIdentification = new DocumentIdentification();

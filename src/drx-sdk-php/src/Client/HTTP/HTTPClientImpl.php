@@ -100,13 +100,6 @@ class HTTPClientImpl implements HTTPClient
         $result = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
-        print("\n");
-        print_r($body);
-        print("\n");
-        print_r($result);
-        print("\n");
-        print_r($info);
-        print("\n");
         return new HTTPResponse($result, $info["http_code"], null);
     }
 }
