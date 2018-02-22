@@ -21,7 +21,7 @@ class HTTPClientImpl implements HTTPClient
      * @param string[] $options
      * @return HTTPResponse
      */
-    public function get($url, $params = [], $options = [])
+    public function get($url, $params =  array(), $headers =  array())
     {
         $paramString = "";
         $first = true;
@@ -37,7 +37,8 @@ class HTTPClientImpl implements HTTPClient
         $parametrizedUrl = $url.$paramString;
         $curlOptions = array(
             CURLOPT_URL => $parametrizedUrl,
-            CURLOPT_RETURNTRANSFER => true
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => $headers
         );
         $ch = curl_init();
         curl_setopt_array($ch, $curlOptions);
@@ -55,7 +56,7 @@ class HTTPClientImpl implements HTTPClient
      * @param string[] $options
      * @return HTTPFileResponse
      */
-    public function download($url, $filePath, $params = [], $options = [])
+    public function download($url, $filePath, $params =  array(), $headers = array())
     {
         set_time_limit(0); // unlimited max execution time
         $file = fopen($filePath, "w+");
@@ -63,6 +64,7 @@ class HTTPClientImpl implements HTTPClient
             CURLOPT_URL => $url,
             CURLOPT_FILE    => $file,
             CURLOPT_TIMEOUT =>  60,
+            CURLOPT_HTTPHEADER => $headers,
             CURLOPT_BINARYTRANSFER => TRUE,
             CURLOPT_FOLLOWLOCATION => TRUE
         );
@@ -81,7 +83,7 @@ class HTTPClientImpl implements HTTPClient
      * @param string[] $headers
      * @return HTTPResponse
      */
-    public function post($url, $body = null, $headers = [])
+    public function post($url, $body = null, $headers =  array())
     {
         $curlOptions = array(
             CURLOPT_URL => $url,

@@ -17,7 +17,7 @@ interface HTTPClient
      * @param string[] $options
      * @return HTTPResponse
      */
-    public function get($url, $params = [], $options = []);
+    public function get($url, $params = array(), $options =  array());
 
     /**
      * @param string $url
@@ -26,7 +26,7 @@ interface HTTPClient
      * @param string[] $options
      * @return HTTPFileResponse
      */
-    public function download($url, $folderPath, $params = [], $options = []);
+    public function download($url, $folderPath, $params =  array(), $options =  array());
 
     /**
      * @param string $url
@@ -34,5 +34,5 @@ interface HTTPClient
      * @param string[] $headers
      * @return HTTPResponse
      */
-    public function post($url, $body = null, $headers = []);
+    public function post($url, $body = null, $headers =  array());
 }

@@ -180,7 +180,8 @@ class Client implements ExchangeClient
     {
         $container = new DigitalReceiptContainer();
         $container->setDRxDigitalReceipt($receipt);
-        $this->httpClient->post($this->exchangeApiHost."/receipt", $container->jsonSerialize());
+        $headers = $this->getHeaders();
+        $this->httpClient->post($this->exchangeApiHost."/receipt", $container->jsonSerialize(), $headers);
     }
 
     /**
@@ -258,5 +259,10 @@ class Client implements ExchangeClient
         } else {
             throw new \Exception("Error getting merchant, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
         }
+    }
+
+    private function getHeaders() {
+        $headers = [];
+        array_push();
     }
 }
