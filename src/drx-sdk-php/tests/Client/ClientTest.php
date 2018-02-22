@@ -38,6 +38,20 @@ class ClientTest extends TestCase
 {
     public function testSimplePost()
     {
+        $configManager = $this->createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+        $receiptBuilder = new DigitalReceiptBuilder($configManager);
+
+        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
+        $json = json_decode($text);
+        $receipt = $json->dRxDigitalReceipt;
+        $receipt = DigitalReceiptContainer::fromJson($json)->getDRxDigitalReceipt()->jsonSerialize();
+        $response = $client->sendProductionReceipt($receipt);
+        $this->assertEquals("Hello Post", $response->getContent());
+    }
+
+    private function createTestConfig() {
         $configManager = new MapBasedConfigManager();
         $configManager->setConfigValue(ConfigKeys::ExchangeHost, "https://aus-alpha.dreceiptx.net");
         $configManager->setConfigValue(ConfigKeys::DirectoryHost, "https://aus-alpha.dreceiptx.net");
@@ -53,16 +67,6 @@ class ClientTest extends TestCase
         $configManager->setConfigValue(ConfigKeys::DefaultCurrency, Currency::AustralianDollar);
         $configManager->setConfigValue(ConfigKeys::DefaultTaxCategory, TaxCategory::APPLICABLE);
         $configManager->setConfigValue(ConfigKeys::DefaultTaxCode, TaxCode::GoodsAndServicesTax);
-
-        $httpClient = new HTTPClientImpl();
-        $client = new Client($configManager,$httpClient);
-        $receiptBuilder = new DigitalReceiptBuilder($configManager);
-
-        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
-        $json = json_decode($text);
-        $receipt = $json->dRxDigitalReceipt;
-        // $receipt = DigitalReceiptContainer::fromJson($json)->getDRxDigitalReceipt()->jsonSerialize();
-        $response = $client->sendProductionReceipt($receipt);
-        $this->assertEquals("Hello Post", $response->getContent());
+        return $configManager;
     }
 }

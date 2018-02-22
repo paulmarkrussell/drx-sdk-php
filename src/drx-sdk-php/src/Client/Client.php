@@ -182,7 +182,7 @@ class Client implements ExchangeClient
     {
         $container = new DigitalReceiptContainer();
         $container->setDRxDigitalReceipt($receipt);
-        $headers = $this->getHeaders();
+        $headers = $this->getHeaders(true);
         $response = $this->httpClient->post($this->exchangeApiHost."/receipt", json_encode($container->jsonSerialize()), $headers);
         print_r($response);
         return $response;
@@ -265,13 +265,16 @@ class Client implements ExchangeClient
         }
     }
 
-    private function getHeaders() {
+    private function getHeaders($isProduction) {
+        $micro_date = microtime();
+        $date_array = explode(" ",$micro_date);
+        $timestamp = $date_array[1];
+
         $headers = array();
-        array_push($headers, "x-drx-receipt-type: production");
-        array_push($headers, "x-drx-version: 1.7.0");
-        array_push($headers, "x-drx-requester: requesterId");
-        array_push($headers, "x-drx-timestamp: 12345678910");
-        array_push($headers, "x-drx-receipt-type: production");
+        array_push($headers, "x-drx-receipt-type: ".($isProduction?"production":"dryRun"));
+        array_push($headers, "x-drx-version: ".$this->receiptVersion);
+        array_push($headers, "x-drx-requester: ".$this->exchangeCredentials->getRequestId());
+        array_push($headers, "x-drx-timestamp: ".$timestamp);
         array_push($headers, "Content-Type: application/json");
         return $headers;
     }
