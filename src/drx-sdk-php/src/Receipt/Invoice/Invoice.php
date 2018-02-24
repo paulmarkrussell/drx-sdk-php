@@ -379,6 +379,9 @@ class Invoice implements \JsonSerializable
         return $this->salesOrder;
     }
 
+    public function recalculate() {
+        $this->calculateTotals();
+    }
     /**
      * @return InvoiceSummary
      */

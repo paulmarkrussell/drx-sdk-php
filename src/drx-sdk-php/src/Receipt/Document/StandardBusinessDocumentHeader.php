@@ -26,21 +26,21 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
     /**
      * @return StandardBusinessDocumentHeader
      */
-    public static function create() {
+    public static function create($sender, $receiver1, $receiver2) {
         $header = new StandardBusinessDocumentHeader();
 
         $merchant = new DocumentOwner();
-        $merchantIdentifier = DocumentOwnerIdentification::create("GS1", null);
+        $merchantIdentifier = DocumentOwnerIdentification::create("GS1", $sender);
         $merchant->setIdentifier($merchantIdentifier);
         $header->addSender($merchant);
 
         $dRx = new DocumentOwner();
-        $dRxIdentifier = DocumentOwnerIdentification::create("GS1", null);
+        $dRxIdentifier = DocumentOwnerIdentification::create("GS1", $receiver1);
         $dRx->setIdentifier($dRxIdentifier);
         $header->addReceiver($dRx);
 
         $user = new DocumentOwner();
-        $userIdentifier = DocumentOwnerIdentification::create("dRx", null);
+        $userIdentifier = DocumentOwnerIdentification::create("dRx", $receiver2);
         $user->setIdentifier($userIdentifier);
         $header->addReceiver($user);
 

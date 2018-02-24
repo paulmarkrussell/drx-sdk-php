@@ -18,6 +18,7 @@ use Dreceiptx\Receipt\AllowanceCharge\SettlementType;
 use Dreceiptx\Receipt\Common\ContactType;
 use Dreceiptx\Receipt\Common\LocationInformation;
 use Dreceiptx\Receipt\Common\TransactionalParty;
+use Dreceiptx\Receipt\Document\DocumentIdentification;
 use Dreceiptx\Receipt\Document\ReceiptContact;
 use Dreceiptx\Receipt\Document\ReceiptContactType;
 use Dreceiptx\Receipt\Document\StandardBusinessDocumentHeader;
@@ -36,6 +37,7 @@ class DigitalReceiptBuilder
      */
     private $receipt;
 
+    private $receiptVersion = "1.7.0";
     private $defaultCountry;
     private $defaultLanguage;
     private $defaultCurrency;
@@ -56,7 +58,8 @@ class DigitalReceiptBuilder
         $this->defaultTaxCode = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCode);
 
         $this->receipt = new DRxDigitalReceipt();
-        $header = new StandardBusinessDocumentHeader();
+        // TODO where do these values come from?
+        $header = StandardBusinessDocumentHeader::create("aus_concierge", "9377778071234", "UATAUSBETAUSR14757188985451189");
         if($configuration->exists(ConfigKeys::dRxGLN)) {
             $header->setdRxGLN($configuration->getConfigValue(ConfigKeys::dRxGLN));
         }
@@ -64,7 +67,7 @@ class DigitalReceiptBuilder
             $header->setMerchantGLN($configuration->getConfigValue(ConfigKeys::MerchantGLN));
         }
         if($configuration->exists(ConfigKeys::ReceiptVersion)) {
-            $header->setTypeVersion($configuration->getConfigValue(ConfigKeys::ReceiptVersion));
+            $this->receiptVersion =$this->validateConfigOption($configuration, ConfigKeys::ReceiptVersion);
         }
         $header->setCreationDateAndTime(date_create());
 
@@ -216,6 +219,11 @@ class DigitalReceiptBuilder
             $this->receipt->getStandardBusinessDocumentHeader()->getDocumentIdentification()->setInstanceIdentifier($number);
         }
         return $this;
+    }
+
+    public function setDocumentIdentification($type, $id, $multipleType, $creationDate){
+        $this->receipt->getStandardBusinessDocumentHeader()->setDocumentIdentification(
+            DocumentIdentification::create($this->receiptVersion, $type,$id, $multipleType,$creationDate));
     }
 
     public function setDespatchInformation($despatchInformation) {
@@ -510,6 +518,13 @@ class DigitalReceiptBuilder
         return $this;
     }
 
+    public function setDocumentStatusCode($statusCode) {
+        $this->receipt->getInvoice()->setDocumentStatusCode($statusCode);
+    }
+
+    public function setInvoiceType($type) {
+        $this->receipt->getInvoice()->setInvoiceType($type);
+    }
     /**
      * @param ConfigManager $configManager
      * @param string $key
@@ -541,6 +556,7 @@ class DigitalReceiptBuilder
      */
     public function build()
     {
+        $this->receipt->getInvoice()->recalculate();
         return $this->receipt;
     }
 }

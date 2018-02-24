@@ -21,8 +21,14 @@ class DocumentIdentification implements \JsonSerializable
     /**
      * @return DocumentIdentification
      */
-    public static function create() {
+    public static function create($typeVersion, $type, $identifier, $multipleType, $creationDate) {
         $identification = new DocumentIdentification();
+        $identification->setStandard("GS1");
+        $identification->setTypeVersion($typeVersion);
+        $identification->setType($type);
+        $identification->setInstanceIdentifier($identifier);
+        $identification->setMultipleType($multipleType);
+        $identification->setCreationDateAndTime($creationDate);
         return $identification;
     }
 

@@ -43,10 +43,40 @@ class ClientTest extends TestCase
         $client = new Client($configManager, $httpClient);
         $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
         $receipt = DigitalReceiptContainer::fromJson(json_decode($text))->getDRxDigitalReceipt()->jsonSerialize();
+        print("\n");
+        print("RECEIPT");
+        print("\n");
+        print_r(json_encode($receipt));
+        print("\n");
         $response = $client->sendProductionReceipt($receipt);
-        $this->assertTrue($response->isSuccess());
         $this->assertEquals(201, $response->getHttpCode());
         $this->assertEquals(null, $response->getExceptionMessage());
+    }
+
+    public function testValidReceiptWithBuilder()
+    {
+        $configManager = $this->createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+        $receiptBuilder = new DigitalReceiptBuilder($configManager);
+
+        $receiptBuilder->setReceiptDateTime(new \DateTime());
+        $receiptBuilder->setDocumentStatusCode("ORIGINAL");
+        $receiptBuilder->setReceiptNumber("1234567");
+        $receiptBuilder->setInvoiceType("TAX_INVOICE");
+        $receiptBuilder->setDocumentIdentification("DIGITALRECEIPT", "1234567", "true", new \DateTime());
+
+        $receipt = $receiptBuilder->build();
+        print("\n");
+        print("RECEIPT");
+        print("\n");
+        print_r(json_encode($receipt));
+        print("\n");
+        $response = $client->sendProductionReceipt($receipt);
+        print_r($response);
+        print("\n");
+        $this->assertEquals(500, $response->getHttpCode());
+        print($response->getExceptionMessage());
     }
 
     public function testInvalidReceipt()
@@ -58,10 +88,9 @@ class ClientTest extends TestCase
 
         $receipt = $receiptBuilder->build();
         $response = $client->sendProductionReceipt($receipt);
-        $this->assertFalse($response->isSuccess());
         $this->assertEquals(400, $response->getHttpCode());
         $this->assertEquals(0, $response->getCode());
-        $this->assertEquals("The structure of the data provided didn't comply with the defined schema for version [1.7.0] and method [POST]::\n- object has missing required properties ([\"creationDateTime\",\"documentStatusCode\",\"invoiceIdentification\",\"invoiceTotals\",\"invoiceType\"])\n- object has missing required properties ([\"receiver\",\"sender\"])", $response->getExceptionMessage());
+        $this->assertEquals("The structure of the data provided didn't comply with the defined schema for version [1.7.0] and method [POST]::\n- object has missing required properties ([\"creationDateTime\",\"documentStatusCode\",\"invoiceIdentification\",\"invoiceType\"])", $response->getExceptionMessage());
     }
 
     private function createTestConfig() {

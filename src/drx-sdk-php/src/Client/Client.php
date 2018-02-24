@@ -192,7 +192,15 @@ class Client implements ExchangeClient
         if(isset($responseObject->exceptionMessage)) {
             $errorMessage = $responseObject->exceptionMessage;
         }
-        $result = new ReceiptSaveResponse($responseObject->success, $response->getStatus(), $responseObject->code, $errorMessage);
+        $success = false;
+        if(isset($responseObject->success)) {
+            $sucess = true;
+        }
+        $code = -1;
+        if(isset($responseObject->code)) {
+            $code = $responseObject->code;
+        }
+        $result = new ReceiptSaveResponse($success, $response->getStatus(), $code, $errorMessage);
         return $result;
     }
 

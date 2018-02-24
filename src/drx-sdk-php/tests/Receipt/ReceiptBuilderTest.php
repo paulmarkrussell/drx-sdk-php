@@ -46,8 +46,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
 {
     public function testEmptyBuilder() {
         $receiptBuilder = new DigitalReceiptBuilder($this->createTestConfig());
-        $container = $receiptBuilder->build();
-        $recepit = $container->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
         $this->assertNotNull($recepit->getStandardBusinessDocumentHeader());
 
         $this->assertEquals(0, count($recepit->getInvoice()->getInvoiceLineItem()));
@@ -66,7 +65,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $receiptBuilder = new DigitalReceiptBuilder($this->createTestConfig());
         $lineItem = LineItem::create("Test brand","Test item","Test description",5,100);
         $receiptBuilder->addLineItem($lineItem);
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals(1, count($recepit->getInvoice()->getInvoiceLineItem()));
         $this->assertEquals(0, count($recepit->getInvoice()->getInvoiceAllowanceCharge()));
@@ -84,7 +83,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $receiptBuilder = new DigitalReceiptBuilder($this->createTestConfig());
         $allowance = TestUtils::createAllowance(100, null);
         $receiptBuilder->addAllowanceOrCharge($allowance);
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals(0, count($recepit->getInvoice()->getInvoiceLineItem()));
         $this->assertEquals(1, count($recepit->getInvoice()->getInvoiceAllowanceCharge()));
@@ -112,7 +111,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $contactOrigin = Contact::create(ContactType::TELEPHONE, "+61 3 7245 6789");
         $receiptBuilder->setOriginAddress($addressOrigin, $contactOrigin);
 
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals(new \DateTime("2017-12-12"), $recepit->getInvoice()->getDespatchInformation()->getEstimatedDeliveryDateTime());
 
@@ -131,7 +130,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $receiptBuilder->addClientPurchasingContact("Purchasing name", "purchase@company.com", null);
         $receiptBuilder->addClientRecipientContact("Recipient name", "recipient@company.com", "+61 2 1234 5678");
 
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals(2, count($recepit->getStandardBusinessDocumentHeader()->getReceiver()));
 
@@ -156,7 +155,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $receiptBuilder->addMerchantCustomerRelationsContact("Customer relations name", "custrel@company.com", null);
         $receiptBuilder->addMerchantDeliveryContact("Delivery name", "delivery@company.com", "+61 2 1234 5678");
 
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals(1, count($recepit->getStandardBusinessDocumentHeader()->getSender()));
 
@@ -187,7 +186,7 @@ class ReceiptBuilderTest extends \PHPUnit\Framework\TestCase
         $receiptBuilder->setSalesOrderReference("Some sales order reference");
         $receiptBuilder->setReceiptNumber("Some receipt number");
 
-        $recepit = $receiptBuilder->build()->getDRxDigitalReceipt();
+        $recepit = $receiptBuilder->build();
 
         $this->assertEquals("Some merchant gln", $recepit->getStandardBusinessDocumentHeader()->getMerchantGLN());
         $this->assertEquals("Some user guid type:Some user guid", $recepit->getStandardBusinessDocumentHeader()->getUserIdentifier());
