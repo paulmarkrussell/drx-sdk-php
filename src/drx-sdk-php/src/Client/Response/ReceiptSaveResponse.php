@@ -19,11 +19,14 @@ class ReceiptSaveResponse
     private $code;
     /** @var string $exceptionMessage */
     private $exceptionMessage;
+    /** @var \stdClass $responseData */
+    private $responseData;
 
-    public function __construct($success, $httpCode, $code, $exceptionMessage)
+    public function __construct($success, $httpCode, $code, $responseData, $exceptionMessage)
     {
         $this->success = $success;
         $this->httpCode = $httpCode;
+        $this->responseData = $responseData;
         $this->code = $code;
         $this->exceptionMessage = $exceptionMessage;
     }
@@ -58,5 +61,13 @@ class ReceiptSaveResponse
     public function getHttpCode()
     {
         return $this->httpCode;
+    }
+
+    /**
+     * @return \stdClass
+     */
+    public function getResponseData()
+    {
+        return $this->responseData;
     }
 }

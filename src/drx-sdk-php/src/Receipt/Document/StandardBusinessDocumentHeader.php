@@ -115,27 +115,30 @@ class StandardBusinessDocumentHeader implements \JsonSerializable
         return $this->documentIdentification;
     }
 
-    public function setMerchantGLN($merchantGLN) {
+    public function setMerchantGLN($authoriy, $merchantGLN) {
         $this->makeSureHasDocumentSender(1);
         $this->sender[0]->getIdentifierNotNull()->setValue($merchantGLN);
+        $this->sender[0]->getIdentifierNotNull()->setAuthority($authoriy);
     }
 
     public function getMerchantGLN() {
         return $this->sender[0]->getIdentifierNotNull()->getValue();
     }
 
-   public function setdRxGLN($dRxGLN) {
+   public function setdRxGLN($authoriy, $dRxGLN) {
        $this->makeSureHasDocumentReceiver(1);
        $this->receiver[0]->getIdentifierNotNull()->setValue($dRxGLN);
+       $this->receiver[0]->getIdentifierNotNull()->setAuthority($authoriy);
     }
 
     public function getdRxGLN() {
         return $this->receiver[0]->getIdentifierNotNull()->getValue();
     }
 
-    public function setUserIdentifier($userIdentifier) {
+    public function setUserIdentifier($authoriy, $userIdentifier) {
         $this->makeSureHasDocumentReceiver(2);
         $this->receiver[1]->getIdentifierNotNull()->setValue($userIdentifier);
+        $this->receiver[1]->getIdentifierNotNull()->setAuthority($authoriy);
     }
 
     public function getUserIdentifier() {

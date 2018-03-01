@@ -187,20 +187,30 @@ class Client implements ExchangeClient
         $container->setDRxDigitalReceipt($receipt);
         $headers = $this->getHeaders(true);
         $response = $this->httpClient->post($this->exchangeApiHost."/receipt", json_encode($container->jsonSerialize()), $headers);
+        print("\n");
+        print_r($response);
+        print("\n");
         $responseObject = json_decode($response->getContent());
+        print("\n");
+        print_r($responseObject);
+        print("\n");
         $errorMessage = $response->getErrorMessage();
         if(isset($responseObject->exceptionMessage)) {
             $errorMessage = $responseObject->exceptionMessage;
         }
         $success = false;
-        if(isset($responseObject->success)) {
-            $sucess = true;
-        }
+        $responseData = null;
         $code = -1;
-        if(isset($responseObject->code)) {
-            $code = $responseObject->code;
+        foreach($responseObject as $key => $value) {
+            if ($key == "success") {
+                $success = $value;
+            } else if ($key == "code") {
+                $code = $value;
+            } else if ($key == "responseData"){
+                $responseData = $value;
+            }
         }
-        $result = new ReceiptSaveResponse($success, $response->getStatus(), $code, $errorMessage);
+        $result = new ReceiptSaveResponse($success, $response->getStatus(), $code, $responseData, $errorMessage);
         return $result;
     }
 

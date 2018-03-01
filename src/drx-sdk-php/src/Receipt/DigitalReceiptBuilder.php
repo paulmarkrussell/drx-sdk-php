@@ -58,13 +58,12 @@ class DigitalReceiptBuilder
         $this->defaultTaxCode = $this->validateConfigOption($configuration, ConfigKeys::DefaultTaxCode);
 
         $this->receipt = new DRxDigitalReceipt();
-        // TODO where do these values come from?
-        $header = StandardBusinessDocumentHeader::create("aus_concierge", "9377778071234", "UATAUSBETAUSR14757188985451189");
+        $header = new StandardBusinessDocumentHeader();
         if($configuration->exists(ConfigKeys::dRxGLN)) {
-            $header->setdRxGLN($configuration->getConfigValue(ConfigKeys::dRxGLN));
+            $header->setdRxGLN("GS1", $configuration->getConfigValue(ConfigKeys::dRxGLN));
         }
         if($configuration->exists(ConfigKeys::MerchantGLN)) {
-            $header->setMerchantGLN($configuration->getConfigValue(ConfigKeys::MerchantGLN));
+            $header->setMerchantGLN("GS1", $configuration->getConfigValue(ConfigKeys::MerchantGLN));
         }
         if($configuration->exists(ConfigKeys::ReceiptVersion)) {
             $this->receiptVersion =$this->validateConfigOption($configuration, ConfigKeys::ReceiptVersion);
@@ -123,13 +122,17 @@ class DigitalReceiptBuilder
     }
 
     public function setMerchantGLN($merchantGLN) {
-        $this->receipt->getStandardBusinessDocumentHeader()->setMerchantGLN($merchantGLN);
+        $this->receipt->getStandardBusinessDocumentHeader()->setMerchantGLN("GS1", $merchantGLN);
         return $this;
     }
 
     public function setUserGUID($type, $value) {
-        $this->receipt->getStandardBusinessDocumentHeader()->setUserIdentifier($type.":".$value);
+        $this->receipt->getStandardBusinessDocumentHeader()->setUserIdentifier("dRx", $type.":".$value);
         return $this;
+    }
+
+    public function setDrxGLN($value) {
+        $this->receipt->getStandardBusinessDocumentHeader()->setdRxGLN("GS1", $value);
     }
 
     public function setMerchatReference($reference) {

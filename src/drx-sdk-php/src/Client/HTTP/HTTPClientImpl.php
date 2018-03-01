@@ -85,6 +85,9 @@ class HTTPClientImpl implements HTTPClient
      */
     public function post($url, $body = null, $headers = array())
     {
+        print ("\n");
+        print_r($body);
+        print ("\n");
         $curlOptions = array(
             CURLOPT_URL => $url,
             CURLOPT_CUSTOMREQUEST => "POST",

@@ -16,6 +16,7 @@ require_once __DIR__."/../../src/Receipt/Common/Country.php";
 require_once __DIR__."/../../src/Receipt/Common/Currency.php";
 require_once __DIR__."/../../src/Receipt/Common/Language.php";
 require_once __DIR__."/../../src/Receipt/Common/Country.php";
+require_once __DIR__."/../../src/Users/UserIdentifierType.php";
 require_once __DIR__."/../../src/Receipt/DigitalReceiptBuilder.php";
 require_once __DIR__."/../../src/Receipt/DigitalReceiptContainer.php";
 require_once __DIR__."/../../src/Receipt/Tax/TaxCategory.php";
@@ -32,6 +33,7 @@ use Dreceiptx\Receipt\DigitalReceiptBuilder;
 use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\Tax\TaxCategory;
 use Dreceiptx\Receipt\Tax\TaxCode;
+use Dreceiptx\Users\UserIdentifierType;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -60,11 +62,7 @@ class ClientTest extends TestCase
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
 
-        $receiptBuilder->setReceiptDateTime(new \DateTime());
-        $receiptBuilder->setDocumentStatusCode("ORIGINAL");
-        $receiptBuilder->setReceiptNumber("1234567");
-        $receiptBuilder->setInvoiceType("TAX_INVOICE");
-        $receiptBuilder->setDocumentIdentification("DIGITALRECEIPT", "1234567", "true", new \DateTime());
+        $this->addHeader($receiptBuilder);
 
         $receipt = $receiptBuilder->build();
         print("\n");
@@ -75,22 +73,21 @@ class ClientTest extends TestCase
         $response = $client->sendProductionReceipt($receipt);
         print_r($response);
         print("\n");
-        $this->assertEquals(500, $response->getHttpCode());
-        print($response->getExceptionMessage());
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(201, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
     }
 
-    public function testInvalidReceipt()
-    {
-        $configManager = $this->createTestConfig();
-        $httpClient = new HTTPClientImpl();
-        $client = new Client($configManager, $httpClient);
-        $receiptBuilder = new DigitalReceiptBuilder($configManager);
+    private function addHeader($receiptBuilder) {
+        $receiptBuilder->setReceiptDateTime(new \DateTime());
+        $receiptBuilder->setDocumentStatusCode("ORIGINAL");
+        $receiptBuilder->setReceiptNumber("1234567");
+        $receiptBuilder->setInvoiceType("TAX_INVOICE");
+        $receiptBuilder->setDocumentIdentification("DIGITALRECEIPT", "1234567", "true", new \DateTime());
 
-        $receipt = $receiptBuilder->build();
-        $response = $client->sendProductionReceipt($receipt);
-        $this->assertEquals(400, $response->getHttpCode());
-        $this->assertEquals(0, $response->getCode());
-        $this->assertEquals("The structure of the data provided didn't comply with the defined schema for version [1.7.0] and method [POST]::\n- object has missing required properties ([\"creationDateTime\",\"documentStatusCode\",\"invoiceIdentification\",\"invoiceType\"])", $response->getExceptionMessage());
+        $receiptBuilder->setMerchantGLN("aus_concierge");
+        $receiptBuilder->setUserGUID(UserIdentifierType::GUID, "UATAUSBETAUSR14757188985451189");
+        $receiptBuilder->setDrxGLN("9377778071234");
     }
 
     private function createTestConfig() {
