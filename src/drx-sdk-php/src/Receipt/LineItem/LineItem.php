@@ -62,6 +62,7 @@ class LineItem implements \JsonSerializable
         $lineItem->setTradeItemDescription($description);
         $lineItem->setInvoicedQuantity($quantity);
         $lineItem->setItemPriceExclusiveAllowancesCharges($price);
+        $lineItem->setCreditLineIndicator(false);
         $lineItem->recalculate();
         return $lineItem;
     }
@@ -246,6 +247,8 @@ class LineItem implements \JsonSerializable
     {
         if($this->transactionalTradeItem == null) {
             $this->transactionalTradeItem = new TransactionalTradeItem();
+            $this->transactionalTradeItem->getTradeItemDescriptionInformationNotNull()->setIsTradeItemAService(false);
+            $this->transactionalTradeItem->getTradeItemDescriptionInformationNotNull()->setIsTradeItemReconditioned(false);
         }
         return $this->transactionalTradeItem;
     }

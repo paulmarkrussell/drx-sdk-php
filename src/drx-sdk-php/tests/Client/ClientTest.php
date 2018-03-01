@@ -19,6 +19,7 @@ require_once __DIR__."/../../src/Receipt/Common/Country.php";
 require_once __DIR__."/../../src/Users/UserIdentifierType.php";
 require_once __DIR__."/../../src/Receipt/DigitalReceiptBuilder.php";
 require_once __DIR__."/../../src/Receipt/DigitalReceiptContainer.php";
+require_once __DIR__."/../../src/Receipt/LineItem/LineItem.php";
 require_once __DIR__."/../../src/Receipt/Tax/TaxCategory.php";
 require_once __DIR__."/../../src/Receipt/Tax/TaxCode.php";
 
@@ -31,31 +32,16 @@ use Dreceiptx\Receipt\Common\Currency;
 use Dreceiptx\Receipt\Common\Language;
 use Dreceiptx\Receipt\DigitalReceiptBuilder;
 use Dreceiptx\Receipt\DigitalReceiptContainer;
+use Dreceiptx\Receipt\LineItem\LineItem;
 use Dreceiptx\Receipt\Tax\TaxCategory;
 use Dreceiptx\Receipt\Tax\TaxCode;
 use Dreceiptx\Users\UserIdentifierType;
 use PHPUnit\Framework\TestCase;
+use SebastianBergmann\Diff\LineTest;
 
 class ClientTest extends TestCase
 {
-    public function testValidReceipt()
-    {
-        $configManager = $this->createTestConfig();
-        $httpClient = new HTTPClientImpl();
-        $client = new Client($configManager, $httpClient);
-        $text = file_get_contents(__DIR__."/../../../../samples/sample01.json");
-        $receipt = DigitalReceiptContainer::fromJson(json_decode($text))->getDRxDigitalReceipt()->jsonSerialize();
-        print("\n");
-        print("RECEIPT");
-        print("\n");
-        print_r(json_encode($receipt));
-        print("\n");
-        $response = $client->sendProductionReceipt($receipt);
-        $this->assertEquals(201, $response->getHttpCode());
-        $this->assertEquals(null, $response->getExceptionMessage());
-    }
-
-    public function testValidReceiptWithBuilder()
+    public function testValidEmptyReceipt()
     {
         $configManager = $this->createTestConfig();
         $httpClient = new HTTPClientImpl();
@@ -77,6 +63,44 @@ class ClientTest extends TestCase
         $this->assertEquals(201, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
     }
+
+    public function testValidReceiptWithLineItem()
+    {
+        $configManager = $this->createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+        $receiptBuilder = new DigitalReceiptBuilder($configManager);
+        $this->addHeader($receiptBuilder);
+
+        $receiptBuilder->addLineItem(LineItem::create("Test brand","Test name","Test description",1,100));
+
+        $receipt = $receiptBuilder->build();
+        print("\n");
+        print("RECEIPT");
+        print("\n");
+        print_r(json_encode($receipt));
+        print("\n");
+        $response = $client->sendProductionReceipt($receipt);
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(201, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+    }
+
+    public function testInvalidReceipt()
+    {
+        $configManager = $this->createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+        $receiptBuilder = new DigitalReceiptBuilder($configManager);
+        $receipt = $receiptBuilder->build();
+        $response = $client->sendProductionReceipt($receipt);
+        $this->assertEquals(400, $response->getHttpCode());
+        $this->assertEquals(0, $response->getCode());
+        $this->assertTrue(strlen($response->getExceptionMessage()) > 0);
+}
+
 
     private function addHeader($receiptBuilder) {
         $receiptBuilder->setReceiptDateTime(new \DateTime());
