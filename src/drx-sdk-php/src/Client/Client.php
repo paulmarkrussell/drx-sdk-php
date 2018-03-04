@@ -164,7 +164,7 @@ class Client implements ExchangeClient
             array_push(urlencode($identifier));
         }
         $params = ["idtype" => $identifierType, "identifiers" => implode(";", $encodedIdentifiers)];
-        $response = $this->httpClient->get($this->exchangeApiHost."/user", $params);
+        $response = $this->httpClient->get($this->directoryHost."/user", $params);
         if($response->getStatus() == 404) {
             return null;
         } else if($response->getStatus() == 200){
@@ -183,10 +183,23 @@ class Client implements ExchangeClient
      */
     public function sendProductionReceipt($receipt)
     {
+        return $this->sendReceipt($receipt, "/receipt", true);
+    }
+
+    /**
+     * @param DRxDigitalReceipt $receipt
+     * @return string
+     */
+    public function sendDryRunReceipt($receipt)
+    {
+        return $this->sendReceipt($receipt, "/labs/dryrun/receipt", false);
+    }
+
+    private function sendReceipt($receipt, $path, $isProduction) {
         $container = new DigitalReceiptContainer();
         $container->setDRxDigitalReceipt($receipt);
-        $headers = $this->getHeaders(true);
-        $response = $this->httpClient->post($this->exchangeApiHost."/receipt", json_encode($container->jsonSerialize()), $headers);
+        $headers = $this->getHeaders($isProduction);
+        $response = $this->httpClient->post($this->exchangeApiHost.$path, json_encode($container->jsonSerialize()), $headers);
         print("\n");
         print_r($response);
         print("\n");
@@ -212,14 +225,7 @@ class Client implements ExchangeClient
         }
         $result = new ReceiptSaveResponse($success, $response->getStatus(), $code, $responseData, $errorMessage);
         return $result;
-    }
 
-    /**
-     * @param DRxDigitalReceipt $receipt
-     * @return string
-     */
-    public function sendDryRunReceipt($receipt)
-    {
     }
 
     /**
@@ -297,7 +303,7 @@ class Client implements ExchangeClient
         $timestamp = $date_array[1];
 
         $headers = array();
-        array_push($headers, "x-drx-receipt-type: ".($isProduction?"production":"dryRun"));
+        array_push($headers, "x-drx-receipt-type: ".($isProduction?"production":"dry-run"));
         array_push($headers, "x-drx-version: ".$this->receiptVersion);
         array_push($headers, "x-drx-requester: ".$this->exchangeCredentials->getRequestId());
         array_push($headers, "x-drx-timestamp: ".$timestamp);

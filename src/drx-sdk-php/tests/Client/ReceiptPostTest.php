@@ -26,33 +26,27 @@ require_once __DIR__."/../../src/Receipt/AllowanceCharge/AllowanceOrChargeType.p
 require_once __DIR__."/../../src/Receipt/AllowanceCharge/AllowanceChargeType.php";
 require_once __DIR__."/../../src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php";
 require_once __DIR__."/../../src/Receipt/AllowanceCharge/SettlementType.php";
+require_once __DIR__."/ClientTestHelper.php";
 
 use Dreceiptx\Client\HTTPClientImpl;
 use Dreceiptx\Client\Client;
-use Dreceiptx\Config\ConfigKeys;
-use Dreceiptx\Config\MapBasedConfigManager;
 use Dreceiptx\Receipt\AllowanceCharge\AllowanceChargeType;
 use Dreceiptx\Receipt\AllowanceCharge\AllowanceOrChargeType;
 use Dreceiptx\Receipt\AllowanceCharge\ReceiptAllowanceCharge;
 use Dreceiptx\Receipt\AllowanceCharge\SettlementType;
-use Dreceiptx\Receipt\Common\Country;
-use Dreceiptx\Receipt\Common\Currency;
-use Dreceiptx\Receipt\Common\Language;
 use Dreceiptx\Receipt\DigitalReceiptBuilder;
-use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\LineItem\LineItem;
 use Dreceiptx\Receipt\Tax\Tax;
 use Dreceiptx\Receipt\Tax\TaxCategory;
 use Dreceiptx\Receipt\Tax\TaxCode;
 use Dreceiptx\Users\UserIdentifierType;
 use PHPUnit\Framework\TestCase;
-use SebastianBergmann\Diff\LineTest;
 
-class ClientTest extends TestCase
+class ReceiptPostTest extends TestCase
 {
     public function testValidEmptyReceipt()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -68,7 +62,7 @@ class ClientTest extends TestCase
 
     public function testValidReceiptWithLineItem()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -85,7 +79,7 @@ class ClientTest extends TestCase
 
     public function testValidReceiptWithLineItemWithTax()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -103,7 +97,7 @@ class ClientTest extends TestCase
 
     public function testValidReceiptWithMultipleLineItems()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -121,7 +115,7 @@ class ClientTest extends TestCase
 
     public function testValidReceiptWithAllowance()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -145,7 +139,7 @@ class ClientTest extends TestCase
 
     public function testValidReceiptWithAllowanceAndTax()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -169,7 +163,7 @@ class ClientTest extends TestCase
 
     public function testInvalidReceipt()
     {
-        $configManager = $this->createTestConfig();
+        $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
         $receiptBuilder = new DigitalReceiptBuilder($configManager);
@@ -178,8 +172,7 @@ class ClientTest extends TestCase
         $this->assertEquals(400, $response->getHttpCode());
         $this->assertEquals(0, $response->getCode());
         $this->assertTrue(strlen($response->getExceptionMessage()) > 0);
-}
-
+    }
 
     private function addHeader($receiptBuilder) {
         $receiptBuilder->setReceiptDateTime(new \DateTime());
@@ -191,24 +184,5 @@ class ClientTest extends TestCase
         $receiptBuilder->setMerchantGLN("aus_concierge");
         $receiptBuilder->setUserGUID(UserIdentifierType::GUID, "UATAUSBETAUSR14757188985451189");
         $receiptBuilder->setDrxGLN("9377778071234");
-    }
-
-    private function createTestConfig() {
-        $configManager = new MapBasedConfigManager();
-        $configManager->setConfigValue(ConfigKeys::ExchangeHost, "https://aus-alpha.dreceiptx.net");
-        $configManager->setConfigValue(ConfigKeys::DirectoryHost, "https://aus-alpha.dreceiptx.net");
-        $configManager->setConfigValue(ConfigKeys::ReceiptVersion, "1.7.0");
-        $configManager->setConfigValue(ConfigKeys::UserVersion, "1.7.0");
-        $configManager->setConfigValue(ConfigKeys::DownloadDirectory, "./");
-        $configManager->setConfigValue(ConfigKeys::APIRequesterId, "requesterId");
-        $configManager->setConfigValue(ConfigKeys::APIKey, "API_KEY");
-        $configManager->setConfigValue(ConfigKeys::APISecret, "API_SECRET");
-
-        $configManager->setConfigValue(ConfigKeys::DefaultCountry, Country::Australia);
-        $configManager->setConfigValue(ConfigKeys::DefaultLanguage, Language::English);
-        $configManager->setConfigValue(ConfigKeys::DefaultCurrency, Currency::AustralianDollar);
-        $configManager->setConfigValue(ConfigKeys::DefaultTaxCategory, TaxCategory::APPLICABLE);
-        $configManager->setConfigValue(ConfigKeys::DefaultTaxCode, TaxCode::GoodsAndServicesTax);
-        return $configManager;
     }
 }
