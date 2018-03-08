@@ -14,10 +14,10 @@ interface HTTPClient
     /**
      * @param string $url
      * @param string[] $params
-     * @param string[] $options
+     * @param string[] $headers
      * @return HTTPResponse
      */
-    public function get($url, $params = array(), $options =  array());
+    public function get($url, $params = array(), $headers =  array());
 
     /**
      * @param string $url

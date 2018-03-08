@@ -8,21 +8,110 @@
 
 namespace Dreceiptx\Client\Response;
 
-
-use Dreceiptx\Users\User;
+require_once __DIR__."/UserData.php";
 
 class UserResponse
 {
     /**
-     * @var User $user
+     * @var boolean $success
      */
-    private $user;
+    private $success;
+    /**
+     * @var int $code
+     */
+    private $code;
+    /**
+     * @var UserData $resopnseData
+     */
+    private $responseData;
 
     /**
-     * @return User
+     * @var int $httpCode
      */
-    public function getUser()
+    private $httpCode;
+
+    /**
+     * @var strimg $exceptionMessage
+     */
+    private $exceptionMessage;
+
+    /**
+     * @param int $code
+     */
+    public function setCode($code)
     {
-        return $this->user;
+        $this->code = $code;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param UserData $responseData
+     */
+    public function setResponseData($responseData)
+    {
+        $this->responseData = $responseData;
+    }
+
+    /**
+     * @return UserData
+     */
+    public function getResponseData()
+    {
+        return $this->responseData;
+    }
+
+    /**
+     * @param bool $success
+     */
+    public function setSuccess($success)
+    {
+        $this->success = $success;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuccess()
+    {
+        return $this->success;
+    }
+
+    /**
+     * @param int $httpCode
+     */
+    public function setHttpCode($httpCode)
+    {
+        $this->httpCode = $httpCode;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHttpCode()
+    {
+        return $this->httpCode;
+    }
+
+    /**
+     * @param strimg $exceptionMessage
+     */
+    public function setExceptionMessage($exceptionMessage)
+    {
+        $this->exceptionMessage = $exceptionMessage;
+    }
+
+    /**
+     * @return strimg
+     */
+    public function getExceptionMessage()
+    {
+        return $this->exceptionMessage;
     }
 }

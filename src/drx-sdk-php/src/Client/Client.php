@@ -17,6 +17,7 @@ require_once __DIR__."/../Config/ConfigManager.php";
 require_once __DIR__."/ExchangeClient.php";
 require_once __DIR__."/ValueExchangeCredentials.php";
 require_once __DIR__."/Response/ReceiptSaveResponse.php";
+require_once __DIR__."/Response/UserResponse.php";
 
 
 use Dreceiptx\Client\Response\MerchantResponse;
@@ -132,19 +133,20 @@ class Client implements ExchangeClient
     /**
      * @param string $identifierType
      * @param string $identifier
-     * @return User
+     * @return UserResponse
      */
     public function searchUser($identifierType, $identifier)
     {
-        $encodedIdentifier = urlencode($identifier);
-        $params = ["idtype" => $identifierType];
-        $response = $this->httpClient->get($this->exchangeApiHost."/users/".$encodedIdentifier, $params);
+        $params = ["idtype" => $identifierType, "identifiers" => $identifier];
+        $response = $this->httpClient->get($this->directoryHost."/user", $params, $this->getHeaders());
         if($response->getStatus() == 404) {
             return null;
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
-            $receipt = $mapper->map(json_decode($response->getContent()), new User());
-            return $receipt;
+            $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
 
         } else {
             throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
@@ -198,7 +200,7 @@ class Client implements ExchangeClient
     private function sendReceipt($receipt, $path, $isProduction) {
         $container = new DigitalReceiptContainer();
         $container->setDRxDigitalReceipt($receipt);
-        $headers = $this->getHeaders($isProduction);
+        $headers = $this->getReceiptHeaders($isProduction);
         $response = $this->httpClient->post($this->exchangeApiHost.$path, json_encode($container->jsonSerialize()), $headers);
         print("\n");
         print_r($response);
@@ -214,13 +216,15 @@ class Client implements ExchangeClient
         $success = false;
         $responseData = null;
         $code = -1;
-        foreach($responseObject as $key => $value) {
-            if ($key == "success") {
-                $success = $value;
-            } else if ($key == "code") {
-                $code = $value;
-            } else if ($key == "responseData"){
-                $responseData = $value;
+        if ($responseObject != null) {
+            foreach ($responseObject as $key => $value) {
+                if ($key == "success") {
+                    $success = $value;
+                } else if ($key == "code") {
+                    $code = $value;
+                } else if ($key == "responseData") {
+                    $responseData = $value;
+                }
             }
         }
         $result = new ReceiptSaveResponse($success, $response->getStatus(), $code, $responseData, $errorMessage);
@@ -297,13 +301,18 @@ class Client implements ExchangeClient
         }
     }
 
-    private function getHeaders($isProduction) {
+    private function getReceiptHeaders($isProduction) {
+        $headers = $this->getHeaders();
+        array_push($headers, "x-drx-receipt-type: ".($isProduction?"production":"dry-run"));
+        return $headers;
+    }
+
+    private function getHeaders() {
         $micro_date = microtime();
         $date_array = explode(" ",$micro_date);
         $timestamp = $date_array[1];
 
         $headers = array();
-        array_push($headers, "x-drx-receipt-type: ".($isProduction?"production":"dry-run"));
         array_push($headers, "x-drx-version: ".$this->receiptVersion);
         array_push($headers, "x-drx-requester: ".$this->exchangeCredentials->getRequestId());
         array_push($headers, "x-drx-timestamp: ".$timestamp);

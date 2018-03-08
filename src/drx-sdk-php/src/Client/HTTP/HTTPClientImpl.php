@@ -32,7 +32,7 @@ class HTTPClientImpl implements HTTPClient
             } else {
                 $paramString = $paramString."&";
             }
-            $paramString = $paramString.$key."=".urlencode($value);
+            $paramString = $paramString.$key."=".$value;
         }
         $parametrizedUrl = $url.$paramString;
         $curlOptions = array(
@@ -40,10 +40,18 @@ class HTTPClientImpl implements HTTPClient
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => $headers
         );
+        print("OPTIONS\n");
+        print_r($curlOptions);
+        print("\n");
         $ch = curl_init();
         curl_setopt_array($ch, $curlOptions);
         $result = curl_exec($ch);
+        print("\n");
+        print_r($result);
+        print("\n");
         $info = curl_getinfo($ch);
+        print_r($info);
+        print("\n");
         curl_close($ch);
         return new HTTPResponse($result, $info["http_code"], null);
 

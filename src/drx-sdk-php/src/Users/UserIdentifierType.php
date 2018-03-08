@@ -12,7 +12,7 @@ namespace Dreceiptx\Users;
 class UserIdentifierType
 {
     const GUID = "GUID";
-    const EMAIL = "Email";
-    const MOBILE = "Mobile";
-    const ACCOR_LE_CLUB = "AccorLeClub";
+    const EMAIL = "email";
+    const MOBILE = "mobile";
+    const ACCOR_LE_CLUB = "accorLeClub";
 }
