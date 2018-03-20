@@ -22,7 +22,6 @@ require_once __DIR__."/Response/UserResponse.php";
 
 use Dreceiptx\Client\Response\MerchantResponse;
 use Dreceiptx\Client\Response\ReceiptSaveResponse;
-use Dreceiptx\Client\Response\UserListResponse;
 use Dreceiptx\Client\Response\UserResponse;
 use Dreceiptx\Config\ConfigKeys;
 use Dreceiptx\Config\ConfigManager;
@@ -145,6 +144,7 @@ class Client implements ExchangeClient
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
             $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setType(UserResponse::TYPE_DIRECTORY_USER);
             $userResponse->setHttpCode($response->getStatus());
             $userResponse->setExceptionMessage($response->getErrorMessage());
             return $userResponse;
@@ -174,6 +174,7 @@ class Client implements ExchangeClient
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
             $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setType(UserResponse::TYPE_USER);
             $userResponse->setHttpCode($response->getStatus());
             $userResponse->setExceptionMessage($response->getErrorMessage());
             return $userResponse;
@@ -201,6 +202,7 @@ class Client implements ExchangeClient
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
             $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setType(UserResponse::TYPE_ACCOUNT_USERS);
             $userResponse->setHttpCode($response->getStatus());
             $userResponse->setExceptionMessage($response->getErrorMessage());
             return $userResponse;
@@ -215,14 +217,14 @@ class Client implements ExchangeClient
     /**
      * @param string $identifierType
      * @param string[] $userIdentifiers
-     * @return User[]
+     * @return UserResponse
      * @throws \JsonMapper_Exception
      */
     public function searchUsers($identifierType, $userIdentifiers)
     {
         $encodedIdentifiers = array();
         foreach ($userIdentifiers as $identifier) {
-            array_push(urlencode($identifier));
+            array_push($encodedIdentifiers, urlencode($identifier));
         }
         $params = ["idtype" => $identifierType, "identifiers" => implode(";", $encodedIdentifiers)];
         $response = $this->httpClient->get($this->directoryHost."/user", $params);
@@ -230,8 +232,11 @@ class Client implements ExchangeClient
             return null;
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
-            $userResponse = $mapper->map(json_decode($response->getContent()), new UserListResponse());
-            return $userResponse->getUsers();
+            $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setType(UserResponse::TYPE_USER_LIST);
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
 
         } else {
             throw new \Exception("Error getting users, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );

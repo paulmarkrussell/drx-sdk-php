@@ -18,8 +18,8 @@
       <file leaf-file-name="Client.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Client.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="192" column="46" lean-forward="true" selection-start-line="192" selection-start-column="46" selection-end-line="192" selection-end-column="46" />
+            <state relative-caret-position="336">
+              <caret line="292" column="0" lean-forward="false" selection-start-line="283" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
                 <element signature="e#642#689#0#PHP" expanded="true" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="ExchangeClient.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="50" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="254">
+              <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
               <folding>
                 <element signature="e#331#374#0#PHP" expanded="true" />
               </folding>
@@ -40,31 +40,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserListResponse.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserListResponse.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserSearchTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="53" column="35" lean-forward="false" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+            <state relative-caret-position="288">
+              <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserIdentifierType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/UserIdentifierType.php">
+      <file leaf-file-name="UserResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            <state relative-caret-position="-394">
+              <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding>
+                <element signature="e#128#162#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPClientImpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPResponse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-139">
+              <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPFileResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPFileResponse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectoryUser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/DirectoryUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="902">
+              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -74,11 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>searchUser</find>
-      <find>setCreationDateAndTime</find>
-      <find>creationDate</find>
-      <find>creationDateTime</find>
-      <find>status</find>
       <find>statusC</find>
       <find>documentStatusCode</find>
       <find>invoice</find>
@@ -104,6 +151,11 @@
       <find>direct</find>
       <find>directoryH</find>
       <find>UserData</find>
+      <find>userlist</find>
+      <find>userlistre</find>
+      <find>userListRes</find>
+      <find>UserH</find>
+      <find>response</find>
     </findStrings>
     <replaceStrings>
       <replace>= &quot;&quot;;</replace>
@@ -123,8 +175,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Config/ConfigManager.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Config/MapBasedConfigManager.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Config/ConfigKeys.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Config/FileBasedConfigManager.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/tests/Config/FileBasedConfigTest.php" />
@@ -142,7 +192,6 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeCredentials.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTPClient.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/HTTPResponse.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/User.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/NewUserRegistrationResult.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Responses/UserResponse.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserGroupResponse.php" />
@@ -171,9 +220,12 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserData.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/UserIdentifierType.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeClient.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/UserHistoryItem.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/DirectoryUser.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Client.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/User.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" />
       </list>
     </option>
   </component>
@@ -326,19 +378,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/drx-sdk-php/vendor/autoload.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Client" />
-      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Client\HTTP" />
-      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Client\HTTP" />
-      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Users" />
-      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Receipt" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Client\Responses" />
       <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Client\HTTP" />
       <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\resources\config" />
       <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests" />
       <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Receipt\Invoice" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Users" />
+      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Client" />
+      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\src\Client\HTTP" />
+      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Client\HTTP" />
+      <recent name="D:\git_local\digitalreceipt\drx-sdk-php\src\drx-sdk-php\tests\Receipt" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -353,36 +405,36 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserSearchTest.testSearchDirectoryUser">
-    <configuration name="ReceiptPostTest.testValidEmptyReceipt" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Test\Client\ReceiptPostTest" directory="$PROJECT_DIR$/drx-sdk-php/tests" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/ReceiptPostTest.php" method="testValidEmptyReceipt" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.UserSearchTest.testSearchUser">
+    <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchDirectoryUserByEmail" scope="Method" />
     </configuration>
-    <configuration name="UserSearchTest.testGetAccountUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testGetAccountUser" scope="Method" />
-    </configuration>
-    <configuration name="UserSearchTest.testSearchDirectoryUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchDirectoryUser" scope="Method" />
+    <configuration name="UserSearchTest.testSearchDirectoryUserByGUID" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchDirectoryUserByGUID" scope="Method" />
     </configuration>
     <configuration name="UserSearchTest.testSearchUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchUser" scope="Method" />
+    </configuration>
+    <configuration name="UserSearchTest.testSearchUserList" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchUserList" scope="Method" />
     </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/drx-sdk-php/tests" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.tests" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.ReceiptPostTest.testValidEmptyReceipt" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testGetAccountUser" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUser" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUserList" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUser" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testGetAccountUser" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ReceiptPostTest.testValidEmptyReceipt" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.tests" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUserList" />
       </list>
     </recent_temporary>
   </component>
@@ -428,44 +480,44 @@
       <workItem from="1520157555360" duration="4533000" />
       <workItem from="1520400841517" duration="9000" />
       <workItem from="1520485203692" duration="2871000" />
-      <workItem from="1521535447897" duration="3533000" />
+      <workItem from="1521535447897" duration="9025000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReceiptPostTest_testValidEmptyReceipt - 2018.03.20 at 09h 49m 12s.xml">
-      <configuration name="ReceiptPostTest.testValidEmptyReceipt" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="UserSearchTest_testSearchDirectoryUserByEmail - 2018.03.20 at 12h 19m 34s.xml">
+      <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="UserSearchTest_testGetAccountUser - 2018.03.20 at 12h 02m 58s.xml">
-      <configuration name="UserSearchTest.testGetAccountUser" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="UserSearchTest_testSearchDirectoryUserByGUID - 2018.03.20 at 12h 16m 51s.xml">
+      <configuration name="UserSearchTest.testSearchDirectoryUserByGUID" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="UserSearchTest_testSearchDirectoryUser - 2018.03.20 at 12h 04m 51s.xml">
-      <configuration name="UserSearchTest.testSearchDirectoryUser" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 11h 37m 29s.xml">
+    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 01m 13s.xml">
       <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 11h 39m 31s.xml">
+    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 02m 13s.xml">
       <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2018.03.08 at 07h 10m 38s.xml">
+    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 04m 12s.xml">
+      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 07m 09s.xml">
+      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 07m 36s.xml">
+      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testSearchUserList - 2018.03.20 at 12h 15m 02s.xml">
+      <configuration name="UserSearchTest.testSearchUserList" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tests - 2018.03.20 at 13h 54m 59s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2018.03.20 at 09h 48m 55s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2018.03.20 at 09h 49m 27s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2018.03.20 at 11h 34m 56s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2018.03.20 at 11h 35m 10s.xml">
+    <history-entry file="tests - 2018.03.20 at 13h 55m 28s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233113000" />
+    <option name="totallyTimeSpent" value="238605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -478,7 +530,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3197832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5483288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -511,20 +563,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Tax/TaxCode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Common/Address.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Receipt/Document/ReceiptContactType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -604,20 +642,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/HTTPMockServerTest.php" />
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/HTTP/error-output.txt" />
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPFileResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Utils/Utils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -759,6 +783,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -774,20 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
           <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -811,40 +822,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="34" column="56" lean-forward="false" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="e#331#374#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="192" column="46" lean-forward="true" selection-start-line="192" selection-start-column="46" selection-end-line="192" selection-end-column="46" />
-          <folding>
-            <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#642#689#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,11 +838,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php">
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="254">
+          <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <element signature="e#331#374#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -872,10 +856,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php">
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/UserHistoryItem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="53" column="35" lean-forward="false" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/DirectoryUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="902">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Users/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClientImpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPFileResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/HTTP/HTTPClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="292" column="0" lean-forward="false" selection-start-line="283" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#642#689#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-394">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding>
+            <element signature="e#128#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding />
         </state>
       </provider>

@@ -51,7 +51,7 @@ use SebastianBergmann\Diff\LineTest;
 
 class UserSearchTest extends TestCase
 {
-    public function testSearchDirectoryUser()
+    public function testSearchDirectoryUserByEmail()
     {
         $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
@@ -66,12 +66,52 @@ class UserSearchTest extends TestCase
         $this->assertEquals("", $response->getExceptionMessage());
     }
 
+    public function testSearchDirectoryUserByGUID()
+    {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->searchUserInDirectory(UserIdentifierType::GUID, "93489790010000000000002439");
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+    }
+
     public function testSearchUser() {
         $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
 
         $response = $client->searchUser(UserIdentifierType::GUID, "93489790010000000000002439");
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+        $this->assertEquals("93489790010000000000002439", $response->getUser()->getGuid());
+        $this->assertEquals("b9RjgzuW5lt1uyvo8waxmOSNcy6DG8G41yz+9RaS51o=", $response->getUser()->getEncodedEmail());
+        $this->assertEquals("****@dreceiptx.net", $response->getUser()->getEmailMask());
+        $this->assertEquals("Active", $response->getUser()->getStatus());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $response->getUser()->getRms());
+
+        $this->assertEquals("1", count($response->getUser()->getHistory()));
+        $this->assertEquals("1514972922000", $response->getUser()->getHistory()[0]->getDateTime());
+        $this->assertEquals("Initial User registration", $response->getUser()->getHistory()[0]->getNote());
+        $this->assertEquals("System", $response->getUser()->getHistory()[0]->getSource());
+        $this->assertEquals(true, $response->getUser()->getHistory()[0]->getInternal());
+    }
+
+    public function testSearchUserList() {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->searchUsers(UserIdentifierType::GUID, ["93489790010000000000002439", "93489790010000000000002187", "93489790010000000000002231"]);
         print("\n");
         print_r($response);
         print("\n");

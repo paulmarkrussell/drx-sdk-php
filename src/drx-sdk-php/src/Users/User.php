@@ -8,53 +8,30 @@
 
 namespace Dreceiptx\Users;
 
+require_once __DIR__."/UserHistoryItem.php";
+
 
 class User
 {
-    /** @var string $identifierType */
-    private $identifierType;
-
-    /** @var string $identifier */
-    private $identifier;
-
-    /** @var bool $isRegistered */
-    private $isRegistered = false;
-
-    /** @var string $guid */
     private $guid;
-
-    /** @var string $rms */
+    private $encodedEmail;
+    private $emailMask;
+    private $status;
+    private $history;
     private $rms;
-
-    public static function create($identifierType, $identifier, $guid, $rms)
-    {
-        $ret = new User();
-        $ret->identifierType = $identifierType;
-        $ret->identifier = $identifier;
-        $ret->guid = $guid;
-        $ret->isRegistered = $ret->guid != null;
-        $ret->rms = $rms;
-        return $ret;
-    }
+    private $organisation;
+    private $accont;
 
     /**
-     * @return string
+     * @param mixed $guid
      */
-    public function getIdentifierType()
+    public function setGuid($guid)
     {
-        return $this->identifierType;
+        $this->guid = $guid;
     }
 
     /**
-     * @return string
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getGuid()
     {
@@ -62,7 +39,47 @@ class User
     }
 
     /**
-     * @return string
+     * @param mixed $encodedEmail
+     */
+    public function setEncodedEmail($encodedEmail)
+    {
+        $this->encodedEmail = $encodedEmail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEncodedEmail()
+    {
+        return $this->encodedEmail;
+    }
+
+    /**
+     * @param mixed $emailMask
+     */
+    public function setEmailMask($emailMask)
+    {
+        $this->emailMask = $emailMask;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailMask()
+    {
+        return $this->emailMask;
+    }
+
+    /**
+     * @param mixed $rms
+     */
+    public function setRms($rms)
+    {
+        $this->rms = $rms;
+    }
+
+    /**
+     * @return mixed
      */
     public function getRms()
     {
@@ -70,10 +87,69 @@ class User
     }
 
     /**
-     * @return bool
+     * @param mixed $status
      */
-    public function isRegistered()
+    public function setStatus($status)
     {
-        return $this->isRegistered;
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $accont
+     */
+    public function setAccont($accont)
+    {
+        $this->accont = $accont;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAccont()
+    {
+        return $this->accont;
+    }
+
+    /**
+     * @param mixed $history
+     */
+    public function setHistory($history)
+    {
+        $this->history = [];
+        foreach ($history as $item) {
+            array_push($this->history, new UserHistoryItem($item->dateTime, $item->note, $item->source, $item->internal));
+        }
+    }
+
+    /**
+     * @return UserHistoryItem[]
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
+
+    /**
+     * @param mixed $organization
+     */
+    public function setOrganisation($organisation)
+    {
+        $this->organisation = $organisation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrganisation()
+    {
+        return $this->organisation;
     }
 }
