@@ -147,4 +147,20 @@ class UserSearchTest extends TestCase
         $this->assertEquals("****@dreceiptx.net", $response->getUsers()[0]->getEmailMask());
         $this->assertEquals("Active", $response->getUsers()[0]->getStatus());
     }
+
+    public function testGetAccountUsersLimit() {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->getAccountUsers("UAT-TEST-MYDIGITALRECEIPTS",3);
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+
+        $this->assertEquals(3, count($response->getUsers()));
+    }
 }
