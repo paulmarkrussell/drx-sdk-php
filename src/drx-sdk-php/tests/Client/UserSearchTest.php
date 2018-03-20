@@ -64,6 +64,11 @@ class UserSearchTest extends TestCase
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
+
+        $this->assertEquals("test@dreceiptx.net", $response->getDirectoryUser()->getEmail());
+        $this->assertEquals("93489790010000000000002439", $response->getDirectoryUser()->getGuid());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $response->getDirectoryUser()->getRms());
+
     }
 
     public function testSearchDirectoryUserByGUID()

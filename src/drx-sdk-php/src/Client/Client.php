@@ -145,6 +145,7 @@ class Client implements ExchangeClient
             $mapper = new \JsonMapper();
             $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
             $userResponse->setType(UserResponse::TYPE_DIRECTORY_USER);
+            $userResponse->setIdentificationType($identifierType);
             $userResponse->setHttpCode($response->getStatus());
             $userResponse->setExceptionMessage($response->getErrorMessage());
             return $userResponse;

@@ -8,8 +8,13 @@
 
 namespace Dreceiptx\Client\Response;
 
+require_once __DIR__."/../../Users/DirectoryUser.php";
+require_once __DIR__."/../../Users/User.php";
+require_once __DIR__."/../../Users/UserIdentifierType.php";
+
 use Dreceiptx\Users\DirectoryUser;
 use Dreceiptx\Users\User;
+use Dreceiptx\Users\UserIdentifierType;
 
 class UserResponse
 {
@@ -99,8 +104,12 @@ class UserResponse
         if ($this->type != UserResponse::TYPE_USER) {
             throw new \Exception("Can't get user from response of type ".$this->type);
         }
+        return $this->buildUser($this->responseData);
+    }
+
+    private function buildUser($data) {
         $user = new User();
-        foreach ($this->responseData as $key => $value) {
+        foreach ($data as $key => $value) {
             if ($key == "guid") {
                 $user->setGuid($value);
             } else if ($key == "email") {
@@ -132,15 +141,8 @@ class UserResponse
         }
         $users = [];
         foreach ($this->responseData->users as $responseUser) {
-            $user = new User();
-            $user->setGuid($responseUser->guid);
-            $user->setEncodedEmail($responseUser->email);
-            $user->setEmailMask($responseUser->emailMask);
-            $user->setStatus($responseUser->status);
-            $user->setHistory($responseUser->history);
+            $user = $this->buildUser($responseUser);
             $user->setAccont($this->responseData->accountId);
-            $user->setRms($responseUser->rms);
-            $user->setOrganization($responseUser->organisation);
             array_push($users, $user);
         }
         return $users;
@@ -154,6 +156,19 @@ class UserResponse
         if ($this->type != UserResponse::TYPE_DIRECTORY_USER) {
             throw new \Exception("Can't get directory user from response of type ".$this->type);
         }
+        foreach ($this->responseData->userIdentifiers as $id => $data) {
+            $user = DirectoryUser::create($data);
+            if ($this->identificationType == UserIdentifierType::GUID){
+                $user->setGuid($id);
+            } else if ($this->identificationType == UserIdentifierType::EMAIL){
+                $user->setEmail($id);
+            } else if ($this->identificationType == UserIdentifierType::ACCOR_LE_CLUB){
+                $user->setAccorLeClub($id);
+            } else if ($this->identificationType == UserIdentifierType::MOBILE){
+                $user->setMobile($id);
+            }
+        }
+        return $user;
     }
 
     /**
