@@ -98,6 +98,7 @@ class UserSearchTest extends TestCase
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
+
         $this->assertEquals("93489790010000000000002439", $response->getUser()->getGuid());
         $this->assertEquals("b9RjgzuW5lt1uyvo8waxmOSNcy6DG8G41yz+9RaS51o=", $response->getUser()->getEncodedEmail());
         $this->assertEquals("****@dreceiptx.net", $response->getUser()->getEmailMask());
@@ -125,7 +126,7 @@ class UserSearchTest extends TestCase
         $this->assertEquals("", $response->getExceptionMessage());
     }
 
-    public function testGetAccountUser() {
+    public function testGetAccountUsers() {
         $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
@@ -137,5 +138,13 @@ class UserSearchTest extends TestCase
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
+
+        $this->assertEquals(25, count($response->getUsers()));
+
+        $this->assertEquals("93489790010000000000002170", $response->getUsers()[0]->getGuid());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $response->getUsers()[0]->getAccont());
+        $this->assertEquals(null, $response->getUsers()[0]->getOrganisation());
+        $this->assertEquals("****@dreceiptx.net", $response->getUsers()[0]->getEmailMask());
+        $this->assertEquals("Active", $response->getUsers()[0]->getStatus());
     }
 }

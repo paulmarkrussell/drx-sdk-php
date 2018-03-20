@@ -136,13 +136,15 @@ class UserResponse
      * @return User[]
      */
     public function getUsers() {
-        if ($this->type != UserResponse::TYPE_USER_LIST) {
+        if ($this->type != UserResponse::TYPE_USER_LIST && $this->type != UserResponse::TYPE_ACCOUNT_USERS) {
             throw new \Exception("Can't get user list from response of type ".$this->type);
         }
         $users = [];
         foreach ($this->responseData->users as $responseUser) {
             $user = $this->buildUser($responseUser);
-            $user->setAccont($this->responseData->accountId);
+            if ($this->type == UserResponse::TYPE_ACCOUNT_USERS) {
+                $user->setAccont($this->responseData->accountId);
+            }
             array_push($users, $user);
         }
         return $users;

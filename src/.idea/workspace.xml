@@ -31,8 +31,8 @@
       <file leaf-file-name="UserSearchTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="67" column="74" lean-forward="true" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+            <state relative-caret-position="275">
+              <caret line="137" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -41,8 +41,8 @@
       <file leaf-file-name="UserResponse.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="158" column="53" lean-forward="false" selection-start-line="158" selection-start-column="53" selection-end-line="158" selection-end-column="53" />
+            <state relative-caret-position="492">
+              <caret line="149" column="22" lean-forward="true" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="22" />
               <folding>
                 <element signature="e#290#324#0#PHP" expanded="true" />
               </folding>
@@ -124,7 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>-&gt;getDRxDigitalReceipt()</find>
       <find>identification</find>
       <find>identif</find>
       <find>versio</find>
@@ -154,6 +153,7 @@
       <find>getDi</find>
       <find>getUser</find>
       <find>getD</find>
+      <find>getUser()</find>
     </findStrings>
     <replaceStrings>
       <replace>= &quot;&quot;;</replace>
@@ -168,6 +168,7 @@
       <replace>@return HttpResponse</replace>
       <replace>\HttpResponse</replace>
       <replace>goodnight</replace>
+      <replace>getUsers()[1]</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -219,11 +220,11 @@
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/ExchangeClient.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/UserHistoryItem.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/User.php" />
-        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Client.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/UserIdentifierType.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Users/DirectoryUser.php" />
         <option value="$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php" />
+        <option value="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" />
       </list>
     </option>
   </component>
@@ -403,7 +404,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail">
+  <component name="RunManager" selected="PHPUnit.UserSearchTest.testGetAccountUsers">
+    <configuration name="UserSearchTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" scope="Class" />
+    </configuration>
+    <configuration name="UserSearchTest.testGetAccountUsers" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testGetAccountUsers" scope="Method" />
+    </configuration>
     <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchDirectoryUserByEmail" scope="Method" />
     </configuration>
@@ -413,26 +420,20 @@
     <configuration name="UserSearchTest.testSearchUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchUser" scope="Method" />
     </configuration>
-    <configuration name="UserSearchTest.testSearchUserList" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Test\Client\UserSearchTest" file="$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php" method="testSearchUserList" scope="Method" />
-    </configuration>
-    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner directory="$PROJECT_DIR$/drx-sdk-php/tests" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUserList" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testGetAccountUsers" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.tests" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUserList" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testGetAccountUsers" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByEmail" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchDirectoryUserByGUID" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.UserSearchTest.testSearchUser" />
       </list>
     </recent_temporary>
   </component>
@@ -478,16 +479,28 @@
       <workItem from="1520157555360" duration="4533000" />
       <workItem from="1520400841517" duration="9000" />
       <workItem from="1520485203692" duration="2871000" />
-      <workItem from="1521535447897" duration="13026000" />
+      <workItem from="1521535447897" duration="13900000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserSearchTest_testSearchDirectoryUserByEmail - 2018.03.20 at 17h 22m 28s.xml">
-      <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="UserSearchTest - 2018.03.20 at 17h 43m 14s.xml">
+      <configuration name="UserSearchTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="UserSearchTest_testSearchDirectoryUserByEmail - 2018.03.20 at 17h 38m 50s.xml">
-      <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="UserSearchTest_testGetAccountUsers - 2018.03.20 at 17h 51m 48s.xml">
+      <configuration name="UserSearchTest.testGetAccountUsers" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testGetAccountUsers - 2018.03.20 at 17h 52m 46s.xml">
+      <configuration name="UserSearchTest.testGetAccountUsers" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testGetAccountUsers - 2018.03.20 at 17h 53m 33s.xml">
+      <configuration name="UserSearchTest.testGetAccountUsers" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testGetAccountUsers - 2018.03.20 at 17h 56m 00s.xml">
+      <configuration name="UserSearchTest.testGetAccountUsers" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="UserSearchTest_testGetAccountUsers - 2018.03.20 at 17h 56m 49s.xml">
+      <configuration name="UserSearchTest.testGetAccountUsers" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="UserSearchTest_testSearchDirectoryUserByEmail - 2018.03.20 at 17h 39m 52s.xml">
       <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" configurationId="PHPUnitRunConfigurationType" />
@@ -501,21 +514,9 @@
     <history-entry file="UserSearchTest_testSearchDirectoryUserByEmail - 2018.03.20 at 17h 42m 11s.xml">
       <configuration name="UserSearchTest.testSearchDirectoryUserByEmail" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="UserSearchTest_testSearchDirectoryUserByGUID - 2018.03.20 at 17h 19m 58s.xml">
-      <configuration name="UserSearchTest.testSearchDirectoryUserByGUID" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 07m 09s.xml">
-      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 07m 36s.xml">
-      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="UserSearchTest_testSearchUser - 2018.03.20 at 14h 28m 59s.xml">
-      <configuration name="UserSearchTest.testSearchUser" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242606000" />
+    <option name="totallyTimeSpent" value="243480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -923,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/src/Client/Response/UserResponse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="158" column="53" lean-forward="false" selection-start-line="158" selection-start-column="53" selection-end-line="158" selection-end-column="53" />
+        <state relative-caret-position="492">
+          <caret line="149" column="22" lean-forward="true" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="22" />
           <folding>
             <element signature="e#290#324#0#PHP" expanded="true" />
           </folding>
@@ -933,8 +934,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drx-sdk-php/tests/Client/UserSearchTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="67" column="74" lean-forward="true" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+        <state relative-caret-position="275">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding />
         </state>
       </provider>
