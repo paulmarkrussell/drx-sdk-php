@@ -51,13 +51,41 @@ use SebastianBergmann\Diff\LineTest;
 
 class UserSearchTest extends TestCase
 {
-    public function testAdminUser()
+    public function testSearchDirectoryUser()
     {
         $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
 
-        $response = $client->searchUser(UserIdentifierType::EMAIL, "test@dreceiptx.net");
+        $response = $client->searchUserInDirectory(UserIdentifierType::EMAIL, "test@dreceiptx.net");
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+    }
+
+    public function testSearchUser() {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->searchUser(UserIdentifierType::GUID, "93489790010000000000002439");
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+    }
+
+    public function testGetAccountUser() {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->getAccountUsers("UAT-TEST-MYDIGITALRECEIPTS");
         print("\n");
         print_r($response);
         print("\n");

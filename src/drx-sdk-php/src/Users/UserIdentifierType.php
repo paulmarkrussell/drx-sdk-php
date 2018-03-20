@@ -11,6 +11,7 @@ namespace Dreceiptx\Users;
 
 class UserIdentifierType
 {
+    const ACCOUNT_ID = "acid";
     const GUID = "GUID";
     const EMAIL = "email";
     const MOBILE = "mobile";

@@ -30,6 +30,7 @@ use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\DRxDigitalReceipt;
 use Dreceiptx\Users\NewUser;
 use Dreceiptx\Users\User;
+use Dreceiptx\Users\UserIdentifierType;
 
 class Client implements ExchangeClient
 {
@@ -135,7 +136,7 @@ class Client implements ExchangeClient
      * @param string $identifier
      * @return UserResponse
      */
-    public function searchUser($identifierType, $identifier)
+    public function searchUserInDirectory($identifierType, $identifier)
     {
         $params = ["idtype" => $identifierType, "identifiers" => $identifier];
         $response = $this->httpClient->get($this->directoryHost."/user", $params, $this->getHeaders());
@@ -152,6 +153,64 @@ class Client implements ExchangeClient
             throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
         }
     }
+
+    /**
+     * @param string $identifierType
+     * @param string $identifier
+     * @return UserResponse
+     */
+    public function searchUser($identifierType, $identifier)
+    {
+        if ($identifierType == UserIdentifierType::GUID) {
+            $url = $this->exchangeApiHost."/user/".$identifier;
+            $params = [];
+        } else {
+            $url = $this->exchangeApiHost."/user";
+            $params = ["idtype" => $identifierType, "identifiers" => $identifier];
+        }
+        $response = $this->httpClient->get($url, $params, $this->getHeaders());
+        if($response->getStatus() == 404) {
+            return null;
+        } else if($response->getStatus() == 200){
+            $mapper = new \JsonMapper();
+            $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
+
+        } else {
+            throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
+        }
+    }
+
+    /**
+     * @param string $accountId
+     * @param int $count
+     * @return UserResponse
+     */
+    public function getAccountUsers($accountId, $count = null)
+    {
+        $url = $this->exchangeApiHost."/user";
+        $params = ["acid" => $accountId];
+        if ($count != null) {
+            $params["ps"] = $count;
+        }
+        $response = $this->httpClient->get($url, $params, $this->getHeaders());
+        if($response->getStatus() == 404) {
+            return null;
+        } else if($response->getStatus() == 200){
+            $mapper = new \JsonMapper();
+            $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
+
+        } else {
+            throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
+        }
+    }
+
+
 
     /**
      * @param string $identifierType

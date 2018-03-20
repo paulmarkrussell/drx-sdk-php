@@ -13,6 +13,7 @@ require_once __DIR__."/../Users/NewUser.php";
 require_once __DIR__."/../Users/NewUserRegistrationResult.php";
 require_once __DIR__."/../Receipt/DRxDigitalReceipt.php";
 
+use Dreceiptx\Client\Response\UserResponse;
 use Dreceiptx\Receipt\DRxDigitalReceipt;
 use Dreceiptx\Users\NewUser;
 use Dreceiptx\Users\User;
@@ -23,9 +24,16 @@ interface ExchangeClient
     /**
      * @param string $identifierType
      * @param string $identifier
-     * @return User
+     * @return UserResponse
      */
     public function searchUser($identifierType, $identifier);
+
+    /**
+     * @param string $identifierType
+     * @param string $identifier
+     * @return UserResponse
+     */
+    public function searchUserInDirectory($identifierType, $identifier);
 
     /**
      * @param string $identifierType
@@ -33,6 +41,13 @@ interface ExchangeClient
      * @return User[]
      */
     public function searchUsers($identifierType, $userIdentifiers);
+
+    /**
+     * @param string $accountId
+     * @param int $count
+     * @return UserResponse
+     */
+    public function getAccountUsers($accountId, $count);
 
     /**
      * @param DRxDigitalReceipt $receipt

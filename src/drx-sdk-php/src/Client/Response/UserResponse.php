@@ -8,8 +8,6 @@
 
 namespace Dreceiptx\Client\Response;
 
-require_once __DIR__."/UserData.php";
-
 class UserResponse
 {
     /**
@@ -20,9 +18,7 @@ class UserResponse
      * @var int $code
      */
     private $code;
-    /**
-     * @var UserData $resopnseData
-     */
+
     private $responseData;
 
     /**
@@ -51,17 +47,11 @@ class UserResponse
         return $this->code;
     }
 
-    /**
-     * @param UserData $responseData
-     */
     public function setResponseData($responseData)
     {
         $this->responseData = $responseData;
     }
 
-    /**
-     * @return UserData
-     */
     public function getResponseData()
     {
         return $this->responseData;
