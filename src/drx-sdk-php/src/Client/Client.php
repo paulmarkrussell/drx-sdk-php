@@ -18,6 +18,7 @@ require_once __DIR__."/ExchangeClient.php";
 require_once __DIR__."/ValueExchangeCredentials.php";
 require_once __DIR__."/Response/ReceiptSaveResponse.php";
 require_once __DIR__."/Response/UserResponse.php";
+require_once __DIR__."/Response/MerchantResponse.php";
 
 
 use Dreceiptx\Client\Response\MerchantResponse;
@@ -353,6 +354,12 @@ class Client implements ExchangeClient
         }
     }
 
+    /**
+     * @param $merchantId
+     * @return null|MerchantResponse
+     * @throws \Exception
+     * @throws \JsonMapper_Exception
+     */
     public function lookupMerchant($merchantId)
     {
         $response = $this->httpClient->get("https://merchants.dreceiptx.net/location/".$merchantId."/info.json");
@@ -360,11 +367,13 @@ class Client implements ExchangeClient
             return null;
         } else if($response->getStatus() == 200){
             $mapper = new \JsonMapper();
-            $merchant = $mapper->map(json_decode($response->getContent()), new MerchantResponse());
-            return $merchant->geTMerchant();
+            $merchantResponse = $mapper->map(json_decode($response->getContent()), new MerchantResponse());
+            $merchantResponse->setHttpCode($response->getStatus());
+            $merchantResponse->setExceptionMessage($response->getErrorMessage());
+            return $merchantResponse;
 
         } else {
-            throw new \Exception("Error getting merchant, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
+            throw new \Exception("Error getting users, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
         }
     }
 
