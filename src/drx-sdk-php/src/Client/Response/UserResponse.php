@@ -104,10 +104,10 @@ class UserResponse
         if ($this->type != UserResponse::TYPE_USER) {
             throw new \Exception("Can't get user from response of type ".$this->type);
         }
-        return $this->buildUser($this->responseData);
+        return UserResponse::buildUser($this->responseData);
     }
 
-    private function buildUser($data) {
+    private static function buildUser($data) {
         $user = new User();
         foreach ($data as $key => $value) {
             if ($key == "guid") {
@@ -136,18 +136,27 @@ class UserResponse
      * @return User[]
      */
     public function getUsers() {
-        if ($this->type != UserResponse::TYPE_USER_LIST && $this->type != UserResponse::TYPE_ACCOUNT_USERS) {
+        if ($this->type != UserResponse::TYPE_ACCOUNT_USERS) {
             throw new \Exception("Can't get user list from response of type ".$this->type);
         }
         $users = [];
         foreach ($this->responseData->users as $responseUser) {
             $user = $this->buildUser($responseUser);
-            if ($this->type == UserResponse::TYPE_ACCOUNT_USERS) {
-                $user->setAccont($this->responseData->accountId);
-            }
+            $user->setAccont($this->responseData->accountId);
             array_push($users, $user);
         }
         return $users;
+    }
+
+    /**
+     * @throws \Exception
+     * @return DirectoryUser[]
+     */
+    public function getDirectoryUsers() {
+        if ($this->type != UserResponse::TYPE_USER_LIST) {
+            throw new \Exception("Can't get directory user list from response of type ".$this->type);
+        }
+        return UserResponse::extractDirectoryUsers($this->responseData, $this->identificationType);
     }
 
     /**
@@ -158,19 +167,30 @@ class UserResponse
         if ($this->type != UserResponse::TYPE_DIRECTORY_USER) {
             throw new \Exception("Can't get directory user from response of type ".$this->type);
         }
-        foreach ($this->responseData->userIdentifiers as $id => $data) {
+        $users = UserResponse::extractDirectoryUsers($this->responseData, $this->identificationType);
+        if (count($users) == 1) {
+            return $users[0];
+        } else {
+            throw new \Exception("Response holds ".count($users)." items, not a single user.");
+        }
+    }
+
+    private static function extractDirectoryUsers($responseData, $identificationType) {
+        $users = [];
+        foreach ($responseData->userIdentifiers as $id => $data) {
             $user = DirectoryUser::create($data);
-            if ($this->identificationType == UserIdentifierType::GUID){
+            if ($identificationType == UserIdentifierType::GUID){
                 $user->setGuid($id);
-            } else if ($this->identificationType == UserIdentifierType::EMAIL){
+            } else if ($identificationType == UserIdentifierType::EMAIL){
                 $user->setEmail($id);
-            } else if ($this->identificationType == UserIdentifierType::ACCOR_LE_CLUB){
+            } else if ($identificationType == UserIdentifierType::ACCOR_LE_CLUB){
                 $user->setAccorLeClub($id);
-            } else if ($this->identificationType == UserIdentifierType::MOBILE){
+            } else if ($identificationType == UserIdentifierType::MOBILE){
                 $user->setMobile($id);
             }
+            array_push($users, $user);
         }
-        return $user;
+        return $users;
     }
 
     /**

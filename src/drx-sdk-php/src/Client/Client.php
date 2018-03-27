@@ -227,7 +227,7 @@ class Client implements ExchangeClient
         foreach ($userIdentifiers as $identifier) {
             array_push($encodedIdentifiers, urlencode($identifier));
         }
-        $params = ["idtype" => $identifierType, "identifiers" => implode(";", $encodedIdentifiers)];
+        $params = ["idtype" => $identifierType, "identifiers" => implode("%3B", $encodedIdentifiers)];
         $response = $this->httpClient->get($this->directoryHost."/user", $params);
         if($response->getStatus() == 404) {
             return null;
@@ -235,6 +235,7 @@ class Client implements ExchangeClient
             $mapper = new \JsonMapper();
             $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
             $userResponse->setType(UserResponse::TYPE_USER_LIST);
+            $userResponse->setIdentificationType($identifierType);
             $userResponse->setHttpCode($response->getStatus());
             $userResponse->setExceptionMessage($response->getErrorMessage());
             return $userResponse;
@@ -303,6 +304,7 @@ class Client implements ExchangeClient
      */
     public function registerNewUser($user)
     {
+        
     }
 
     /**

@@ -124,6 +124,36 @@ class UserSearchTest extends TestCase
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
+        $users = $response->getDirectoryUsers();
+        $this->assertEquals("3", count($users));
+        $this->assertEquals("93489790010000000000002187", $users[0]->getGuid());
+        $this->assertEquals("93489790010000000000002231", $users[1]->getGuid());
+        $this->assertEquals("93489790010000000000002439", $users[2]->getGuid());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $users[0]->getRms());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $users[1]->getRms());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $users[2]->getRms());
+    }
+
+    public function testSearchUserListByEmail() {
+        $configManager = ClientTestHelper::createTestConfig();
+        $httpClient = new HTTPClientImpl();
+        $client = new Client($configManager, $httpClient);
+
+        $response = $client->searchUsers(UserIdentifierType::EMAIL, ["test@dreceiptx.net","test2@dreceiptx.net"]);
+        print("\n");
+        print_r($response);
+        print("\n");
+        $this->assertTrue($response->isSuccess());
+        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals("", $response->getExceptionMessage());
+        $users = $response->getDirectoryUsers();
+        $this->assertEquals("2", count($users));
+        $this->assertEquals("93489790010000000000002262", $users[0]->getGuid());
+        $this->assertEquals("93489790010000000000002439", $users[1]->getGuid());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $users[0]->getRms());
+        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $users[1]->getRms());
+        $this->assertEquals("test2@dreceiptx.net", $users[0]->getEmail());
+        $this->assertEquals("test@dreceiptx.net", $users[1]->getEmail());
     }
 
     public function testGetAccountUsers() {
