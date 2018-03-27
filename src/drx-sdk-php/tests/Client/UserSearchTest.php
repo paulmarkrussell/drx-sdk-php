@@ -78,9 +78,6 @@ class UserSearchTest extends TestCase
         $client = new Client($configManager, $httpClient);
 
         $response = $client->searchUserInDirectory(UserIdentifierType::GUID, "93489790010000000000002439");
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
@@ -91,22 +88,19 @@ class UserSearchTest extends TestCase
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
 
-        $response = $client->searchUser(UserIdentifierType::GUID, "93489790010000000000002439");
-        print("\n");
-        print_r($response);
-        print("\n");
+        $response = $client->searchUser(UserIdentifierType::GUID, "93489790010000000000002033");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
 
-        $this->assertEquals("93489790010000000000002439", $response->getUser()->getGuid());
+        $this->assertEquals("93489790010000000000002033", $response->getUser()->getGuid());
         $this->assertEquals("b9RjgzuW5lt1uyvo8waxmOSNcy6DG8G41yz+9RaS51o=", $response->getUser()->getEncodedEmail());
         $this->assertEquals("****@dreceiptx.net", $response->getUser()->getEmailMask());
         $this->assertEquals("Active", $response->getUser()->getStatus());
-        $this->assertEquals("UAT-TEST-MYDIGITALRECEIPTS", $response->getUser()->getRms());
+        $this->assertEquals("DEV-TEST-RMS", $response->getUser()->getRms());
 
         $this->assertEquals("1", count($response->getUser()->getHistory()));
-        $this->assertEquals("1514972922000", $response->getUser()->getHistory()[0]->getDateTime());
+        $this->assertEquals("1512887196000", $response->getUser()->getHistory()[0]->getDateTime());
         $this->assertEquals("Initial User registration", $response->getUser()->getHistory()[0]->getNote());
         $this->assertEquals("System", $response->getUser()->getHistory()[0]->getSource());
         $this->assertEquals(true, $response->getUser()->getHistory()[0]->getInternal());
@@ -118,9 +112,6 @@ class UserSearchTest extends TestCase
         $client = new Client($configManager, $httpClient);
 
         $response = $client->searchUsers(UserIdentifierType::GUID, ["93489790010000000000002439", "93489790010000000000002187", "93489790010000000000002231"]);
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
@@ -140,9 +131,6 @@ class UserSearchTest extends TestCase
         $client = new Client($configManager, $httpClient);
 
         $response = $client->searchUsers(UserIdentifierType::EMAIL, ["test@dreceiptx.net","test2@dreceiptx.net"]);
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
@@ -162,9 +150,6 @@ class UserSearchTest extends TestCase
         $client = new Client($configManager, $httpClient);
 
         $response = $client->getAccountUsers("UAT-TEST-MYDIGITALRECEIPTS");
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
@@ -184,9 +169,6 @@ class UserSearchTest extends TestCase
         $client = new Client($configManager, $httpClient);
 
         $response = $client->getAccountUsers("UAT-TEST-MYDIGITALRECEIPTS",3);
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
         $this->assertEquals(200, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
