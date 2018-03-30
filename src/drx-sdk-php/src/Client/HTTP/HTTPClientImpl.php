@@ -93,7 +93,7 @@ class HTTPClientImpl implements HTTPClient
      */
     public function post($url, $body = null, $headers = array())
     {
-        print ("\n");
+        print ("\nBODY\n");
         print_r($body);
         print ("\n");
         $curlOptions = array(

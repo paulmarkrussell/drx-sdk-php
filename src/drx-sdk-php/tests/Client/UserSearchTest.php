@@ -17,15 +17,6 @@ require_once __DIR__."/../../src/Receipt/Common/Currency.php";
 require_once __DIR__."/../../src/Receipt/Common/Language.php";
 require_once __DIR__."/../../src/Receipt/Common/Country.php";
 require_once __DIR__."/../../src/Users/UserIdentifierType.php";
-require_once __DIR__."/../../src/Receipt/DigitalReceiptBuilder.php";
-require_once __DIR__."/../../src/Receipt/DigitalReceiptContainer.php";
-require_once __DIR__."/../../src/Receipt/LineItem/LineItem.php";
-require_once __DIR__."/../../src/Receipt/Tax/TaxCategory.php";
-require_once __DIR__."/../../src/Receipt/Tax/TaxCode.php";
-require_once __DIR__."/../../src/Receipt/AllowanceCharge/AllowanceOrChargeType.php";
-require_once __DIR__."/../../src/Receipt/AllowanceCharge/AllowanceChargeType.php";
-require_once __DIR__."/../../src/Receipt/AllowanceCharge/ReceiptAllowanceCharge.php";
-require_once __DIR__."/../../src/Receipt/AllowanceCharge/SettlementType.php";
 require_once __DIR__."/ClientTestHelper.php";
 
 use Dreceiptx\Client\HTTPClientImpl;

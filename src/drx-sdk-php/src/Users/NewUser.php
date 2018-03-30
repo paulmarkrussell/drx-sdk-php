@@ -23,6 +23,15 @@ class NewUser
     /** @var bool $addEmailAsIdentifier */
     private $addEmailAsIdentifier = true;
 
+
+    public function __construct($email, $identifiers, $config, $addEmailAsIdentifier = true)
+    {
+        $this->email = $email;
+        $this->identifiers = $identifiers;
+        $this->config = $config;
+        $this->addEmailAsIdentifier = $addEmailAsIdentifier;
+    }
+
     /**
      * @param string $email
      */
@@ -92,5 +101,15 @@ class NewUser
     public function isAddEmailAsIdentifier()
     {
         return $this->addEmailAsIdentifier;
+    }
+
+    public function jsonSerialize()
+    {
+        $ret = new \stdClass();
+        $ret->email = $this->email;
+        $ret->identifiers = $this->identifiers;
+        $ret->config = $this->config;
+        $ret->addEmailAsIdentifier = $this->addEmailAsIdentifier;
+        return \Utils::removeNullProperties($ret);
     }
 }

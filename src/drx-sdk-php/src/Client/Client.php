@@ -29,7 +29,6 @@ use Dreceiptx\Config\ConfigManager;
 use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\DRxDigitalReceipt;
 use Dreceiptx\Users\NewUser;
-use Dreceiptx\Users\User;
 use Dreceiptx\Users\UserIdentifierType;
 
 class Client implements ExchangeClient
@@ -305,7 +304,7 @@ class Client implements ExchangeClient
      */
     public function registerNewUser($user)
     {
-        
+        return $this->registerNewUsers([$user])[0];
     }
 
     /**
@@ -314,6 +313,28 @@ class Client implements ExchangeClient
      */
     public function registerNewUsers($users)
     {
+        $url = $this->exchangeApiHost."/user";-
+        print($url."\n");
+        $body = [];
+        foreach ($users as $user) {
+            array_push($body, $user->jsonSerialize());
+        }
+        $response = $this->httpClient->post($url, json_encode($body), $this->getHeaders());
+        print("RESPONSE\n");
+        print_r($response);
+        if($response->getStatus() == 404) {
+            return null;
+        } else if($response->getStatus() == 200){
+            $mapper = new \JsonMapper();
+            $userResponse = $mapper->map(json_decode($response->getContent()), new UserResponse());
+            $userResponse->setType(UserResponse::TYPE_ACCOUNT_USERS);
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
+
+        } else {
+            throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
+        }
     }
 
     /**
