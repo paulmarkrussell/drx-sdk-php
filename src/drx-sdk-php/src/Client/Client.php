@@ -10,6 +10,8 @@ namespace Dreceiptx\Client;
 
 require_once __DIR__."/../Users/User.php";
 require_once __DIR__."/../Users/NewUser.php";
+require_once __DIR__."/../Users/MetaData.php";
+require_once __DIR__."/../Users/ConfigOption.php";
 require_once __DIR__."/../Users/NewUserRegistrationResult.php";
 require_once __DIR__."/../Receipt/DRxDigitalReceipt.php";
 require_once __DIR__."/../Config/ConfigKeys.php";
@@ -29,6 +31,7 @@ use Dreceiptx\Config\ConfigManager;
 use Dreceiptx\Receipt\DigitalReceiptContainer;
 use Dreceiptx\Receipt\DRxDigitalReceipt;
 use Dreceiptx\Users\NewUser;
+use Dreceiptx\Users\NewUserRegistrationResult;
 use Dreceiptx\Users\UserIdentifierType;
 
 class Client implements ExchangeClient
@@ -304,7 +307,23 @@ class Client implements ExchangeClient
      */
     public function registerNewUser($user)
     {
-        return $this->registerNewUsers([$user])[0];
+        $url = $this->exchangeApiHost."/user";
+        print($url."\n");
+        $response = $this->httpClient->post($url, json_encode($user->jsonSerialize()), $this->getHeaders());
+        print("RESPONSE\n");
+        print_r($response);
+        if($response->getStatus() == 404) {
+            return null;
+        } else if($response->getStatus() == 201){
+            $mapper = new \JsonMapper();
+            $userResponse = $mapper->map(json_decode($response->getContent()), new NewUserRegistrationResult());
+            $userResponse->setHttpCode($response->getStatus());
+            $userResponse->setExceptionMessage($response->getErrorMessage());
+            return $userResponse;
+
+        } else {
+            throw new \Exception("Error getting user, server responded with code ".$response->getStatus().": ".$response->getErrorMessage() );
+        }
     }
 
     /**

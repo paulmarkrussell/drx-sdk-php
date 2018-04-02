@@ -8,67 +8,81 @@
 
 namespace Dreceiptx\Users;
 
+require_once __DIR__."/ConfigOption.php";
+require_once __DIR__."/MetaData.php";
 
-class NewUser
+class NewUser implements \JsonSerializable
 {
-    /** @var string $email */
-    private $email;
+    /** @var string $userEmail */
+    private $userEmail;
 
-    /** @var string[] $identifiers */
-    private $identifiers;
+    /** @var string $internalId */
+    private $internalId;
 
-    /** @var string[] $config */
+    /** @var ConfigOption[] $config */
     private $config;
 
-    /** @var bool $addEmailAsIdentifier */
-    private $addEmailAsIdentifier = true;
+    /** @var MetaData[] $metaData */
+    private $metaData;
 
 
-    public function __construct($email, $identifiers, $config, $addEmailAsIdentifier = true)
+    public function __construct($userEmail, $internalId, $config = null, $metaData = null)
     {
-        $this->email = $email;
-        $this->identifiers = $identifiers;
+        $this->userEmail = $userEmail;
+        $this->internalId = $internalId;
         $this->config = $config;
-        $this->addEmailAsIdentifier = $addEmailAsIdentifier;
+        $this->metaData = $metaData;
     }
 
     /**
-     * @param string $email
+     * @param string $userEmail
      */
-    public function setEmail($email)
+    public function setUserEmail($userEmail)
     {
-        $this->email = $email;
+        $this->userEmail = $userEmail;
     }
 
     /**
      * @return string
      */
-    public function getEmail()
+    public function getUserEmail()
     {
-        return $this->email;
+        return $this->userEmail;
     }
 
     /**
-     * @return string[]
+     * @param string $internalId
      */
-    public function getIdentifiers()
+    public function setInternalId($internalId)
     {
-        return $this->identifiers;
+        $this->internalId = $internalId;
     }
 
     /**
-     * @param string $type
-     * @param string $value
+     * @return string
      */
-    public function setIdentifier($type, $value) {
-        if($this->identifiers == null) {
-            $this->identifiers = array();
+    public function getInternalId()
+    {
+        return $this->internalId;
+    }
+
+    /**
+     * @param \Dreceiptx\Users\ConfigOption[] $config
+     */
+    public function setConfig($config)
+    {
+        $this->config = $config;
+    }
+
+    public function addConfig($option, $value) {
+        if($this->config == null) {
+            $this->config = array();
         }
-        $this->identifiers[$type] = $value;
+        array_push($this->config, new ConfigOption($option, $value));
     }
 
     /**
-     * @return string[]
+     * @return \Dreceiptx\Users\ConfigOption[]
      */
     public function getConfig()
     {
@@ -76,40 +90,34 @@ class NewUser
     }
 
     /**
-     * @param string $key
-     * @param string $value
+     * @param \Dreceiptx\Users\MetaData[] $metaData
      */
-    public function setConfigOption($key, $value)
+    public function setMetaData($metaData)
     {
-        if ($this->config == null) {
-            $this->config = array();
+        $this->metaData = $metaData;
+    }
+
+    public function addMetaData($type, $value) {
+        if($this->metaData == null) {
+            $this->metaData = array();
         }
-        $this->config[$key] = $value;
+        array_push($this->metaData, new MetaData($type, $value));
     }
-
     /**
-     * @param bool $addEmailAsIdentifier
+     * @return \Dreceiptx\Users\MetaData[]
      */
-    public function setAddEmailAsIdentifier($addEmailAsIdentifier)
+    public function getMetaData()
     {
-        $this->addEmailAsIdentifier = $addEmailAsIdentifier;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAddEmailAsIdentifier()
-    {
-        return $this->addEmailAsIdentifier;
+        return $this->metaData;
     }
 
     public function jsonSerialize()
     {
         $ret = new \stdClass();
-        $ret->email = $this->email;
-        $ret->identifiers = $this->identifiers;
+        $ret->userEmail = $this->userEmail;
+        $ret->internalId = $this->internalId;
         $ret->config = $this->config;
-        $ret->addEmailAsIdentifier = $this->addEmailAsIdentifier;
+        $ret->metaData = $this->metaData;
         return \Utils::removeNullProperties($ret);
     }
 }

@@ -45,19 +45,18 @@ class UserAddTest extends TestCase
 {
     public function testAddUser()
     {
-        $user = new NewUser("Hello", [], []);
-        print(json_encode([$user->jsonSerialize(), "world"]));
         $configManager = ClientTestHelper::createTestConfig();
         $httpClient = new HTTPClientImpl();
         $client = new Client($configManager, $httpClient);
 
-        $user = new NewUser("lajthabalazs@yahoo.com", [], []);
+        $user = new NewUser("lajthabalazs@yahoo.com", "lajtha-balazs-01");
+        $user->addConfig("EndPointId","testingEndpoint");
+        $user->addMetaData("Team", "team#1");
         $response = $client->registerNewUser($user);
-        print("\n");
-        print_r($response);
-        print("\n");
         $this->assertTrue($response->isSuccess());
-        $this->assertEquals(200, $response->getHttpCode());
+        $this->assertEquals(201, $response->getHttpCode());
         $this->assertEquals("", $response->getExceptionMessage());
+        $this->assertEquals(1, $response->getResponseData()->getUsersRegistered());
+        $this->assertEquals("lajthabalazs@yahoo.com", $response->getResponseData()->getUsers()[0]->getEmail());
     }
 }

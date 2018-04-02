@@ -8,6 +8,7 @@
 
 namespace Dreceiptx\Users;
 
+require_once __DIR__."/NewUserRegistrationResponseData.php";
 
 class NewUserRegistrationResult
 {
@@ -17,19 +18,25 @@ class NewUserRegistrationResult
     /** @var int $code */
     private $code;
 
-    /** @var string $message */
-    private $message;
+    /** @var NewUserRegistrationResponseData $responseData */
+    private $responseData;
 
-    /** @var string $guid */
-    private $guid;
+    /**
+     * @var int $httpCode
+     */
+    private $httpCode;
 
-    public static function create($success, $code, $message, $guid) {
-        $ret = new NewUserRegistrationResult();
-        $ret->success = $success;
-        $ret->code = $code;
-        $ret->message = $message;
-        $ret->guid = $guid;
-        return $ret;
+    /**
+     * @var string $errorMessage
+     */
+    private $exceptionMessage;
+
+    /**
+     * @param bool $success
+     */
+    public function setSuccess($success)
+    {
+        $this->success = $success;
     }
 
     /**
@@ -41,6 +48,14 @@ class NewUserRegistrationResult
     }
 
     /**
+     * @param int $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
      * @return int
      */
     public function getCode()
@@ -49,18 +64,50 @@ class NewUserRegistrationResult
     }
 
     /**
-     * @return string
+     * @param NewUserRegistrationResponseData $responseData
      */
-    public function getMessage()
+    public function setResponseData($responseData)
     {
-        return $this->message;
+        $this->responseData = $responseData;
+    }
+
+    /**
+     * @return NewUserRegistrationResponseData
+     */
+    public function getResponseData()
+    {
+        return $this->responseData;
+    }
+
+    /**
+     * @param int $httpCode
+     */
+    public function setHttpCode($httpCode)
+    {
+        $this->httpCode = $httpCode;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHttpCode()
+    {
+        return $this->httpCode;
+    }
+
+    /**
+     * @param string $exceptionMessage
+     */
+    public function setExceptionMessage($exceptionMessage)
+    {
+        $this->exceptionMessage = $exceptionMessage;
     }
 
     /**
      * @return string
      */
-    public function getGuid()
+    public function getExceptionMessage()
     {
-        return $this->guid;
+        return $this->exceptionMessage;
     }
 }
