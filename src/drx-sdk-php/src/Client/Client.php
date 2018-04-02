@@ -313,7 +313,7 @@ class Client implements ExchangeClient
      */
     public function registerNewUsers($users)
     {
-        $url = $this->exchangeApiHost."/user";-
+        $url = $this->exchangeApiHost."/user";
         print($url."\n");
         $body = [];
         foreach ($users as $user) {
